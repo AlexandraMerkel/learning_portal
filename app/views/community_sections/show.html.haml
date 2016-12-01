@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Section name:
+  = @community_section.section_name
+%p
+  %b Section type:
+  = @community_section.section_type
+%p
+  %b Section position:
+  = @community_section.section_position
+%p
+  %b Community:
+  = @community_section.community
+
+= link_to 'Edit', edit_community_section_path(@community_section)
+\|
+= link_to 'Back', community_sections_path

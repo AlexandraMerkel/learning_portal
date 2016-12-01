@@ -1,0 +1,1 @@
+json.array! @community_users, partial: 'community_users/community_user', as: :community_user

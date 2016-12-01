@@ -1,0 +1,19 @@
+= form_for @community_user do |f|
+  - if @community_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@community_user.errors.count, "error")} prohibited this community_user from being saved:"
+      %ul
+        - @community_user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :link_type
+    = f.number_field :link_type
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :community
+    = f.text_field :community
+  .actions
+    = f.submit 'Save'

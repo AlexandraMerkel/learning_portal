@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Rank:
+  = @institution_user.rank
+%p
+  %b User:
+  = @institution_user.user
+%p
+  %b Institution:
+  = @institution_user.institution
+
+= link_to 'Edit', edit_institution_user_path(@institution_user)
+\|
+= link_to 'Back', institution_users_path

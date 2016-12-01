@@ -1,0 +1,25 @@
+%h1 Listing community_tabs
+
+%table
+  %thead
+    %tr
+      %th Community section
+      %th Tab name
+      %th Tab position
+      %th
+      %th
+      %th
+
+  %tbody
+    - @community_tabs.each do |community_tab|
+      %tr
+        %td= community_tab.community_section
+        %td= community_tab.tab_name
+        %td= community_tab.tab_position
+        %td= link_to 'Show', community_tab
+        %td= link_to 'Edit', edit_community_tab_path(community_tab)
+        %td= link_to 'Destroy', community_tab, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Community tab', new_community_tab_path

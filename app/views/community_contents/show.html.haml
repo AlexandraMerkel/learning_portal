@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b View type:
+  = @community_content.view_type
+%p
+  %b Content body:
+  = @community_content.content_body
+%p
+  %b Content visibility:
+  = @community_content.content_visibility
+%p
+  %b Show:
+  = @community_content.show
+%p
+  %b Community tab:
+  = @community_content.community_tab
+%p
+  %b Creator:
+  = @community_content.creator
+
+= link_to 'Edit', edit_community_content_path(@community_content)
+\|
+= link_to 'Back', community_contents_path

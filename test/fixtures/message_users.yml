@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  viewing: 1
+  message: one
+  user: one
+
+two:
+  viewing: 1
+  message: two
+  user: two

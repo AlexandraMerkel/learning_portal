@@ -1,0 +1,1 @@
+json.array! @ranking_algorithms, partial: 'ranking_algorithms/ranking_algorithm', as: :ranking_algorithm

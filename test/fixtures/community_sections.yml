@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_name: MyString
+  section_type: 1
+  section_position: 1
+  community: one
+
+two:
+  section_name: MyString
+  section_type: 1
+  section_position: 1
+  community: two

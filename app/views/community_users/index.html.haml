@@ -1,0 +1,25 @@
+%h1 Listing community_users
+
+%table
+  %thead
+    %tr
+      %th Link type
+      %th User
+      %th Community
+      %th
+      %th
+      %th
+
+  %tbody
+    - @community_users.each do |community_user|
+      %tr
+        %td= community_user.link_type
+        %td= community_user.user
+        %td= community_user.community
+        %td= link_to 'Show', community_user
+        %td= link_to 'Edit', edit_community_user_path(community_user)
+        %td= link_to 'Destroy', community_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Community user', new_community_user_path

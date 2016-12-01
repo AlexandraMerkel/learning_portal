@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Section name:
+  = @discipline_section.section_name
+%p
+  %b Section type:
+  = @discipline_section.section_type
+%p
+  %b Weight:
+  = @discipline_section.weight
+%p
+  %b Min score:
+  = @discipline_section.min_score
+%p
+  %b Max score:
+  = @discipline_section.max_score
+%p
+  %b Require type:
+  = @discipline_section.require_type
+%p
+  %b Attenuation constant:
+  = @discipline_section.attenuation_constant
+%p
+  %b Optimal time:
+  = @discipline_section.optimal_time
+%p
+  %b Limit time:
+  = @discipline_section.limit_time
+%p
+  %b Discipline:
+  = @discipline_section.discipline
+
+= link_to 'Edit', edit_discipline_section_path(@discipline_section)
+\|
+= link_to 'Back', discipline_sections_path

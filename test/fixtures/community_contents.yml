@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  view_type: 1
+  content_body: MyText
+  content_visibility: 1
+  show: 2016-11-27 13:03:06
+  community_tab: one
+  creator: one
+
+two:
+  view_type: 1
+  content_body: MyText
+  content_visibility: 1
+  show: 2016-11-27 13:03:06
+  community_tab: two
+  creator: two

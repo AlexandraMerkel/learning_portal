@@ -1,0 +1,1 @@
+json.array! @institution_users, partial: 'institution_users/institution_user', as: :institution_user

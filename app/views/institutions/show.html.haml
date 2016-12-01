@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Institution name:
+  = @institution.institution_name
+%p
+  %b Short instituton name:
+  = @institution.short_instituton_name
+%p
+  %b Address:
+  = @institution.address
+%p
+  %b Phone number:
+  = @institution.phone_number
+
+= link_to 'Edit', edit_institution_path(@institution)
+\|
+= link_to 'Back', institutions_path

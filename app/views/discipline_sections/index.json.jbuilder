@@ -1,0 +1,1 @@
+json.array! @discipline_sections, partial: 'discipline_sections/discipline_section', as: :discipline_section

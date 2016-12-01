@@ -1,0 +1,1 @@
+json.partial! "community_contents/community_content", community_content: @community_content

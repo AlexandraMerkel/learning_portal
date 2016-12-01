@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Header:
+  = @message_list.header
+
+= link_to 'Edit', edit_message_list_path(@message_list)
+\|
+= link_to 'Back', message_lists_path

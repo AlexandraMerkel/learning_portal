@@ -1,0 +1,40 @@
+= form_for @discipline_section do |f|
+  - if @discipline_section.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@discipline_section.errors.count, "error")} prohibited this discipline_section from being saved:"
+      %ul
+        - @discipline_section.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :section_name
+    = f.text_field :section_name
+  .field
+    = f.label :section_type
+    = f.number_field :section_type
+  .field
+    = f.label :weight
+    = f.number_field :weight
+  .field
+    = f.label :min_score
+    = f.number_field :min_score
+  .field
+    = f.label :max_score
+    = f.number_field :max_score
+  .field
+    = f.label :require_type
+    = f.number_field :require_type
+  .field
+    = f.label :attenuation_constant
+    = f.text_field :attenuation_constant
+  .field
+    = f.label :optimal_time
+    = f.date_select :optimal_time
+  .field
+    = f.label :limit_time
+    = f.date_select :limit_time
+  .field
+    = f.label :discipline
+    = f.text_field :discipline
+  .actions
+    = f.submit 'Save'

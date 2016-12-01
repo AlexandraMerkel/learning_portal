@@ -1,0 +1,25 @@
+%h1 Listing institution_users
+
+%table
+  %thead
+    %tr
+      %th Rank
+      %th User
+      %th Institution
+      %th
+      %th
+      %th
+
+  %tbody
+    - @institution_users.each do |institution_user|
+      %tr
+        %td= institution_user.rank
+        %td= institution_user.user
+        %td= institution_user.institution
+        %td= link_to 'Show', institution_user
+        %td= link_to 'Edit', edit_institution_user_path(institution_user)
+        %td= link_to 'Destroy', institution_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Institution user', new_institution_user_path

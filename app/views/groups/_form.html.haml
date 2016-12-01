@@ -1,0 +1,22 @@
+= form_for @group do |f|
+  - if @group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
+      %ul
+        - @group.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :group_name
+    = f.text_field :group_name
+  .field
+    = f.label :group_start
+    = f.date_select :group_start
+  .field
+    = f.label :archive_time
+    = f.date_select :archive_time
+  .field
+    = f.label :term
+    = f.select(:term, term_options(f.object.term_id))
+  .actions
+    = f.submit 'Save'

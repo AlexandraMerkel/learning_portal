@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  discipline_name: MyString
+  discipline_type: 1
+  discipline_end: 1
+  term: one
+  ranking_algorithm: one
+
+two:
+  discipline_name: MyString
+  discipline_type: 1
+  discipline_end: 1
+  term: two
+  ranking_algorithm: two

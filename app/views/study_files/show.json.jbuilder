@@ -1,0 +1,1 @@
+json.partial! "study_files/study_file", study_file: @study_file

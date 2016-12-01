@@ -1,0 +1,29 @@
+%h1 Listing marks
+
+%table
+  %thead
+    %tr
+      %th Mark value
+      %th Report
+      %th Discipline section
+      %th Student
+      %th Teacher
+      %th
+      %th
+      %th
+
+  %tbody
+    - @marks.each do |mark|
+      %tr
+        %td= mark.mark_value
+        %td= mark.report
+        %td= mark.discipline_section
+        %td= mark.student
+        %td= mark.teacher
+        %td= link_to 'Show', mark
+        %td= link_to 'Edit', edit_mark_path(mark)
+        %td= link_to 'Destroy', mark, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Mark', new_mark_path

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Link type:
+  = @community_user.link_type
+%p
+  %b User:
+  = @community_user.user
+%p
+  %b Community:
+  = @community_user.community
+
+= link_to 'Edit', edit_community_user_path(@community_user)
+\|
+= link_to 'Back', community_users_path

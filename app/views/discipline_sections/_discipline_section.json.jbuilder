@@ -1,0 +1,2 @@
+json.extract! discipline_section, :id, :section_name, :section_type, :weight, :min_score, :max_score, :require_type, :attenuation_constant, :optimal_time, :limit_time, :discipline_id, :created_at, :updated_at
+json.url discipline_section_url(discipline_section, format: :json)

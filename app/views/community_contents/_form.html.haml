@@ -1,0 +1,28 @@
+= form_for @community_content do |f|
+  - if @community_content.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@community_content.errors.count, "error")} prohibited this community_content from being saved:"
+      %ul
+        - @community_content.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :view_type
+    = f.number_field :view_type
+  .field
+    = f.label :content_body
+    = f.text_area :content_body
+  .field
+    = f.label :content_visibility
+    = f.number_field :content_visibility
+  .field
+    = f.label :show
+    = f.datetime_select :show
+  .field
+    = f.label :community_tab
+    = f.text_field :community_tab
+  .field
+    = f.label :creator
+    = f.text_field :creator
+  .actions
+    = f.submit 'Save'

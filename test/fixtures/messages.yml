@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message_content: MyText
+  send: 2016-11-29 18:10:16
+  message: 
+  message_list: one
+  sender: one
+
+two:
+  message_content: MyText
+  send: 2016-11-29 18:10:16
+  message: 
+  message_list: two
+  sender: two

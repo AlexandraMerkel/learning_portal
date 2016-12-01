@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @study_file.user
+%p
+  %b Study:
+  = @study_file.study
+
+= link_to 'Edit', edit_study_file_path(@study_file)
+\|
+= link_to 'Back', study_files_path

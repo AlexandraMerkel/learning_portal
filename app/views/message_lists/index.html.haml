@@ -1,0 +1,21 @@
+%h1 Listing message_lists
+
+%table
+  %thead
+    %tr
+      %th Header
+      %th
+      %th
+      %th
+
+  %tbody
+    - @message_lists.each do |message_list|
+      %tr
+        %td= message_list.header
+        %td= link_to 'Show', message_list
+        %td= link_to 'Edit', edit_message_list_path(message_list)
+        %td= link_to 'Destroy', message_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Message list', new_message_list_path

@@ -1,0 +1,2 @@
+json.extract! community_content, :id, :view_type, :content_body, :content_visibility, :show, :community_tab_id, :creator_id, :created_at, :updated_at
+json.url community_content_url(community_content, format: :json)

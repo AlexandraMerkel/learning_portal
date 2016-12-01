@@ -1,0 +1,27 @@
+%h1 Listing community_sections
+
+%table
+  %thead
+    %tr
+      %th Section name
+      %th Section type
+      %th Section position
+      %th Community
+      %th
+      %th
+      %th
+
+  %tbody
+    - @community_sections.each do |community_section|
+      %tr
+        %td= community_section.section_name
+        %td= community_section.section_type
+        %td= community_section.section_position
+        %td= community_section.community
+        %td= link_to 'Show', community_section
+        %td= link_to 'Edit', edit_community_section_path(community_section)
+        %td= link_to 'Destroy', community_section, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Community section', new_community_section_path

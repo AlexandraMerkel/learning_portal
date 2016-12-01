@@ -1,0 +1,1 @@
+json.partial! "ranking_algorithms/ranking_algorithm", ranking_algorithm: @ranking_algorithm

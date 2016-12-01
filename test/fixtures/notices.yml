@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notice_type: 1
+  user: one
+  community_section: one
+
+two:
+  notice_type: 1
+  user: two
+  community_section: two

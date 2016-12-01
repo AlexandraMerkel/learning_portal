@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Viewing:
+  = @message_user.viewing
+%p
+  %b Message:
+  = @message_user.message
+%p
+  %b User:
+  = @message_user.user
+
+= link_to 'Edit', edit_message_user_path(@message_user)
+\|
+= link_to 'Back', message_users_path

@@ -1,0 +1,34 @@
+%p#notice= notice
+
+
+%p
+  %b Last name:
+  = @user.last_name
+%p
+  %b First name:
+  = @user.first_name
+%p
+  %b Second name:
+  = @user.second_name
+%p
+  %b Birthday:
+  = @user.birthday
+%p
+  %b Sex:
+  = @user.sex
+%p
+  %b Description:
+  = @user.user_description
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Crypted password:
+  = @user.crypted_password
+%p
+  %b Salt:
+  = @user.salt
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

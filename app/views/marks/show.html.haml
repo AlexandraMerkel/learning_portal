@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Mark value:
+  = @mark.mark_value
+%p
+  %b Report:
+  = @mark.report
+%p
+  %b Discipline section:
+  = @mark.discipline_section
+%p
+  %b Student:
+  = @mark.student
+%p
+  %b Teacher:
+  = @mark.teacher
+
+= link_to 'Edit', edit_mark_path(@mark)
+\|
+= link_to 'Back', marks_path

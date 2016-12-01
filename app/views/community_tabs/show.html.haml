@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Community section:
+  = @community_tab.community_section
+%p
+  %b Tab name:
+  = @community_tab.tab_name
+%p
+  %b Tab position:
+  = @community_tab.tab_position
+
+= link_to 'Edit', edit_community_tab_path(@community_tab)
+\|
+= link_to 'Back', community_tabs_path

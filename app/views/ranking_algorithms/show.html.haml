@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Algorithm name:
+  = @ranking_algorithm.algorithm_name
+%p
+  %b Template:
+  = @ranking_algorithm.template
+
+= link_to 'Edit', edit_ranking_algorithm_path(@ranking_algorithm)
+\|
+= link_to 'Back', ranking_algorithms_path

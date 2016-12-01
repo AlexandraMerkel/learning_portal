@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Discipline name:
+  = @discipline.discipline_name
+%p
+  %b Discipline type:
+  = @discipline.discipline_type
+%p
+  %b Discipline end:
+  = @discipline.discipline_end
+%p
+  %b Term:
+  = @discipline.term
+%p
+  %b Ranking algorithm:
+  = @discipline.ranking_algorithm
+
+= link_to 'Edit', edit_discipline_path(@discipline)
+\|
+= link_to 'Back', disciplines_path

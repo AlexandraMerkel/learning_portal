@@ -1,0 +1,1 @@
+json.partial! "institution_users/institution_user", institution_user: @institution_user

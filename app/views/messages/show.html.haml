@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Message content:
+  = @message.message_content
+%p
+  %b Send:
+  = @message.send
+%p
+  %b Message:
+  = @message.message
+%p
+  %b Message list:
+  = @message.message_list
+%p
+  %b Sender:
+  = @message.sender
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path

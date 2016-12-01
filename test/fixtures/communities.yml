@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  community_name: MyString
+  community_visibility: 1
+  archive: 1
+
+two:
+  community_name: MyString
+  community_visibility: 1
+  archive: 1

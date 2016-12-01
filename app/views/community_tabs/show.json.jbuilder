@@ -1,0 +1,1 @@
+json.partial! "community_tabs/community_tab", community_tab: @community_tab

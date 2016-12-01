@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Group name:
+  = @group.group_name
+%p
+  %b Group start:
+  = @group.group_start
+%p
+  %b Archive time:
+  = @group.archive_time
+%p
+  %b Term:
+  = @group.term
+
+= link_to 'Edit', edit_group_path(@group)
+\|
+= link_to 'Back', groups_path

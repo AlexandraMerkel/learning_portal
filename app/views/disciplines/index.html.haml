@@ -1,0 +1,29 @@
+%h1 Listing disciplines
+
+%table
+  %thead
+    %tr
+      %th Discipline name
+      %th Discipline type
+      %th Discipline end
+      %th Term
+      %th Ranking algorithm
+      %th
+      %th
+      %th
+
+  %tbody
+    - @disciplines.each do |discipline|
+      %tr
+        %td= discipline.discipline_name
+        %td= discipline.discipline_type
+        %td= discipline.discipline_end
+        %td= discipline.term
+        %td= discipline.ranking_algorithm
+        %td= link_to 'Show', discipline
+        %td= link_to 'Edit', edit_discipline_path(discipline)
+        %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Discipline', new_discipline_path

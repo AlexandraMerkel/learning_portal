@@ -1,0 +1,1 @@
+json.array! @study_files, partial: 'study_files/study_file', as: :study_file

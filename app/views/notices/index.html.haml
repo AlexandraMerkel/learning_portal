@@ -1,0 +1,25 @@
+%h1 Listing notices
+
+%table
+  %thead
+    %tr
+      %th Notice type
+      %th User
+      %th Community section
+      %th
+      %th
+      %th
+
+  %tbody
+    - @notices.each do |notice|
+      %tr
+        %td= notice.notice_type
+        %td= notice.user
+        %td= notice.community_section
+        %td= link_to 'Show', notice
+        %td= link_to 'Edit', edit_notice_path(notice)
+        %td= link_to 'Destroy', notice, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Notice', new_notice_path

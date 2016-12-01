@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group_name: MyString
+  group_start: 2016-11-27
+  archive_time: 2016-11-27
+  term: one
+
+two:
+  group_name: MyString
+  group_start: 2016-11-27
+  archive_time: 2016-11-27
+  term: two
