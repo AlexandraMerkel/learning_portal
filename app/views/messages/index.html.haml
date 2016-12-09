@@ -4,10 +4,12 @@
   %thead
     %tr
       %th Message content
-      %th Send
+      %th Send time
       %th Message
       %th Message list
       %th Sender
+      %th
+      %th
       %th
       %th
       %th
@@ -16,10 +18,12 @@
     - @messages.each do |message|
       %tr
         %td= message.message_content
-        %td= message.send
-        %td= message.message
-        %td= message.message_list
-        %td= message.sender
+        %td= message.send_time
+        %td= message.message_file_name
+        %td= message.message_list.header
+        %td= message.sender.last_name
+        %td= message.sender.first_name
+        %td= message.sender.second_name
         %td= link_to 'Show', message
         %td= link_to 'Edit', edit_message_path(message)
         %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }

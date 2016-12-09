@@ -4,6 +4,8 @@
   %thead
     %tr
       %th User
+      %th
+      %th
       %th Study
       %th
       %th
@@ -12,8 +14,10 @@
   %tbody
     - @study_files.each do |study_file|
       %tr
-        %td= study_file.user
-        %td= study_file.study
+        %td= study_file.user.last_name
+        %td= study_file.user.first_name
+        %td= study_file.user.second_name
+        %td= study_file.study_file_name
         %td= link_to 'Show', study_file
         %td= link_to 'Edit', edit_study_file_path(study_file)
         %td= link_to 'Destroy', study_file, :method => :delete, :data => { :confirm => 'Are you sure?' }

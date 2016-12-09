@@ -8,12 +8,12 @@
 
   .field
     = f.label :link_type
-    = f.number_field :link_type
+    = f.select(:link_type, link_type_options(f.object.link_type))
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.label :user_id
+    = f.select(:user_id, user_options(f.object.user_id))
   .field
-    = f.label :community
-    = f.text_field :community
+    = f.label :community_id
+    = f.select(:community_id, community_options(f.object.community_id))
   .actions
     = f.submit 'Save'

@@ -1,6 +1,13 @@
 class StudyFilesController < ApplicationController
   before_action :set_study_file, only: [:show, :edit, :update, :destroy]
 
+  def show_file
+    send_file(@study_files.study.path(:original), 
+    filename: @study_files.study_file_name,
+    type: @study_files.study_content_type, disposition: 'inline')
+  end
+
+
   # GET /study_files
   # GET /study_files.json
   def index

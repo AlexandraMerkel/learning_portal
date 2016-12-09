@@ -16,7 +16,7 @@
     = f.label :archive_time
     = f.date_select :archive_time
   .field
-    = f.label :term
-    = f.select(:term, term_options(f.object.term_id))
+    = f.label :term_id
+    = f.select(:term_id, term_options(f.object.term_id))
   .actions
     = f.submit 'Save'

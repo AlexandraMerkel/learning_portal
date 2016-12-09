@@ -11,15 +11,15 @@
     = f.text_field :discipline_name
   .field
     = f.label :discipline_type
-    = f.number_field :discipline_type
+    = f.select(:discipline_type, type_options(f.object.discipline_type))
   .field
     = f.label :discipline_end
-    = f.number_field :discipline_end
+    = f.select(:discipline_end, end_options(f.object.discipline_end))
   .field
-    = f.label :term
-    = f.text_field :term
+    = f.label :term_id
+    = f.select(:term_id, term_options(f.object.term_id))
   .field
-    = f.label :ranking_algorithm
-    = f.text_field :ranking_algorithm
+    = f.label :ranking_algorithm_id
+    = f.select(:ranking_algorithm_id, ranking_algorithm_options(f.object.ranking_algorithm_id))
   .actions
     = f.submit 'Save'

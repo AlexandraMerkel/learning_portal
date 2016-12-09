@@ -11,7 +11,7 @@
     = f.text_field :section_name
   .field
     = f.label :section_type
-    = f.number_field :section_type
+    = f.select(:section_type, section_type_options(f.object.section_type))
   .field
     = f.label :weight
     = f.number_field :weight
@@ -23,7 +23,7 @@
     = f.number_field :max_score
   .field
     = f.label :require_type
-    = f.number_field :require_type
+    = f.select(:require_type, require_type_options(f.object.require_type))
   .field
     = f.label :attenuation_constant
     = f.text_field :attenuation_constant
@@ -34,7 +34,7 @@
     = f.label :limit_time
     = f.date_select :limit_time
   .field
-    = f.label :discipline
-    = f.text_field :discipline
+    = f.label :discipline_id
+    = f.select(:discipline_id, discipline_options(f.object.discipline_id))
   .actions
     = f.submit 'Save'

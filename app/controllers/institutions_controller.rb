@@ -69,6 +69,6 @@ class InstitutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def institution_params
-      params.require(:institution).permit(:institution_name, :short_instituton_name, :address, :phone_number)
+      params.require(:institution).permit(:institution_name, :short_institution_name, :address, :phone_number)
     end
 end

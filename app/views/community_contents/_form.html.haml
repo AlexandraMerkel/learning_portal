@@ -8,21 +8,21 @@
 
   .field
     = f.label :view_type
-    = f.number_field :view_type
+    = f.select(:view_type, view_type_options(f.object.view_type))
   .field
     = f.label :content_body
     = f.text_area :content_body
   .field
     = f.label :content_visibility
-    = f.number_field :content_visibility
+    = f.select(:content_visibility, visibility_options(f.object.content_visibility))
   .field
     = f.label :show
     = f.datetime_select :show
   .field
-    = f.label :community_tab
-    = f.text_field :community_tab
+    = f.label :community_tab_id
+    = f.select(:community_tab_id, community_tab_options(f.object.community_tab_id))
   .field
-    = f.label :creator
-    = f.text_field :creator
+    = f.label :creator_id
+    = f.select(:creator_id, user_options(f.object.creator_id))
   .actions
     = f.submit 'Save'

@@ -11,12 +11,12 @@
     = f.text_field :section_name
   .field
     = f.label :section_type
-    = f.number_field :section_type
+    = f.select(:section_type, section_type_options(f.object.section_type))
   .field
     = f.label :section_position
-    = f.number_field :section_position
+    = f.select(:section_position, section_position_options(f.object.section_position))
   .field
-    = f.label :community
-    = f.text_field :community
+    = f.label :community_id
+    = f.select(:community_id, community_options(f.object.community_id))
   .actions
     = f.submit 'Save'

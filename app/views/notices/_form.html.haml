@@ -8,12 +8,12 @@
 
   .field
     = f.label :notice_type
-    = f.number_field :notice_type
+    = f.select(:notice_type, type_options(f.object.notice_type))
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.label :user_id
+    = f.select(:user_id, user_options(f.object.user_id))
   .field
-    = f.label :community_section
-    = f.text_field :community_section
+    = f.label :community_section_id
+    = f.select(:community_section_id, community_section_options(f.object.community_section_id))
   .actions
     = f.submit 'Save'

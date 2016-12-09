@@ -7,10 +7,14 @@
           %li= msg
 
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.label :user_id
+    = f.select(:user_id, user_options(f.object.user_id))
   .field
     = f.label :study
-    = f.text_field :study
+    -if f.object.study.present?
+      =link_to(f.object.study_file_name, show_file_message_path(f.object))
+    -else 
+      Еще не сохранен
+    = f.file_field :study
   .actions
     = f.submit 'Save'

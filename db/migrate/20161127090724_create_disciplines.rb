@@ -1,13 +1,15 @@
 class CreateDisciplines < ActiveRecord::Migration[5.0]
   def change
     create_table :disciplines do |t|
-      t.string :discipline_name
-      t.integer :discipline_type
-      t.integer :discipline_end
-      t.references :term, foreign_key: true
-      t.references :ranking_algorithm, foreign_key: true
+      t.string :discipline_name, null: false
+      t.integer :discipline_type, null: false
+      t.integer :discipline_end, null: false
+      t.references :term, index: true, foreign_key: true, null: false
+      t.references :ranking_algorithm, index: true, foreign_key: true, null: false
 
-      t.timestamps
+      t.index [:discipline_name, :discipline_type, :discipline_end], unique: true, name: "discipline_name_type_end"
+
+      t.timestamps null: false
     end
   end
 end

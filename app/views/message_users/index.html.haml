@@ -9,13 +9,17 @@
       %th
       %th
       %th
+      %th
+      %th
 
   %tbody
     - @message_users.each do |message_user|
       %tr
         %td= message_user.viewing
-        %td= message_user.message
-        %td= message_user.user
+        %td= message_user.message.message_content
+        %td= message_user.user.last_name
+        %td= message_user.user.first_name
+        %td= message_user.user.second_name
         %td= link_to 'Show', message_user
         %td= link_to 'Edit', edit_message_user_path(message_user)
         %td= link_to 'Destroy', message_user, :method => :delete, :data => { :confirm => 'Are you sure?' }

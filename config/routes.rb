@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :message_users
-  resources :messages
+  resources :messages do
+    member do
+      get :show_file, as: :show_file
+    end
+  end
   resources :study_files
   resources :notices
   resources :institution_users

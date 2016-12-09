@@ -7,8 +7,8 @@
           %li= msg
 
   .field
-    = f.label :community_section
-    = f.text_field :community_section
+    = f.label :community_section_id
+    = f.select(:community_section_id, community_section_options(f.object.community_section_id))
   .field
     = f.label :tab_name
     = f.text_field :tab_name

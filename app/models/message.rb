@@ -8,4 +8,7 @@ class Message < ApplicationRecord
   validates :message_list_id, presence: true
   validates :sender_id, presence: true
 
+  has_attached_file :message, path: ":rails_root/storage/:class/:attachment/:id_partition/:style/:filename" 
+  validates_attachment :message, file_name: {matches: /\.(pdf|docx|doc|tiff)\z/i} # проверка на тип файла
+
 end

@@ -11,9 +11,9 @@
     = f.text_field :community_name
   .field
     = f.label :community_visibility
-    = f.number_field :community_visibility
+    = f.select(:community_visibility, visibility_options(f.object.community_visibility))
   .field
     = f.label :archive
-    = f.number_field :archive
+    = f.select(:archive, archive_options(f.object.archive))
   .actions
     = f.submit 'Save'

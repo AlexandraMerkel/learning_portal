@@ -17,7 +17,7 @@
         %td= group.group_name
         %td= group.group_start
         %td= group.archive_time
-        %td= group.term
+        %td= group.term.term_name
         %td= link_to 'Show', group
         %td= link_to 'Edit', edit_group_path(group)
         %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }

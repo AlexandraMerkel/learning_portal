@@ -1,5 +1,12 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy, :show_file]
+
+
+  def show_file
+    send_file(@message.message.path(:original), 
+    filename: @message.message_file_name,
+    type: @message.message_content_type, disposition: 'inline')
+  end
 
   # GET /messages
   # GET /messages.json
@@ -24,7 +31,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
+#    raise Message.new.inspect
+    @message = Message.new()
+    @message.attributes=message_params
 
     respond_to do |format|
       if @message.save
@@ -69,6 +78,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:message_content, :send, :message, :message_list_id, :sender_id)
+      params.require(:message).permit(:message_content, :send_time, :message, :message_list_id, :sender_id)
     end
 end

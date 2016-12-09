@@ -8,12 +8,12 @@
 
   .field
     = f.label :viewing
-    = f.number_field :viewing
+    = f.select(:viewing, viewing_options(f.object.viewing))
   .field
-    = f.label :message
-    = f.text_field :message
+    = f.label :message_id
+    = f.select(:message_id, message_options(f.object.message_id))
   .field
-    = f.label :user
-    = f.text_field :user
+    = f.label :user_id
+    = f.select(:user_id, user_options(f.object.user_id))
   .actions
     = f.submit 'Save'

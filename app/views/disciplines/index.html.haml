@@ -18,8 +18,8 @@
         %td= discipline.discipline_name
         %td= discipline.discipline_type
         %td= discipline.discipline_end
-        %td= discipline.term
-        %td= discipline.ranking_algorithm
+        %td= discipline.term.term_name
+        %td= discipline.ranking_algorithm.algorithm_name
         %td= link_to 'Show', discipline
         %td= link_to 'Edit', edit_discipline_path(discipline)
         %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }

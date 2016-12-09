@@ -13,7 +13,7 @@
   %tbody
     - @community_tabs.each do |community_tab|
       %tr
-        %td= community_tab.community_section
+        %td= community_tab.community_section.section_name
         %td= community_tab.tab_name
         %td= community_tab.tab_position
         %td= link_to 'Show', community_tab

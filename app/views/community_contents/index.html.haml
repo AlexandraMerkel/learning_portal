@@ -12,6 +12,8 @@
       %th
       %th
       %th
+      %th
+      %th
 
   %tbody
     - @community_contents.each do |community_content|
@@ -20,8 +22,10 @@
         %td= community_content.content_body
         %td= community_content.content_visibility
         %td= community_content.show
-        %td= community_content.community_tab
-        %td= community_content.creator
+        %td= community_content.community_tab.tab_name
+        %td= community_content.creator.last_name
+        %td= community_content.creator.first_name
+        %td= community_content.creator.second_name
         %td= link_to 'Show', community_content
         %td= link_to 'Edit', edit_community_content_path(community_content)
         %td= link_to 'Destroy', community_content, :method => :delete, :data => { :confirm => 'Are you sure?' }

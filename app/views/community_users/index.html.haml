@@ -4,8 +4,10 @@
   %thead
     %tr
       %th Link type
-      %th User
       %th Community
+      %th User
+      %th
+      %th  
       %th
       %th
       %th
@@ -14,8 +16,10 @@
     - @community_users.each do |community_user|
       %tr
         %td= community_user.link_type
-        %td= community_user.user
-        %td= community_user.community
+        %td= community_user.community.community_name
+        %td= community_user.user.last_name
+        %td= community_user.user.first_name
+        %td= community_user.user.second_name
         %td= link_to 'Show', community_user
         %td= link_to 'Edit', edit_community_user_path(community_user)
         %td= link_to 'Destroy', community_user, :method => :delete, :data => { :confirm => 'Are you sure?' }

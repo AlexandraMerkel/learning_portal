@@ -29,7 +29,7 @@
         %td= discipline_section.attenuation_constant
         %td= discipline_section.optimal_time
         %td= discipline_section.limit_time
-        %td= discipline_section.discipline
+        %td= discipline_section.discipline.discipline_name
         %td= link_to 'Show', discipline_section
         %td= link_to 'Edit', edit_discipline_section_path(discipline_section)
         %td= link_to 'Destroy', discipline_section, :method => :delete, :data => { :confirm => 'Are you sure?' }

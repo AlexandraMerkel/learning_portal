@@ -10,16 +10,20 @@
     = f.label :message_content
     = f.text_area :message_content
   .field
-    = f.label :send
-    = f.datetime_select :send
-  -#.field
-    -#= f.label :message
-    -#= f.text_field :message 
+    = f.label :send_time
+    = f.datetime_select :send_time
   .field
-    = f.label :message_list
-    = f.select(:message_list, message_list_options(f.object.message_list_id))
+    = f.label :message
+    -if f.object.message.present?
+      =link_to(f.object.message_file_name, show_file_message_path(f.object))
+    -else 
+      Еще не сохранен
+    = f.file_field :message 
   .field
-    = f.label :sender
-    = f.select(:sender, sender_options(f.object.sender_id))
+    = f.label :message_list_id
+    = f.select(:message_list_id, message_list_options(f.object.message_list_id))
+  .field
+    = f.label :sender_id
+    = f.select(:sender_id, sender_options(f.object.sender_id))
   .actions
     = f.submit 'Save'
