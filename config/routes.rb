@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'welcome/index', as: :index
+  get 'welcome/insufficient_privileges', as: :ip
+
   resources :message_users
   resources :messages do
     member do
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   resources :role_users
   resources :roles
   resources :terms
-  root :to => 'users#index'
+  root :to => 'welcome#index'
   resources :user_sessions
   resources :users do
     member do

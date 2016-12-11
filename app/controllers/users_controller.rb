@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :new, :create, :activate]
+  skip_before_action :require_login, only: [:new, :create, :activate]
+  skip_before_action :check_app_auth, only: [:new, :create, :activate]
   
   # GET /users
   # GET /users.json
@@ -72,6 +73,12 @@ class UsersController < ApplicationController
   end
 
   private
+    ## Переопределённая проверка прав доступа выбранной роли для данного метода
+    def check_ctr_auth()
+      return true if @current_role_user.is_admin?
+      return (action_name.to_sym != :index or @current_role_user.is_teacher?)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
