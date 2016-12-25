@@ -13,4 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require maskedinput
+//= require bootstrap
+//= require bootstrap-notify
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/ru
+//= require bootstrap-select/bootstrap-select
+//= require bootstrap-select/defaults-ru_RU
+//= require twitter/typeahead
 //= require_tree .

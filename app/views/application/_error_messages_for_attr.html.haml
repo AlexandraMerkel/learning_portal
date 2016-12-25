@@ -1,0 +1,6 @@
+-if object.errors[attr].present?
+  .text-danger
+    %ul.list-unstyled
+      -object.errors[attr].each do |msg|
+        %li=msg
+    -# object.errors.delete(attr.to_sym)

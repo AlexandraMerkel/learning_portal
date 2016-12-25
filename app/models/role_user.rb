@@ -10,4 +10,8 @@ class RoleUser < ApplicationRecord
       self.role.role_name_eng == rname
     end
   end
+
+  def humanize()
+    self.role.role_name
+  end
 end

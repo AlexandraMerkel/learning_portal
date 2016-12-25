@@ -1,0 +1,23 @@
+%aside.hidden-print#sidebar-wrapper
+  %ul.sidebar-nav
+    - side_bar_items(@current_role_user).each do |item|
+      %li
+        - if item.has_key?(:children)
+          = link_to('#', class: 'with-subitems') do
+            = fa_icon(item[:icon], class: 'menu-icon')
+            = item[:name]
+            %span.pull-right.carret
+              = fa_icon('angle-down', class: 'menu-icon')
+          %ul.subitems{class: (item[:children].any?{ |subitem| is_open?(subitem[:controller], subitem[:action]) } ? :subopen : :subclose)}
+            - item[:children].each do |subitem|
+              %li.subitem
+                = link_to(subitem[:url], class: subitem[:class]) do
+                  = fa_icon(subitem[:icon], class: 'menu-icon')
+                  = subitem[:name]
+        - else
+          = link_to(item[:url], class: [item[:class], 'without-subitems'].compact.join(' ')) do
+            = fa_icon(item[:icon], class: 'menu-icon')
+            = item[:name]
+    %li.footer
+      %div
+        Меркель А.В.

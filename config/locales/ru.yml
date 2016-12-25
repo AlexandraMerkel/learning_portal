@@ -1,0 +1,18 @@
+ru:
+  app:
+    name: Учебный портал
+    company:
+      short_name: Меркель А.В.
+      department: Меркель А.В.
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …

@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app:
+    name: Learning system
+    company:
+      short_name: Merkel A.V.
+      department: Merkel A.V. 
+  helpers:
+    submit:
+      create: Save
+      submit: Save
+      update: Save
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
