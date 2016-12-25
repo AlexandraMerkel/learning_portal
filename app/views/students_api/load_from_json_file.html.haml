@@ -1,0 +1,9 @@
+- if @results.present?
+  - @results.each do |line|
+    %div
+      = line
+= form_tag(load_from_json_file_students_api_path(), multipart: true) do
+  = file_field_tag :json_file
+  = button_tag class: 'btn btn-primary' do
+    = fa_icon :save
+    Загрузить

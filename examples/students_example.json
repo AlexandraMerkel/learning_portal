@@ -1,0 +1,20 @@
+[
+  {
+    "email": "pupkin@localhost.localhost.ru",
+    "first_name": "Пупкин",
+    "second_name": "Василий",
+    "last_name": "Алексеевич",
+    "birthday": "10.10.1995",
+    "user_description": "Студент",
+    "sex": "м"
+  },
+  {
+    "email": "pupkina@localhost.localhost.ru",
+    "first_name": "Пупкина",
+    "second_name": "Василиса",
+    "last_name": "Алексеевна",
+    "birthday": "10.10.1995",
+    "user_description": "Студент",
+    "sex": "ж"
+  }
+]

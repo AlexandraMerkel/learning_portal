@@ -1,0 +1,1888 @@
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (106.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "base_app5_development"[0m
+  [1m[35m (106.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "base_app5_test"[0m
+  [1m[35m (243.8ms)[0m  [1m[35mCREATE DATABASE "base_app5_development" ENCODING = 'unicode'[0m
+  [1m[35m (244.6ms)[0m  [1m[35mCREATE DATABASE "base_app5_test" ENCODING = 'unicode'[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3178725542336229480);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to SorceryCore (20160918170931)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class SorceryCore < ActiveRecord::Migration[4.2] (called from load at /home/radigin/.gem/ruby/2.3.0/bin/rake:23)
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying NOT NULL, "crypted_password" character varying, "salt" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160918170931"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to SorceryRememberMe (20160918170932)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class SorceryRememberMe < ActiveRecord::Migration[4.2] (called from load at /home/radigin/.gem/ruby/2.3.0/bin/rake:23)
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_me_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_me_token_expires_at" timestamp[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_remember_me_token" ON "users"  ("remember_me_token")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160918170932"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to SorceryResetPassword (20160918170933)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class SorceryResetPassword < ActiveRecord::Migration[4.2] (called from load at /home/radigin/.gem/ruby/2.3.0/bin/rake:23)
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token_expires_at" timestamp[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_email_sent_at" timestamp[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160918170933"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to SorceryUserActivation (20160918170934)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class SorceryUserActivation < ActiveRecord::Migration[4.2] (called from load at /home/radigin/.gem/ruby/2.3.0/bin/rake:23)
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "activation_state" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "activation_token" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "activation_token_expires_at" timestamp[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_activation_token" ON "users"  ("activation_token")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160918170934"]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTerms (20161127085840)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "terms" ("id" serial primary key, "term_name" character varying NOT NULL, "actual" boolean DEFAULT 'f', "term_start" date NOT NULL, "term_end" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_terms_on_term_name" ON "terms"  ("term_name")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_terms_on_term_start" ON "terms"  ("term_start")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_terms_on_term_end" ON "terms"  ("term_end")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127085840"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoles (20161127085939)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "roles" ("id" serial primary key, "role_name" character varying NOT NULL, "full_name" character varying NOT NULL, "role_name_eng" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_roles_on_role_name" ON "roles"  ("role_name")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_roles_on_full_name" ON "roles"  ("full_name")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_roles_on_role_name_eng" ON "roles"  ("role_name_eng")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127085939"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoleUsers (20161127090019)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "role_users" ("id" serial primary key, "info" json, "user_id" integer NOT NULL, "role_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_d225876829"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d517f3214f"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_role_users_on_user_id" ON "role_users"  ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_role_users_on_role_id" ON "role_users"  ("role_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_role_users_on_user_id_and_role_id" ON "role_users"  ("user_id", "role_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127090019"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroups (20161127090312)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" serial primary key, "group_name" character varying NOT NULL, "group_start" date NOT NULL, "archive_time" date NOT NULL, "term_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_8e06976071"
+FOREIGN KEY ("term_id")
+  REFERENCES "terms" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_groups_on_term_id" ON "groups"  ("term_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_groups_on_group_name" ON "groups"  ("group_name")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127090312"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJoinTableGroupUser (20161127090608)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "groups_users" ("group_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_groups_users_on_group_id_and_user_id" ON "groups_users"  ("group_id", "user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127090608"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRankingAlgorithms (20161127090650)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ranking_algorithms" ("id" serial primary key, "algorithm_name" character varying NOT NULL, "template" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_ranking_algorithms_on_algorithm_name" ON "ranking_algorithms"  ("algorithm_name")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127090650"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDisciplines (20161127090724)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "disciplines" ("id" serial primary key, "discipline_name" character varying NOT NULL, "discipline_type" integer NOT NULL, "discipline_end" integer NOT NULL, "term_id" integer NOT NULL, "ranking_algorithm_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_0a86a7f267"
+FOREIGN KEY ("term_id")
+  REFERENCES "terms" ("id")
+, CONSTRAINT "fk_rails_92051351d8"
+FOREIGN KEY ("ranking_algorithm_id")
+  REFERENCES "ranking_algorithms" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_disciplines_on_term_id" ON "disciplines"  ("term_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_disciplines_on_ranking_algorithm_id" ON "disciplines"  ("ranking_algorithm_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "discipline_name_type_end" ON "disciplines"  ("discipline_name", "discipline_type", "discipline_end")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127090724"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDisciplineSections (20161127091514)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "discipline_sections" ("id" serial primary key, "section_name" character varying NOT NULL, "section_type" integer NOT NULL, "weight" integer NOT NULL, "min_score" integer NOT NULL, "max_score" integer NOT NULL, "require_type" integer NOT NULL, "attenuation_constant" float NOT NULL, "optimal_time" date NOT NULL, "limit_time" date NOT NULL, "discipline_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_f7c4c5842b"
+FOREIGN KEY ("discipline_id")
+  REFERENCES "disciplines" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_discipline_sections_on_discipline_id" ON "discipline_sections"  ("discipline_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_discipline_sections_on_section_name_and_discipline_id" ON "discipline_sections"  ("section_name", "discipline_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127091514"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommunities (20161127091553)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "communities" ("id" serial primary key, "community_name" character varying NOT NULL, "community_visibility" integer NOT NULL, "archive" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_communities_on_community_name" ON "communities"  ("community_name")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127091553"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommunityUsers (20161127091616)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "community_users" ("id" serial primary key, "link_type" integer NOT NULL, "user_id" integer NOT NULL, "community_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_350d6254ae"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_b4d02cd2e9"
+FOREIGN KEY ("community_id")
+  REFERENCES "communities" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_community_users_on_user_id" ON "community_users"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_community_users_on_community_id" ON "community_users"  ("community_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_community_users_on_user_id_and_community_id" ON "community_users"  ("user_id", "community_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127091616"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJoinTableCommunityDiscipline (20161127091641)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "communities_disciplines" ("community_id" integer NOT NULL, "discipline_id" integer NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_communities_disciplines_on_community_id_and_discipline_id" ON "communities_disciplines"  ("community_id", "discipline_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127091641"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommunitySections (20161127092249)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "community_sections" ("id" serial primary key, "section_name" character varying NOT NULL, "section_type" integer NOT NULL, "section_position" integer NOT NULL, "community_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_5f9581abc4"
+FOREIGN KEY ("community_id")
+  REFERENCES "communities" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_community_sections_on_community_id" ON "community_sections"  ("community_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_community_sections_on_section_name_and_community_id" ON "community_sections"  ("section_name", "community_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_community_sections_on_section_type_and_community_id" ON "community_sections"  ("section_type", "community_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127092249"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommunityTabs (20161127092344)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "community_tabs" ("id" serial primary key, "community_section_id" integer NOT NULL, "tab_name" character varying NOT NULL, "tab_position" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_488cfcab9e"
+FOREIGN KEY ("community_section_id")
+  REFERENCES "community_sections" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_community_tabs_on_community_section_id" ON "community_tabs"  ("community_section_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_community_tabs_on_tab_name_and_community_section_id" ON "community_tabs"  ("tab_name", "community_section_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127092344"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMarks (20161127092556)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "marks" ("id" serial primary key, "mark_value" integer NOT NULL, "report" date NOT NULL, "discipline_section_id" integer NOT NULL, "student_id" integer NOT NULL, "teacher_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_274f5ff0b1"
+FOREIGN KEY ("discipline_section_id")
+  REFERENCES "discipline_sections" ("id")
+, CONSTRAINT "fk_rails_6df61fbe7b"
+FOREIGN KEY ("student_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_ab49ff954a"
+FOREIGN KEY ("teacher_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_marks_on_discipline_section_id" ON "marks"  ("discipline_section_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_marks_on_student_id" ON "marks"  ("student_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_marks_on_teacher_id" ON "marks"  ("teacher_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127092556"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommunityContents (20161127100306)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "community_contents" ("id" serial primary key, "view_type" integer NOT NULL, "content_body" text NOT NULL, "content_visibility" integer NOT NULL, "show" timestamp, "community_tab_id" integer NOT NULL, "creator_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4c3d59b2b2"
+FOREIGN KEY ("community_tab_id")
+  REFERENCES "community_tabs" ("id")
+, CONSTRAINT "fk_rails_c5484e95e9"
+FOREIGN KEY ("creator_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_community_contents_on_community_tab_id" ON "community_contents"  ("community_tab_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_community_contents_on_creator_id" ON "community_contents"  ("creator_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127100306"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessageLists (20161127122438)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "message_lists" ("id" serial primary key, "header" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127122438"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJoinTableMessageListUser (20161127122549)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "message_lists_users" ("message_list_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_message_lists_users_on_message_list_id_and_user_id" ON "message_lists_users"  ("message_list_id", "user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127122549"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInstitutions (20161127123109)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "institutions" ("id" serial primary key, "institution_name" character varying NOT NULL, "short_institution_name" character varying NOT NULL, "address" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_institutions_on_institution_name" ON "institutions"  ("institution_name")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_institutions_on_short_institution_name" ON "institutions"  ("short_institution_name")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127123109"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInstitutionUsers (20161127123131)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "institution_users" ("id" serial primary key, "rank" character varying NOT NULL, "user_id" integer NOT NULL, "institution_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_54725f8cd2"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4d086ab524"
+FOREIGN KEY ("institution_id")
+  REFERENCES "institutions" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_institution_users_on_user_id" ON "institution_users"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_institution_users_on_institution_id" ON "institution_users"  ("institution_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_institution_users_on_user_id_and_institution_id" ON "institution_users"  ("user_id", "institution_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127123131"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJoinTableInstitutionDiscipline (20161127123254)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "disciplines_institutions" ("institution_id" integer NOT NULL, "discipline_id" integer NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "institution_discipline" ON "disciplines_institutions"  ("institution_id", "discipline_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127123254"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotices (20161127123322)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "notices" ("id" serial primary key, "notice_type" integer NOT NULL, "user_id" integer NOT NULL, "community_section_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_984b9c27bc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_a5a188826e"
+FOREIGN KEY ("community_section_id")
+  REFERENCES "community_sections" ("id")
+)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_notices_on_user_id" ON "notices"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX  "index_notices_on_community_section_id" ON "notices"  ("community_section_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_notices_on_user_id_and_community_section_id" ON "notices"  ("user_id", "community_section_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161127123322"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDetailsToUser (20161129093407)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "second_name" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "birthday" date[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "user_description" text[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "sex" character varying NOT NULL[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161129093407"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStudyFiles (20161129144845)
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "study_files" ("id" serial primary key, "user_id" integer NOT NULL, "study_file_name" character varying NOT NULL, "study_content_type" character varying NOT NULL, "study_file_size" integer NOT NULL, "study_updated_at" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_9676a7eba1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_study_files_on_user_id" ON "study_files"  ("user_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161129144845"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20161129151016)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "messages" ("id" serial primary key, "message_content" text NOT NULL, "send_time" timestamp NOT NULL, "message_file_name" character varying, "message_content_type" character varying, "message_file_size" integer, "message_updated_at" timestamp, "message_list_id" integer NOT NULL, "sender_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_27c2313a99"
+FOREIGN KEY ("message_list_id")
+  REFERENCES "message_lists" ("id")
+, CONSTRAINT "fk_rails_b8f26a382d"
+FOREIGN KEY ("sender_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_messages_on_message_list_id" ON "messages"  ("message_list_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_messages_on_sender_id" ON "messages"  ("sender_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161129151016"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessageUsers (20161129151323)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "message_users" ("id" serial primary key, "viewing" integer NOT NULL, "message_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_554c86c952"
+FOREIGN KEY ("message_id")
+  REFERENCES "messages" ("id")
+, CONSTRAINT "fk_rails_bfe6b35c6e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_message_users_on_message_id" ON "message_users"  ("message_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_message_users_on_user_id" ON "message_users"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_message_users_on_user_id_and_message_id" ON "message_users"  ("user_id", "message_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161129151323"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3178725542336229480)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'communities'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'communities_disciplines'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'community_contents'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'community_sections'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'community_tabs'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'community_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'discipline_sections'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'disciplines'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'disciplines_institutions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'groups'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'groups_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'institution_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'institutions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'marks'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'message_lists'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'message_lists_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'message_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'notices'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'ranking_algorithms'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'role_users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'roles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'study_files'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'terms'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@localhost"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@localhost"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["email", "admin@localhost"], ["crypted_password", "$2a$10$PUr/DW0.ugDjf/q5kyYkSOsEVkq7fBKM7gezcWWxYIllZ60CxQAZO"], ["salt", "7kBSHzzKesdqeUPVb5Eg"], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC], ["activation_state", "pending"], ["activation_token", "ex2W3EbfpQguAswUb3qR"], ["first_name", "Администратор"], ["second_name", "Без отчества"], ["last_name", "Тестовый"], ["birthday", Sun, 25 Dec 2016], ["sex", "ж"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (1.4ms)
+UserMailer#activation_needed_email: processed outbound mail in 110.1ms
+Sent mail to admin@localhost (4.4ms)
+Date: Sun, 25 Dec 2016 20:02:16 +0300
+From: from@example.com
+To: admin@localhost
+Message-ID: <585ffb98680db_20af2af3e19e912076298@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+admin@localhost
+=============================================
+You have successfully signed up to example.com,
+your username is:
+admin@localhost.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/ex2W3EbfpQguAswUb3qR/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/activation_success_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_success_email.text.haml within layouts/mailer (0.8ms)
+UserMailer#activation_success_email: processed outbound mail in 4.5ms
+Sent mail to admin@localhost (1.5ms)
+Date: Sun, 25 Dec 2016 20:02:16 +0300
+From: from@example.com
+To: admin@localhost
+Message-ID: <585ffb986a9ca_20af2af3e19e912076361@192.168.1.3.mail>
+Subject: Your account is now activated
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Congratz,
+admin@localhost
+=============================================
+You have successfully activated your example.com account,
+your username is:
+admin@localhost.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/login.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "activation_state" = $2, "activation_token" = $3 WHERE "users"."id" = $4[0m  [["updated_at", 2016-12-25 17:02:16 UTC], ["activation_state", "active"], ["activation_token", nil], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@localhost"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@localhost"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["email", "user@localhost"], ["crypted_password", "$2a$10$HVS1jstREgrnjYJleegVX.p4yOy4KUnyMIix4VenD8Xsgjkji1gy2"], ["salt", "WzxybS7Y25jJ3qd9Phvy"], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC], ["activation_state", "pending"], ["activation_token", "RNFNmXvxsbwxywqkMps1"], ["first_name", "Пользователь"], ["second_name", "Без отчества"], ["last_name", "Тестовый"], ["birthday", Sun, 25 Dec 2016], ["sex", "ж"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (0.1ms)
+UserMailer#activation_needed_email: processed outbound mail in 4.0ms
+Sent mail to user@localhost (1.8ms)
+Date: Sun, 25 Dec 2016 20:02:16 +0300
+From: from@example.com
+To: user@localhost
+Message-ID: <585ffb987d25f_20af2af3e19e91207647d@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+user@localhost
+=============================================
+You have successfully signed up to example.com,
+your username is:
+user@localhost.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/RNFNmXvxsbwxywqkMps1/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/activation_success_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_success_email.text.haml within layouts/mailer (0.1ms)
+UserMailer#activation_success_email: processed outbound mail in 3.7ms
+Sent mail to user@localhost (1.6ms)
+Date: Sun, 25 Dec 2016 20:02:16 +0300
+From: from@example.com
+To: user@localhost
+Message-ID: <585ffb987ebe9_20af2af3e19e91207657@192.168.1.3.mail>
+Subject: Your account is now activated
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Congratz,
+user@localhost
+=============================================
+You have successfully activated your example.com account,
+your username is:
+user@localhost.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/login.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "activation_state" = $2, "activation_token" = $3 WHERE "users"."id" = $4[0m  [["updated_at", 2016-12-25 17:02:16 UTC], ["activation_state", "active"], ["activation_token", nil], ["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."role_name_eng" = $1 AND "roles"."role_name" = $2 AND "roles"."full_name" = $3 LIMIT $4[0m  [["role_name_eng", "admin"], ["role_name", "Администратор"], ["full_name", "Администратор портала"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."role_name" = $1 LIMIT $2[0m  [["role_name", "Администратор"], ["LIMIT", 1]]
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."full_name" = $1 LIMIT $2[0m  [["full_name", "Администратор портала"], ["LIMIT", 1]]
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."role_name_eng" = $1 LIMIT $2[0m  [["role_name_eng", "admin"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "roles" ("role_name", "full_name", "role_name_eng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["role_name", "Администратор"], ["full_name", "Администратор портала"], ["role_name_eng", "admin"], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."role_name_eng" = $1 AND "roles"."role_name" = $2 AND "roles"."full_name" = $3 LIMIT $4[0m  [["role_name_eng", "teacher"], ["role_name", "Преподаватель"], ["full_name", "Преподаватель"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."role_name" = $1 LIMIT $2[0m  [["role_name", "Преподаватель"], ["LIMIT", 1]]
+  [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."full_name" = $1 LIMIT $2[0m  [["full_name", "Преподаватель"], ["LIMIT", 1]]
+  [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."role_name_eng" = $1 LIMIT $2[0m  [["role_name_eng", "teacher"], ["LIMIT", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "roles" ("role_name", "full_name", "role_name_eng", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["role_name", "Преподаватель"], ["full_name", "Преподаватель"], ["role_name_eng", "teacher"], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."role_id" = $1 AND "role_users"."user_id" = $2 LIMIT $3[0m  [["role_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "role_users" ("user_id", "role_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["role_id", 1], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoleUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."role_id" = $1 AND "role_users"."user_id" = $2 LIMIT $3[0m  [["role_id", 2], ["user_id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "role_users" ("user_id", "role_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["role_id", 2], ["created_at", 2016-12-25 17:02:16 UTC], ["updated_at", 2016-12-25 17:02:16 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started GET "/" for 127.0.0.1 at 2016-12-25 20:02:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."user_id" = $1 ORDER BY "role_users"."id" ASC LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/welcome/insufficient_privileges?bad_action_name=index&bad_controller_name=welcome&bad_user_role=2
+Filter chain halted as :check_app_auth rendered or redirected
+Completed 302 Found in 77ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/welcome/insufficient_privileges?bad_action_name=index&bad_controller_name=welcome&bad_user_role=2" for 127.0.0.1 at 2016-12-25 20:02:45 +0300
+Processing by WelcomeController#insufficient_privileges as HTML
+  Parameters: {"bad_action_name"=>"index", "bad_controller_name"=>"welcome", "bad_user_role"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering welcome/insufficient_privileges.html.haml within layouts/application
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered welcome/insufficient_privileges.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 439ms (Views: 435.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/logout" for 127.0.0.1 at 2016-12-25 20:02:50 +0300
+Processing by UserSessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qNYHaa+vP9bH/ehLBYHP0vPHqiHbDbP6jilXMCkmfMg4ptCiJw37ujet6lwoqF3Z3KP/nHGI2dGq/JIVNGidmA=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (7.5ms)[0m  [1m[33mUPDATE "users" SET "remember_me_token" = NULL, "remember_me_token_expires_at" = NULL WHERE "users"."id" = $1[0m  [["id", 2]]
+Redirected to http://localhost:3000/login
+Completed 302 Found in 11ms (ActiveRecord: 8.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-12-25 20:02:50 +0300
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.haml within layouts/application
+  Rendered user_sessions/_form.html.haml (2.0ms)
+  Rendered user_sessions/new.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 43ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user_sessions" for 127.0.0.1 at 2016-12-25 20:02:54 +0300
+Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E2IBH+HbOvGe7Qlxn9G5D14WcetavOnkqnIEMCUAJPlfj+2X3boHRbhIBWdleCVYrTxsba2GfFnZeE6HXYVgTA==", "email"=>"admin@localhost", "password"=>"[FILTERED]", "remember"=>"on", "commit"=>"Login"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'admin@localhost' ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35mSQL (3.8ms)[0m  [1m[33mUPDATE "users" SET "remember_me_token" = 'NxunM9AMHDBGGDFpqtn4', "remember_me_token_expires_at" = '2017-01-08 17:02:54.895855' WHERE "users"."id" = $1[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 132ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-12-25 20:02:54 +0300
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."user_id" = $1 ORDER BY "role_users"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering welcome/index.html.haml within layouts/application
+  Rendered welcome/index.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 42ms (Views: 37.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/students_api/load_from_file" for 127.0.0.1 at 2016-12-25 20:03:11 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/students_api/load_from_file"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.1) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered collection of /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [184 times] (29.3ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.5ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (56.1ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:03:33 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (83.1ms)
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `load_from_json_file_students_api_path' for #<#<Class:0x007f536413f510>:0x007f5344247978>):
+    1: = form_tag(load_from_json_file_students_api_path()) do
+    2:   qq
+  
+app/views/students_api/load_from_json_file.html.haml:1:in `_app_views_students_api_load_from_json_file_html_haml__1587679237964374686_69997801095960'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.6ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:03:56 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 104ms (Views: 54.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:04:38 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 49ms (Views: 41.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome/insufficient_privileges?bad_action_name=edit&bad_controller_name=users&bad_user_role=2" for 127.0.0.1 at 2016-12-25 20:05:19 +0300
+Processing by WelcomeController#insufficient_privileges as HTML
+  Parameters: {"bad_action_name"=>"edit", "bad_controller_name"=>"users", "bad_user_role"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering welcome/insufficient_privileges.html.haml within layouts/application
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered welcome/insufficient_privileges.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 49ms (Views: 45.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:05:23 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 45ms (Views: 40.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:05:45 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 54ms (Views: 48.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:10:06 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 50ms (Views: 43.5ms | ActiveRecord: 1.0ms)
+
+
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:10:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 312ms (Views: 230.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:12:28 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.5ms)
+WARNING on line 2 of /home/radigin/learning_portal/app/assets/stylesheets/theme.sass.coffee:
+This selector doesn't have any properties and will not be rendered.
+
+WARNING on line 4 of /home/radigin/learning_portal/app/assets/stylesheets/theme.sass.coffee:
+This selector doesn't have any properties and will not be rendered.
+
+WARNING on line 6 of /home/radigin/learning_portal/app/assets/stylesheets/theme.sass.coffee:
+This selector doesn't have any properties and will not be rendered.
+
+WARNING on line 8 of /home/radigin/learning_portal/app/assets/stylesheets/theme.sass.coffee:
+This selector doesn't have any properties and will not be rendered.
+
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "": expected selector, was "(function() {"):
+    4:     <title>BaseApp5</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/theme.sass.coffee:1
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___2194162005285493662_70123076536240'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.0ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:12:48 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (SyntaxError: [stdin]:3:1: unexpected //):
+    4:     <title>BaseApp5</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___2194162005285493662_70123126781140'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.5ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.4ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:13:49 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 2321ms (Views: 2315.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-12-25 20:14:06 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 38ms (Views: 32.5ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:15:20 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/students_api/load_from_json_file"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.1) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered collection of /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [184 times] (30.6ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.8ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (58.4ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:15:28 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 39ms (Views: 32.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:30:30 +0300
+  
+NoMethodError (undefined method `зщые' for #<ActionDispatch::Routing::Mapper:0x007f8d94105530>):
+  
+config/routes.rb:3:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.2ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:30:56 +0300
+  
+ArgumentError (Invalid route name, already in use: 'load_from_json_file_students_api' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+http://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  
+config/routes.rb:3:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.7ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:31:18 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 70ms (Views: 30.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:31:23 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5RfsR//u+pFfzksSAh0izLBuNQxAfk8blSIrQrZv3Z2p+gDPw4/HJXlrRwT4tL6bQ0QoirdE2qbmKGH1zuqZKA==", "json_file"=>"", "button"=>""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 44ms (Views: 35.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:51:01 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uDqEZS2NPJqJjh4+GRmGFoEHmpZhcXk3W7qCehyN923012jtEewBLq8rEijjsBpBci2HEJZL7IoosMjNZAiz2A==", "json_file"=>"students_example.json", "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `path' for "students_example.json":String
+Did you mean?  pathmap):
+  
+app/controllers/students_api_controller.rb:4:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.7ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:51:28 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uDqEZS2NPJqJjh4+GRmGFoEHmpZhcXk3W7qCehyN923012jtEewBLq8rEijjsBpBci2HEJZL7IoosMjNZAiz2A==", "json_file"=>"students_example.json", "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 1.0ms)
+
+
+  
+RuntimeError ("students_example.json"):
+  
+app/controllers/students_api_controller.rb:4:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.8ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.3ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:52:54 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uDqEZS2NPJqJjh4+GRmGFoEHmpZhcXk3W7qCehyN923012jtEewBLq8rEijjsBpBci2HEJZL7IoosMjNZAiz2A==", "json_file"=>"students_example.json", "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 1.1ms)
+
+
+  
+RuntimeError (<ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"uDqEZS2NPJqJjh4+GRmGFoEHmpZhcXk3W7qCehyN923012jtEewBLq8rEijjsBpBci2HEJZL7IoosMjNZAiz2A==", "json_file"=>"students_example.json", "button"=>"", "controller"=>"students_api", "action"=>"load_from_json_file"} permitted: false>):
+  
+app/controllers/students_api_controller.rb:4:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.8ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.6ms)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:53:32 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.1ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 39ms (Views: 32.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:53:40 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"97Pbj5TzQucePhc84ZiJyva9j7rYwInpn+SD1LhgoXe7XjcHqJJ/UzibGyobMRWdBZeSPC/6HFTs7sljwOXlwg==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f8da1d30aa0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-8541-18gciao.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.1ms)
+
+
+  
+RuntimeError (<ActionController::Parameters {"utf8"=>"✓", "authenticity_token"=>"97Pbj5TzQucePhc84ZiJyva9j7rYwInpn+SD1LhgoXe7XjcHqJJ/UzibGyobMRWdBZeSPC/6HFTs7sljwOXlwg==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f8da1d30aa0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-8541-18gciao.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>"", "controller"=>"students_api", "action"=>"load_from_json_file"} permitted: false>):
+  
+app/controllers/students_api_controller.rb:4:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.1ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:54:01 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"97Pbj5TzQucePhc84ZiJyva9j7rYwInpn+SD1LhgoXe7XjcHqJJ/UzibGyobMRWdBZeSPC/6HFTs7sljwOXlwg==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f8da1c862d0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-8541-1rplaw2.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 6.0ms)
+
+
+  
+JSON::ParserError (419: unexpected token at '{
+    email: "pupkin@localhost.localhost.ru",
+    first_name: "Пупкин",
+    second_name: "Василий",
+    last_name: "Алексеевич",
+    birthday: "10.10.1995",
+    user_description: "Студент",
+    sex: "м"
+  },
+  {
+    email: "pupkina@localhost.localhost.ru",
+    first_name: "Пупкина",
+    second_name: "Василиса",
+    last_name: "Алексеевна",
+    birthday: "10.10.1995",
+    user_description: "Студент",
+    sex: "ж"
+  }
+]
+'):
+  
+app/controllers/students_api_controller.rb:5:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.8ms)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started GET "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:56:08 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsApiController#load_from_json_file as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (4.1ms)
+Completed 200 OK in 371ms (Views: 290.0ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 20:56:21 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x00558dd0ca0720 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-10707-548f9t.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.8ms)
+
+
+  
+RuntimeError ([{"email"=>"pupkin@localhost.localhost.ru", "first_name"=>"Пупкин", "second_name"=>"Василий", "last_name"=>"Алексеевич", "birthday"=>"10.10.1995", "user_description"=>"Студент", "sex"=>"м"}, {"email"=>"pupkina@localhost.localhost.ru", "first_name"=>"Пупкина", "second_name"=>"Василиса", "last_name"=>"Алексеевна", "birthday"=>"10.10.1995", "user_description"=>"Студент", "sex"=>"ж"}]):
+  
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.8ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.9ms)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:01:17 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+SyntaxError (/home/radigin/learning_portal/app/controllers/students_api_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+      raise mkpasswd -m sha-512 -S saltandspecies password
+                           ^
+/home/radigin/learning_portal/app/controllers/students_api_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+      raise mkpasswd -m sha-512 -S saltandspecies password
+                                                 ^):
+  
+app/controllers/students_api_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/controllers/students_api_controller.rb:7: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.5ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.2ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:07:18 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055b55ca449c8 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-10895-sget6z.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 7.1ms)
+
+
+  
+NoMethodError (undefined method `create_by_json' for #<Class:0x0055b55ca23bb0>):
+  
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.1ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:07:27 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055b55a637da0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-10895-w1rrv0.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 6.2ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/students_api_controller.rb:7:in `new'
+app/controllers/students_api_controller.rb:7:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.3ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.6ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:08:01 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055b55c548668 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-10895-j1nm78.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:09:30 +0300
+Completed   in 104533ms (ActiveRecord: 6.3ms)
+
+
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:09:55 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f1ce0229828 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-bxysdb.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 7.1ms)
+
+
+  
+RuntimeError ():
+  
+app/models/user.rb:29:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (17.5ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:11:18 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055de95db93a8 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-12jrgeq.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 245ms (ActiveRecord: 6.1ms)
+
+
+  
+RuntimeError ():
+  
+app/models/user.rb:30:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.2ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.5ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:11:37 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055de92b2b7d8 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-1ew1nze.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 252ms (ActiveRecord: 6.0ms)
+
+
+  
+RuntimeError (""):
+  
+app/models/user.rb:30:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.2ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:11:59 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055de95d52a90 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-hzz5a7.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 250ms (ActiveRecord: 5.9ms)
+
+
+  
+RuntimeError (""):
+  
+app/models/user.rb:31:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.1ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:12:16 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055de9598f958 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-izscss.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 245ms (ActiveRecord: 6.2ms)
+
+
+  
+RuntimeError (false):
+  
+app/models/user.rb:31:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (14.9ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:13:01 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f1ce021a670 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-1xf4ufi.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 6.3ms)
+
+
+  
+NoMethodError (undefined method `popen' for #<Class:0x007f1ce01cd640>
+Did you mean?  open):
+  
+app/models/user.rb:30:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.4ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:13:29 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f1ce059c140 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11106-1ibrrf0.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.1ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 248ms (ActiveRecord: 5.7ms)
+
+
+  
+RuntimeError (""):
+  
+app/models/user.rb:33:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.2ms)
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:15:26 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f79d82306a0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11353-1bmr34v.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 7.5ms)
+
+
+  
+RuntimeError ("k45hcx&LU\n"):
+  
+app/models/user.rb:33:in `create_by_json'
+app/controllers/students_api_controller.rb:6:in `load_from_json_file'
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.3ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:22:35 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055c3c8c31018 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11353-vj0kyc.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/radigin/learning_portal/app/models/user.rb:65: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/models/user.rb:65: syntax error, unexpected keyword_end, expecting end-of-input
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.4ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (15.4ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:23:13 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x0055c3c67129d0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11353-641530.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkin@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkin@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "user_description", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pupkin@localhost.localhost.ru"], ["crypted_password", "$2a$10$I/KPFHMmXbJJWpjPCPJvLuvfDrBSKM.lgSnCaaCsQgKPVXUp7vW8."], ["salt", "oxzs8WYtxc8yZzZPYuym"], ["created_at", 2016-12-25 18:23:13 UTC], ["updated_at", 2016-12-25 18:23:13 UTC], ["activation_state", "pending"], ["activation_token", "JdhN5zAMSMdZULv7wHqp"], ["first_name", "Пупкин"], ["second_name", "Василий"], ["last_name", "Алексеевич"], ["birthday", Tue, 10 Oct 1995], ["user_description", "Студент"], ["sex", "м"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (1.0ms)
+UserMailer#activation_needed_email: processed outbound mail in 125.3ms
+Sent mail to pupkin@localhost.localhost.ru (4.1ms)
+Date: Sun, 25 Dec 2016 21:23:13 +0300
+From: from@example.com
+To: pupkin@localhost.localhost.ru
+Message-ID: <58600e9188f3b_2c593fbcec32b638710f@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+pupkin@localhost.localhost.ru
+=============================================
+You have successfully signed up to example.com,
+your username is:
+pupkin@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/JdhN5zAMSMdZULv7wHqp/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkina@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkina@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "user_description", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pupkina@localhost.localhost.ru"], ["crypted_password", "$2a$10$maX0L0ZJqvC5.8LmW4.TAOMHgIdbbWX0iJAeKzvwOz6uuh4015G.q"], ["salt", "DXueayrFvgKh8vLXhkXf"], ["created_at", 2016-12-25 18:23:13 UTC], ["updated_at", 2016-12-25 18:23:13 UTC], ["activation_state", "pending"], ["activation_token", "t6zYayFwXu11T2bUfpqi"], ["first_name", "Пупкина"], ["second_name", "Василиса"], ["last_name", "Алексеевна"], ["birthday", Tue, 10 Oct 1995], ["user_description", "Студент"], ["sex", "ж"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (0.1ms)
+UserMailer#activation_needed_email: processed outbound mail in 3.7ms
+Sent mail to pupkina@localhost.localhost.ru (1.7ms)
+Date: Sun, 25 Dec 2016 21:23:13 +0300
+From: from@example.com
+To: pupkina@localhost.localhost.ru
+Message-ID: <58600e919f0ce_2c593fbcec32b638711e7@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+pupkina@localhost.localhost.ru
+=============================================
+You have successfully signed up to example.com,
+your username is:
+pupkina@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/t6zYayFwXu11T2bUfpqi/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 364ms (ActiveRecord: 15.9ms)
+
+
+  
+SyntaxError (/home/radigin/learning_portal/app/views/students_api/load_from_json_file.html.haml:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                               ^
+/home/radigin/learning_portal/app/views/students_api/load_from_json_file.html.haml:12: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/students_api/load_from_json_file.html.haml:9: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/students_api/load_from_json_file.html.haml:12: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.7ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendering /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/radigin/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.1ms)
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:23:33 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tlq0UzRTJ2fHE3McvD2m2U0Kh9NUsdiHVvmePGkQEGj6t1jbCDIa0+G2fwpGlDqOviCaVaOLTTol89SLEZVU3Q==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f79b8029638 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11353-1a0zcvs.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkin@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkina@localhost.localhost.ru"], ["LIMIT", 1]]
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 155ms (Views: 147.7ms | ActiveRecord: 1.5ms)
+
+
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started GET "/users" for 127.0.0.1 at 2016-12-25 21:24:19 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.3ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 304ms (Views: 221.8ms | ActiveRecord: 7.7ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "groups_users" WHERE "groups_users"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[35mSQL (3.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "groups_users" WHERE "groups_users"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[35mSQL (2.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from included at /opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/gems/sorcery-0.9.1/lib/sorcery/controller/submodules/session_timeout.rb:24)
+Started GET "/users" for 127.0.0.1 at 2016-12-25 21:26:59 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.2ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 304ms (Views: 222.3ms | ActiveRecord: 7.5ms)
+
+
+Started POST "/students_api/load_from_json_file" for 127.0.0.1 at 2016-12-25 21:27:13 +0300
+Processing by StudentsApiController#load_from_json_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n0DWSoeRzB1JbIlIfzHoNTXMzCgNWH2kaE36iBDthXHTrTrCu/DxqW/JhV6FmHRixubRrvpi6BkbR7A/aGjBxA==", "json_file"=>#<ActionDispatch::Http::UploadedFile:0x007f8c2e2c4ef0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-11572-1dpjvtt.json>, @original_filename="students_example.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"json_file\"; filename=\"students_example.json\"\r\nContent-Type: application/json\r\n">, "button"=>""}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Load (0.4ms)[0m  [1m[34mSELECT  "role_users".* FROM "role_users" WHERE "role_users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoleUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "role_users" WHERE "role_users"."user_id" = $1 AND "role_users"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkin@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkin@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "user_description", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pupkin@localhost.localhost.ru"], ["crypted_password", "$2a$10$VHaPV.0HH8Sx9NXx6foa8e07Hn0YsBjKr/JYiQr3TEvruspF/Qb32"], ["salt", "9pHzzXXDqEUaDxKzLPJs"], ["created_at", 2016-12-25 18:27:14 UTC], ["updated_at", 2016-12-25 18:27:14 UTC], ["activation_state", "pending"], ["activation_token", "DQ1DxT5mNWips5TrvWpu"], ["first_name", "Пупкин"], ["second_name", "Василий"], ["last_name", "Алексеевич"], ["birthday", Tue, 10 Oct 1995], ["user_description", "Студент"], ["sex", "м"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (0.9ms)
+UserMailer#activation_needed_email: processed outbound mail in 82.7ms
+Sent mail to pupkin@localhost.localhost.ru (4.9ms)
+Date: Sun, 25 Dec 2016 21:27:14 +0300
+From: from@example.com
+To: pupkin@localhost.localhost.ru
+Message-ID: <58600f821dae7_2d343fc62232be50894b2@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+pupkin@localhost.localhost.ru
+=============================================
+You have successfully signed up to example.com,
+your username is:
+pupkin@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/DQ1DxT5mNWips5TrvWpu/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/activation_success_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_success_email.text.haml within layouts/mailer (0.8ms)
+UserMailer#activation_success_email: processed outbound mail in 4.8ms
+Sent mail to pupkin@localhost.localhost.ru (2.1ms)
+Date: Sun, 25 Dec 2016 21:27:14 +0300
+From: from@example.com
+To: pupkin@localhost.localhost.ru
+Message-ID: <58600f82218c9_2d343fc62232be508953b@192.168.1.3.mail>
+Subject: Your account is now activated
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Congratz,
+pupkin@localhost.localhost.ru
+=============================================
+You have successfully activated your example.com account,
+your username is:
+pupkin@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/login.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "activation_state" = $2, "activation_token" = $3 WHERE "users"."id" = $4[0m  [["updated_at", 2016-12-25 18:27:14 UTC], ["activation_state", "active"], ["activation_token", nil], ["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkina@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pupkina@localhost.localhost.ru"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token", "first_name", "second_name", "last_name", "birthday", "user_description", "sex") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pupkina@localhost.localhost.ru"], ["crypted_password", "$2a$10$WVkwTcRkzfCaHWglH/xjP.ktu9K0nHcXoDK2AzcDA.BSUzTa47Fq2"], ["salt", "Yq2j4q8Jo9rqDCLPeScz"], ["created_at", 2016-12-25 18:27:14 UTC], ["updated_at", 2016-12-25 18:27:14 UTC], ["activation_state", "pending"], ["activation_token", "vZb7kQ4a5g8eqyyd8Vk4"], ["first_name", "Пупкина"], ["second_name", "Василиса"], ["last_name", "Алексеевна"], ["birthday", Tue, 10 Oct 1995], ["user_description", "Студент"], ["sex", "ж"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (0.1ms)
+UserMailer#activation_needed_email: processed outbound mail in 4.1ms
+Sent mail to pupkina@localhost.localhost.ru (1.8ms)
+Date: Sun, 25 Dec 2016 21:27:14 +0300
+From: from@example.com
+To: pupkina@localhost.localhost.ru
+Message-ID: <58600f8236eda_2d343fc62232be508961f@192.168.1.3.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+pupkina@localhost.localhost.ru
+=============================================
+You have successfully signed up to example.com,
+your username is:
+pupkina@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/vZb7kQ4a5g8eqyyd8Vk4/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering user_mailer/activation_success_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_success_email.text.haml within layouts/mailer (0.1ms)
+UserMailer#activation_success_email: processed outbound mail in 4.1ms
+Sent mail to pupkina@localhost.localhost.ru (1.7ms)
+Date: Sun, 25 Dec 2016 21:27:14 +0300
+From: from@example.com
+To: pupkina@localhost.localhost.ru
+Message-ID: <58600f823978e_2d343fc62232be50897f@192.168.1.3.mail>
+Subject: Your account is now activated
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Congratz,
+pupkina@localhost.localhost.ru
+=============================================
+You have successfully activated your example.com account,
+your username is:
+pupkina@localhost.localhost.ru.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/login.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "activation_state" = $2, "activation_token" = $3 WHERE "users"."id" = $4[0m  [["updated_at", 2016-12-25 18:27:14 UTC], ["activation_state", "active"], ["activation_token", nil], ["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering students_api/load_from_json_file.html.haml within layouts/application
+  Rendered students_api/load_from_json_file.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 326ms (Views: 33.5ms | ActiveRecord: 16.2ms)
+
+

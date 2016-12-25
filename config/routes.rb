@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
+  post 'students_api/load_from_json_file'
+
   get 'welcome/index', as: :index
   get 'welcome/insufficient_privileges', as: :ip
 
