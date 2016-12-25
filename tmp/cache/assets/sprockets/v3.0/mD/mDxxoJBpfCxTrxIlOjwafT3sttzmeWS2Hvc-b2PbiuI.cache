@@ -1,9 +1,0 @@
-I"ˆ(function() {
-  this["import"](bootstrap - sprockets);
-
-  this["import"](bootstrap);
-
-  this["import"](font - awesome);
-
-}).call(this);
-:ET
