@@ -1,19 +1,25 @@
 = form_for @community_user do |f|
-  - if @community_user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@community_user.errors.count, "error")} prohibited this community_user from being saved:"
-      %ul
-        - @community_user.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @community_user
 
-  .field
-    = f.label :link_type
-    = f.select(:link_type, link_type_options(f.object.link_type))
-  .field
-    = f.label :user_id
-    = f.select(:user_id, user_options(f.object.user_id))
-  .field
-    = f.label :community_id
-    = f.select(:community_id, community_options(f.object.community_id))
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :link_type
+        = f.select(:link_type, link_type_options(f.object.link_type), {}, class: 'form-control')
+        = f.error_messages_for(:link_type)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :user_id
+        = f.select(:user_id, user_options(f.object.user_id), {}, class: 'form-control')
+        = f.error_messages_for(:user_id)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :community_id
+        = f.select(:community_id, community_options(f.object.community_id), {}, class: 'form-control')
+        = f.error_messages_for(:community_id)
+  .row
+    .col-md-6
+      .form-group 
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

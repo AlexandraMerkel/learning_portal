@@ -1,0 +1,16 @@
+[
+  {
+    "discipline_name": "Основы построения трансляторов",
+    "discipline_type": "0",
+    "discipline_end": "0",
+    "term_id": "1",
+    "ranking_algorithm_id": "1"
+  },
+  {
+    "discipline_name": "Основы разработки веб-приложений",
+    "discipline_type": "1",
+    "discipline_end": "1",
+    "term_id": "1",
+    "ranking_algorithm_id": "1"
+  }
+]

@@ -5,7 +5,7 @@ module CommunitiesHelper
 		options_for_select(types.map { |k, v| [v, k]}, selected)
   end
 
-  def visibility_options(selected)
+  def community_visibility_options(selected)
 		types = {0=>'видно для всех пользователей', 1=>'видно владельцу и модераторам/редакторам сообщества', 2=>'видно только владельцу сообщества'}
 		options_for_select(types.map { |k, v| [v, k]}, selected)
   end

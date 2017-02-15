@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :community_contents, foreign_key: :creator_id
   has_many :marks, foreign_key: :student_id
   has_many :marks, foreign_key: :teacher_id
-  # has_and_belongs_to_many :message_list_users
+  has_and_belongs_to_many :message_lists
   has_many :messages, foreign_key: :sender_id
   has_many :message_users
   has_many :institution_users

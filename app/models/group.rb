@@ -15,3 +15,25 @@ class Group < ApplicationRecord
   end
 
 end
+
+def Group.create_by_json(json)
+    results = []
+    begin
+      json.each_with_index do |group_hash, i|
+           begin
+            u = Group.new(group_hash)
+            u.save
+            if u.errors.size > 0
+              results << "Учебная группа № #{i + 1} содержит ошибки!"
+            else
+              results << "Учебная группа № #{i + 1} #{u.discipline_name} зарегистрирована."
+            end
+          rescue
+            results << "Учебная группа № #{i + 1} содержит ошибки!"
+          end
+      end
+    rescue
+      results << 'JSON файл не корректен!'
+    end
+    results
+  end

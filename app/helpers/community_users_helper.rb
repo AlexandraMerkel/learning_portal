@@ -1,7 +1,7 @@
 module CommunityUsersHelper
 
   def link_type_options(selected)
-		types = {0=>'участник', 1=>'редактор', 2=>'модератор', 3=>'владелец'}
+		types = {0=>'участник', 1=>'модератор', 2=>'владелец (преподаватель)'}
 		options_for_select(types.map { |k, v| [v, k]}, selected)
   end
 

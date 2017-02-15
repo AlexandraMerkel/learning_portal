@@ -1,12 +1,12 @@
-%h1 Listing groups
+%h1 Список групп
 
-%table
+%table.table
   %thead
     %tr
-      %th Group name
-      %th Group start
-      %th Archive time
-      %th Term
+      %th Название группы
+      %th Дата образования
+      %th Дата архивации
+      %th Семестр обучения
       %th
       %th
       %th
@@ -18,10 +18,19 @@
         %td= group.group_start
         %td= group.archive_time
         %td= group.term.term_name
-        %td= link_to 'Show', group
-        %td= link_to 'Edit', edit_group_path(group)
-        %td= link_to 'Destroy', group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          .toright
+            = link_to group, class: 'label blue' do
+              Показать
+        %td
+          .toright
+            = link_to edit_group_path(group), class: 'label yellow' do
+              Редактировать
+        %td 
+          .toright
+            = link_to group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'label red' do
+              Удалить
 
 %br
 
-= link_to 'New Group', new_group_path
+= link_to 'Новая группа', new_group_path, class: "btn btn-success"

@@ -20,7 +20,7 @@
         .container-fluid
           %span.hidden-print#sidebar-toggle
             = link_to "#wrapper", class: 'sidebar-toggle' do
-              = fa_icon('ellipsis-v')
+              = fa_icon('mail-reply')
           =render 'flash_messages'
           -if content_for? :breadcrumb
             =yield :breadcrumb

@@ -13,3 +13,25 @@ class Discipline < ApplicationRecord
   validates :ranking_algorithm_id, presence: true
 
 end
+
+  def Discipline.create_by_json(json)
+    results = []
+    begin
+      json.each_with_index do |discipline_hash, i|
+           begin
+            u = Discipline.new(discipline_hash)
+            u.save
+            if u.errors.size > 0
+              results << "Дисциплина № #{i + 1} содержит ошибки!"
+            else
+              results << "Дисциплина № #{i + 1} #{u.discipline_name} зарегистрирована."
+            end
+          rescue
+            results << "Дисциплина № #{i + 1} содержит ошибки!"
+          end
+      end
+    rescue
+      results << 'JSON файл не корректен!'
+    end
+    results
+  end

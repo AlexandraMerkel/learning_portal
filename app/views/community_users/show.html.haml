@@ -5,10 +5,12 @@
   = @community_user.link_type
 %p
   %b User:
-  = @community_user.user
+  = @community_user.user.last_name
+  = @community_user.user.first_name
+  = @community_user.user.second_name
 %p
   %b Community:
-  = @community_user.community
+  = @community_user.community.community_name
 
 = link_to 'Edit', edit_community_user_path(@community_user)
 \|
