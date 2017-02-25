@@ -1,6 +1,6 @@
 = form_for @community do |f|
   = error_messages_for @community
-  
+
   .row
     .col-md-6
       .form-group
@@ -11,15 +11,31 @@
     .col-md-6
       .form-group
         = f.label :community_visibility
+        /        = f.check_box (:community_visibility)
         = f.select(:community_visibility, community_visibility_options(f.object.community_visibility), {}, class: 'form-control')
         = f.error_messages_for(:community_visibility)
   .row
-    .col-md-6
+    .col-md-3
       .form-group
         = f.label :archive
-        = f.select(:archive, archive_options(f.object.archive), {}, class: 'form-control') 
+        = f.check_box :archive
         = f.error_messages_for(:archive)
+
+  = f.fields_for :community_users do |addy_form| # Дополнительные поля из модели community_users
+    .row
+      .col-md-6
+        .form-group
+          = addy_form.label :user_id
+          = addy_form.select(:user_id, user_options(addy_form.object.user_id), {include_blank: true}, class: 'form-control')
+          = addy_form.error_messages_for(:user_id)
+
+      .col-md-6
+        .form-group
+          = addy_form.label :link_type
+          = addy_form.select(:link_type, link_type_options(addy_form.object.link_type), {include_blank: true}, class: 'form-control')
+          = addy_form.error_messages_for(:link_type)
+
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

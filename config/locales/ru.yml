@@ -5,10 +5,38 @@ ru:
       short_name: Меркель А.В.
       department: Меркель А.В.
   helpers:
+    sure: Вы уверены?
     submit:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+    back: Назад
+    listing: Список
+    show: Показать
+    edit: Редактировать
+    editing: Редактирование
+    destroy: Удалить
+    search: Искать
+    new: Новый
+  activerecord:
+    models:
+      community:
+        one: Сообщество
+        few: Сообществ
+        many: Сообществ
+      community_user:
+        one: Пользователя в сообществе
+        few: Пользователей в сообществе
+        many: Пользователей в сообществе
+    attributes:
+      community:
+        community_name: Название сообщества
+        community_visibility: Тип видимости сообщества
+        archive: Архив
+      community_user:
+        link_type: Роль
+        user_id: Пользователь
+        community_id: Сообщество
   views:
     pagination:
       first: ⇤

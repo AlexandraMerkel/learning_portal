@@ -1,5 +1,7 @@
-%h1 New community
+%h1
+  = t('helpers.new')
+  = Community.model_name.human
 
 = render 'form'
 
-= link_to 'Back', communities_path
+/= link_to t('helpers.back'), communities_path

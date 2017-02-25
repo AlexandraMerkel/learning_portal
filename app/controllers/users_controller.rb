@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     ## Переопределённая проверка прав доступа выбранной роли для данного метода
     def check_ctr_auth()
       return true if @current_role_user.is_admin?
-      return (action_name.to_sym != :index or @current_role_user.is_teacher?)
+      return (action_name.to_sym != :index or @current_role_user.is_teacher? or @current_role_user.is_moderator? or @current_role_user.is_student?)
     end
 
     # Use callbacks to share common setup or constraints between actions.

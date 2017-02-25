@@ -15,6 +15,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/new
   def new
     @community = Community.new
+    @community.community_users.build # Для подключения дополнительных полей при создании
   end
 
   # GET /communities/1/edit
@@ -25,7 +26,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     @community = Community.new(community_params)
-
+    #raise community_params.inspect
     respond_to do |format|
       if @community.save
         format.html { redirect_to @community, notice: 'Community was successfully created.' }
@@ -62,6 +63,11 @@ class CommunitiesController < ApplicationController
   end
 
   private
+    ## Переопределённая проверка прав доступа выбранной роли для данного метода
+    def check_ctr_auth()
+      return true if @current_role_user.is_admin?
+      return (action_name.to_sym != :new or @current_role_user.is_moderator?)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_community
       @community = Community.find(params[:id])
@@ -69,6 +75,7 @@ class CommunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_params
-      params.require(:community).permit(:community_name, :community_visibility, :archive)
+      params.require(:community).permit(:community_name, :community_visibility, :archive,
+        community_users_attributes: [:link_type, :user_id, :community_id, :id, :_destroy])
     end
 end

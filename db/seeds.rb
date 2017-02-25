@@ -20,6 +20,23 @@ if (u2 = User.find_by_email('user@localhost')).nil?
     sex: 'ж', birthday: Date.today())
   u2.activate!
 end
-r1, r2 = Role.create_main_roles
+if (u3 = User.find_by_email('moderator@localhost')).nil?
+  u3 = User.create!(password: 'qwerty', password_confirmation: 'qwerty',
+    last_name: 'Тестовый', first_name: 'Модератор', 
+    second_name: 'Без отчества', email: 'moderator@localhost',
+    sex: 'м', birthday: Date.today())
+  u3.activate!
+end
+if (u4 = User.find_by_email('student@localhost')).nil?
+  u4 = User.create!(password: 'qwerty', password_confirmation: 'qwerty',
+    last_name: 'Тестовый', first_name: 'Cтудент', 
+    second_name: 'Без отчества', email: 'student@localhost',
+    sex: 'м', birthday: Date.today())
+  u4.activate!
+end
+
+r1, r2, r3, r4 = Role.create_main_roles
 ru1 = RoleUser.create(role: r1, user: u1)
 ru2 = RoleUser.create(role: r2, user: u2)
+ru3 = RoleUser.create(role: r3, user: u3)
+ru4 = RoleUser.create(role: r4, user: u4)

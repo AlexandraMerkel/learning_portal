@@ -1,11 +1,14 @@
-%h1 Listing communities
+%h1
+  =t('helpers.listing')
+  \
+  =Community.model_name.human(count: 2)
 
-%table
+%table.table
   %thead
     %tr
-      %th Community name
-      %th Community visibility
-      %th Archive
+      %th=Community.human_attribute_name(:community_name)
+      %th=Community.human_attribute_name(:community_visibility)
+      %th=Community.human_attribute_name(:archive)
       %th
       %th
       %th
@@ -14,12 +17,21 @@
     - @communities.each do |community|
       %tr
         %td= community.community_name
-        %td= community.community_visibility
-        %td= community.archive
-        %td= link_to 'Show', community
-        %td= link_to 'Edit', edit_community_path(community)
-        %td= link_to 'Destroy', community, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= community_visibility_types(community.community_visibility)
+        %td= community_archive_types(community.archive)
+        %td
+          .toright
+            = link_to community, class: 'label blue' do
+              Показать
+        %td
+          .toright
+            = link_to edit_community_path(community), class: 'label yellow' do
+              Редактировать
+        %td
+          .toright
+            = link_to community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'label red' do
+              Удалить
 
 %br
 
-= link_to 'New Community', new_community_path
+= link_to t('helpers.new') + ' ' + Community.model_name.human(count: 1), new_community_path, class: "btn btn-success"
