@@ -11,14 +11,17 @@
     .col-md-6
       .form-group
         = f.label :community_visibility
-        /        = f.check_box (:community_visibility)
-        = f.select(:community_visibility, community_visibility_options(f.object.community_visibility), {}, class: 'form-control')
-        = f.error_messages_for(:community_visibility)
+        - Community::VISIBILITIES.each do |k, v|
+          %div
+            = f.radio_button(:community_visibility, k)
+            %span{style: 'display: inline-block; vertical-align: top;'}= v
+        /= f.select(:community_visibility, community_visibility_options(f.object.community_visibility), {}, class: 'form-control')
+        /= f.error_messages_for(:community_visibility)
   .row
     .col-md-3
       .form-group
         = f.label :archive
-        = f.check_box :archive
+        = f.check_box :archive, style: 'margin: 0px 0px 0px 20px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
   = f.fields_for :community_users do |addy_form| # Дополнительные поля из модели community_users

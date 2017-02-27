@@ -11,8 +11,7 @@ module CommunitiesHelper
   end
 
   def community_visibility_options(selected)
-		types = {0=>'видно для всех пользователей', 1=>'видно владельцу и модераторам/редакторам сообщества', 2=>'видно только владельцу сообщества'}
-		options_for_select(types.map { |k, v| [v, k]}, selected)
+		options_for_select(Community::VISIBILITIES.map { |k, v| [v, k]}, selected)
   end
 
   def community_visibility_types(chosen_type)
