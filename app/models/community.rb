@@ -10,7 +10,7 @@ class Community < ApplicationRecord
     2 => 'видно только владельцу сообщества'
   }
   
-	accepts_nested_attributes_for :community_users, reject_if: proc { |a| a['user_id'].blank? } # Подключение вложенной формы модели community_users
+	accepts_nested_attributes_for :community_users, reject_if: proc { |a| a['user_id'].blank? }, allow_destroy: true # Подключение вложенной формы модели community_users
 
 	validates :community_name, presence: true, uniqueness: true
 	validates :community_visibility, presence: true,  inclusion: { in: VISIBILITIES.keys }

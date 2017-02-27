@@ -24,26 +24,16 @@
         = f.check_box :archive, style: 'margin: 0px 0px 0px 20px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
-  = f.fields_for :community_users do |addy_form| # Дополнительные поля из модели community_users
+  .community_users
     .row
       .col-md-6
         .form-group
           .add-users
-            = f.label 'Добавить пользователей в сообщество', onclick: 'add_user()'
-    .add-fields
-      .row
-        .col-md-6
-          .form-group
-            = addy_form.label :user_id
-            = addy_form.select(:user_id, user_options(addy_form.object.user_id), {include_blank: true}, class: 'form-control')
-            = addy_form.error_messages_for(:user_id)
-
-        .col-md-6
-          .form-group
-            = addy_form.label :link_type
-            = addy_form.select(:link_type, link_type_options(addy_form.object.link_type), {include_blank: true}, class: 'form-control')
-            = addy_form.error_messages_for(:link_type)
-
+            = link_to ?#, class: 'btn btn-primary', data: add_user_data(f), id: 'add_cu_link' do
+              = fa_icon :plus
+              Добавить пользователей в сообщество
+    = f.fields_for :community_users do |addy_form| # Дополнительные поля из модели community_users
+      = render('community_users/add_community_user', addy_form: addy_form)
   .row
     .col-md-6
       .form-group

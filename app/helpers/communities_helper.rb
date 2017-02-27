@@ -19,4 +19,19 @@ module CommunitiesHelper
 		types[chosen_type]
   end
 
+  def add_user_data(form)
+    new_object = CommunityUser.new
+    fields = form.fields_for(:community_users, new_object,
+      :child_index => 'new_community_user') do |builder|
+      render('community_users/add_community_user', addy_form: builder)
+    end
+    {content: "#{fields}"}
+  end
+
+  def link_to_remove_cu(form)
+    form.hidden_field(:_destroy, class: 'remove_fields') +
+        link_to(?#, class: 'remove_fields remove_cu') do
+      fa_icon('times', title: 'Удалить пользователя')
+    end
+  end
 end

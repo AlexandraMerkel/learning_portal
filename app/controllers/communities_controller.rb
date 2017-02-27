@@ -14,8 +14,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/new
   def new
-    @community = Community.new
-    @community.community_users.build # Для подключения дополнительных полей при создании
+    @community = Community.new(community_visibility: 0)
   end
 
   # GET /communities/1/edit

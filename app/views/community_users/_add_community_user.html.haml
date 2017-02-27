@@ -1,0 +1,16 @@
+.add-fields
+  .row
+    .col-md-6
+      .form-group
+        = addy_form.label :user_id
+        = addy_form.select(:user_id, user_options(addy_form.object.user_id), {include_blank: true}, class: 'form-control')
+        = addy_form.error_messages_for(:user_id)
+
+    .col-md-5
+      .form-group
+        = addy_form.label :link_type
+        = addy_form.select(:link_type, link_type_options(addy_form.object.link_type), {include_blank: true}, class: 'form-control')
+        = addy_form.error_messages_for(:link_type)
+    .col-md-1
+      .form-group
+        = link_to_remove_cu(addy_form)
