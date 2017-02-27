@@ -2,7 +2,7 @@ module SideBarHelper
   def side_bar_items(ru)
     result = []
     result << {
-      name: 'Личная страница', #ПРАВИТЬ (ССЫЛКА НА ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ)
+      name: 'Личная страница',
       url: @current_user_object,
       icon: 'user',
       controller: :users,
@@ -46,7 +46,7 @@ module SideBarHelper
       end
     end
 
-    # Заменяет модератору и администрутору раздел сообщества
+    # Это видят админ и модератор
     if @current_role_user.present?
       if @current_role_user.is_admin? || @current_role_user.is_moderator?
         search_community_children = [
@@ -66,33 +66,34 @@ module SideBarHelper
             children: search_community_children
           }
         end
-        result
+        #result
+
+        # элемент списка Поиск
+        search_API_children = [
+          { name: 'JSON:Студенты',
+            url: load_from_json_file_students_api_path,
+            controller: :students_api, action: :load_from_json_file,
+            icon: 'reply-all', class: 'long'},
+          { name: 'JSON:Учебные группы',
+            url: load_from_json_file_groups_api_path,
+            controller: :groups_api, action: :load_from_json_file,
+            icon: 'reply-all', class: 'long'},
+          { name: 'JSON:Дисциплины',
+            url: load_from_json_file_disciplines_api_path,
+            controller: :disciplines_api, action: :load_from_json_file,
+            icon: 'reply-all', class: 'long'}
+        ]
+        unless search_API_children.empty?
+          result << {
+            name: 'API',
+            icon: 'wrench',
+            children: search_API_children
+          }
+        end
+
       end
     end
 
-
-    # элемент списка Поиск
-    search_API_children = [
-      { name: 'JSON:Студенты',
-        url: load_from_json_file_students_api_path,
-        controller: :students_api, action: :load_from_json_file,
-        icon: 'reply-all', class: 'long'},
-      { name: 'JSON:Учебные группы',
-        url: load_from_json_file_groups_api_path,
-        controller: :groups_api, action: :load_from_json_file,
-        icon: 'reply-all', class: 'long'},
-      { name: 'JSON:Дисциплины',
-        url: load_from_json_file_disciplines_api_path,
-        controller: :disciplines_api, action: :load_from_json_file,
-        icon: 'reply-all', class: 'long'}
-    ]
-    unless search_API_children.empty?
-      result << {
-        name: 'API',
-        icon: 'wrench',
-        children: search_API_children
-      }
-    end
     result
   end
 

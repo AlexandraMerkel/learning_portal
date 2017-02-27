@@ -19,19 +19,23 @@
         %td= community.community_name
         %td= community_visibility_types(community.community_visibility)
         %td= community_archive_types(community.archive)
-        %td
-          .toright
-            = link_to community, class: 'label blue' do
-              Показать
-        %td
-          .toright
-            = link_to edit_community_path(community), class: 'label yellow' do
-              Редактировать
-        %td
-          .toright
-            = link_to community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'label red' do
-              Удалить
+        - if @current_role_user.present?
+          - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+            %td
+              .toright
+                = link_to community, class: 'btn btn-info' do
+                  Показать
+            %td
+              .toright
+                = link_to edit_community_path(community), class: 'btn btn-warning' do
+                  Редактировать
+            %td
+              .toright
+                = link_to community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+                  Удалить
 
 %br
 
-= link_to t('helpers.new') + ' ' + Community.model_name.human(count: 1), new_community_path, class: "btn btn-success"
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to t('helpers.new') + ' ' + Community.model_name.human(count: 1), new_community_path, class: "btn btn-success"
