@@ -21,6 +21,10 @@ ru:
     new: Новый
   activerecord:
     models:
+      user:
+        one: Пользователь
+        few: Пользователи
+        many: Пользователи
       community:
         one: Сообщество
         few: Сообществ
@@ -38,6 +42,15 @@ ru:
         link_type: Роль
         user_id: Пользователь
         community_id: Сообщество
+      user:
+        first_name: Имя
+        second_name: Отчество
+        last_name: Фамилия
+        birthday: Дата рождения
+        user_description: О себе
+        sex: Пол
+        email: Электронная почта
+
   views:
     pagination:
       first: ⇤

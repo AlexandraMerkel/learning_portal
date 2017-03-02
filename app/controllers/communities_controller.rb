@@ -4,7 +4,11 @@ class CommunitiesController < ApplicationController
   # GET /communities
   # GET /communities.json
   def index
-    @communities = Community.all
+    if @current_role_user.is_student? or @current_role_user.is_teacher?
+      @communities = Community.includes(:community_users).where("community_users.user_id = ?", @current_user_object.id).references(:community_users)
+    else
+      @communities = Community.all
+    end
   end
 
   # GET /communities/1

@@ -1,6 +1,6 @@
 @del_cu_body_f = (link)->
   if confirm("Вы уверены?")
-    link.parent().find("input[type=hidden].remove_fields").first().val("1")
+    link.parent().find("input[type=hidden].remove_fields").first().val("1") // test
     link.parent().closest('.add-fields').hide()
     false
 @del_cu_f = ->
@@ -21,9 +21,9 @@
 @activate_cu_f = (panel)->
   $(panel).find('a.remove_cu').on 'click', ->
     window.del_cu_body_f($(this))
-    false    
+    false
   true
-  
+
 community_users_ready = ->
   window.del_cu_f()
   window.add_cu_f()

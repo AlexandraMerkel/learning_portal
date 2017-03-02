@@ -1,41 +1,34 @@
-%h1
-  =t('helpers.listing')
-  \
-  =Community.model_name.human(count: 2)
+%h1 Сообщества
 
-%table.table
-  %thead
-    %tr
-      %th=Community.human_attribute_name(:community_name)
-      %th=Community.human_attribute_name(:community_visibility)
-      %th=Community.human_attribute_name(:archive)
-      %th
-      %th
-      %th
 
-  %tbody
+/ Если сообществ нет, то будет сообщение
+- if @communities.blank?
+  .row
+    .col-md-6
+      .form-group{style: 'margin: 10px 0px 0px 5px; font-size: 18px;'}
+        Вы не состоите ни в каком сообществе!
+
+- else
+  .list-group
     - @communities.each do |community|
-      %tr
-        %td= community.community_name
-        %td= community_visibility_types(community.community_visibility)
-        %td= community_archive_types(community.archive)
-        - if @current_role_user.present?
-          - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-            %td
-              .toright
-                = link_to community, class: 'btn btn-info' do
-                  Показать
-            %td
-              .toright
+      = link_to(community, class: 'list-group-item clearfix') do
+        = community.community_name
+        .toright
+          %span.label.label-success
+            = community_visibility_types(community.community_visibility)
+          %span.label.label-info
+            = community_archive_types(community.archive)
+          - if @current_role_user.present?
+            - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+              %span
                 = link_to edit_community_path(community), class: 'btn btn-warning' do
-                  Редактировать
-            %td
-              .toright
+                  = fa_icon :pencil
+              %span
                 = link_to community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
-                  Удалить
+                  = fa_icon :trash
 
 %br
 
 - if @current_role_user.present?
   - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-    = link_to t('helpers.new') + ' ' + Community.model_name.human(count: 1), new_community_path, class: "btn btn-success"
+    = link_to 'Новое сообщество', new_community_path, class: "btn btn-success"

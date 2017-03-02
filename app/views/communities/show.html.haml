@@ -13,6 +13,5 @@
     = Community.human_attribute_name(:archive) + ":"
   = community_archive_types(@community.archive)
 
-= link_to t('helpers.edit'), edit_community_path(@community)
-\|
-= link_to t('helpers.back'), communities_path
+/= link_to t('helpers.edit'), edit_community_path(@community)
+/= link_to t('helpers.back'), communities_path

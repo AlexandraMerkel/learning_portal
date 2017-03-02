@@ -21,7 +21,7 @@
     .col-md-3
       .form-group
         = f.label :archive
-        = f.check_box :archive, style: 'margin: 0px 0px 0px 20px; vertical-align: middle;'
+        = f.check_box :archive, style: 'margin: 0px 0px 0px 15px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
   .community_users
@@ -29,10 +29,10 @@
       .col-md-6
         .form-group
           .add-users
-            = link_to ?#, class: 'btn btn-primary', data: add_user_data(f), id: 'add_cu_link' do
+            = link_to ?#, class: 'btn btn-primary', data: add_user_data(f), id: 'add_cu_link' do # data - вспомогательные атрибуты, которые могут быть любого тега. в данном случае, название тегов получаются путем добавления к слову "data-" ключей хэша, генерируемых в функции add_user_data. Реально эта ф-я генерирует только один data атрибут - "data-contents", в котором хранится html-код, который нужно добавить на страницу каждый раз при нажатии на ссылку
               = fa_icon :plus
               Добавить пользователей в сообщество
-    = f.fields_for :community_users do |addy_form| # Дополнительные поля из модели community_users
+    = f.fields_for :community_users do |addy_form| # Показывает community_users, если они есть (перебирает), сохраняет данные при ошибке
       = render('community_users/add_community_user', addy_form: addy_form)
   .row
     .col-md-6

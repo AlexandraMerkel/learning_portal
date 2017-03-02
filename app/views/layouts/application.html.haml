@@ -15,12 +15,16 @@
   %body
     =render 'application/navbar_top'
     #wrapper
-      =render 'application/sidebar'
+      / добавлен if
+      -if @current_role_user.present?
+        =render 'application/sidebar'
       #page-content-wrapper
         .container-fluid
-          %span.hidden-print#sidebar-toggle
-            = link_to "#wrapper", class: 'sidebar-toggle' do
-              = fa_icon('mail-reply')
+          / добавлен if
+          -if @current_role_user.present?
+            %span.hidden-print#sidebar-toggle
+              = link_to "#wrapper", class: 'sidebar-toggle' do
+                = fa_icon('mail-reply')
           =render 'flash_messages'
           -if content_for? :breadcrumb
             =yield :breadcrumb
