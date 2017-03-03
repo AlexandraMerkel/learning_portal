@@ -1,17 +1,47 @@
 %p#notice= notice
 
-%p
-  %b
-    = Community.human_attribute_name(:community_name) + ":"
-  = @community.community_name
-%p
-  %b
-    = Community.human_attribute_name(:community_visibility) + ":"
-  = community_visibility_types(@community.community_visibility)
-%p
-  %b
-    = Community.human_attribute_name(:archive) + ":"
-  = community_archive_types(@community.archive)
+.row
+  .col-md-3
+    .form-group{style: 'margin: 5px 0px 10px 3px; font-size: 20px;'}
+      %b
+        Сообщество
+        = @community.community_name
+
+  .toright
+    - if @current_role_user.present?
+      - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+        / вопрос с доступностью кнопки редактировать локальным модераторам
+        %span
+          = link_to edit_community_path(@community), class: 'btn btn-warning' do
+            = fa_icon :pencil
+        %span
+          = link_to @community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+            = fa_icon :trash
+
+#tabs
+  %ul.nav.nav-tabs
+    %li.active
+      = link_to 'Новости', '#news', data: { toggle: "tab" }
+    %li
+      = link_to 'Учебные материалы', '#materials', data: { toggle: "tab" }
+    %li
+      = link_to 'Успеваемость', '#progress', data: { toggle: "tab" }
+    %li
+      = link_to 'Форум', '#forum', data: { toggle: "tab" }
+
+.tab-content
+  #news.tab-pane.active.fade
+    / тут будет render 'community/xxx'
+    News
+  #materials.tab-pane.fade
+    Materials for learning
+  #progress.tab-pane.fade
+    Student's progress
+  #forum.tab-pane.fade
+    Forum
+
+
+
 
 /= link_to t('helpers.edit'), edit_community_path(@community)
 /= link_to t('helpers.back'), communities_path

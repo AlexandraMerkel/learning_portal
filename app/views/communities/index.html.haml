@@ -11,21 +11,18 @@
 - else
   .list-group
     - @communities.each do |community|
-      = link_to(community, class: 'list-group-item clearfix') do
+      = link_to(community, class: 'list-group-item') do
         = community.community_name
         .toright
-          %span.label.label-success
-            = community_visibility_types(community.community_visibility)
-          %span.label.label-info
-            = community_archive_types(community.archive)
           - if @current_role_user.present?
             - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-              %span
-                = link_to edit_community_path(community), class: 'btn btn-warning' do
-                  = fa_icon :pencil
-              %span
-                = link_to community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
-                  = fa_icon :trash
+              %span.label.label-success
+                = community_visibility_types(community.community_visibility)
+                / остается вопрос с доступностью надписей для различных ролей
+          %span.label.label-info
+            = community_archive_types(community.archive)
+
+        .clearfix
 
 %br
 

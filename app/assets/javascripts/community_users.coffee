@@ -1,6 +1,6 @@
 @del_cu_body_f = (link)->
   if confirm("Вы уверены?")
-    link.parent().find("input[type=hidden].remove_fields").first().val("1") // test
+    link.parent().find("input[type=hidden].remove_fields").first().val("1")
     link.parent().closest('.add-fields').hide()
     false
 @del_cu_f = ->
