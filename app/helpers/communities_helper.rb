@@ -4,6 +4,7 @@ module CommunitiesHelper
 		options_for_select(Community::ARCHIVES.map { |k, v| [v, k]}, selected)
   end
 
+
   def community_archive_types(chosen_type)
     Community::ARCHIVES[chosen_type]
   end

@@ -1,7 +1,7 @@
 %p#notice= notice
 
 .row
-  .col-md-3
+  .col-md-6
     .form-group{style: 'margin: 5px 0px 10px 3px; font-size: 20px;'}
       %b
         Сообщество
@@ -9,15 +9,16 @@
 
   .toright
     - if @current_role_user.present?
-      - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-        / вопрос с доступностью кнопки редактировать локальным модераторам
+      - if @current_role_user.is_admin? || @current_role_user.is_moderator? || @check == 1 || @check == 2
+        / 1 - модератор сообщества, 2 - владелец сообщества
         %span
           = link_to edit_community_path(@community), class: 'btn btn-warning' do
-            = fa_icon :pencil
+            = fa_icon :pencil, title: 'Редактировать сообщество'
         %span
           = link_to @community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
-            = fa_icon :trash
+            = fa_icon :trash, title: 'Отправить сообщество в архив'
 
+/ вкладки
 #tabs
   %ul.nav.nav-tabs
     %li.active
@@ -29,19 +30,16 @@
     %li
       = link_to 'Форум', '#forum', data: { toggle: "tab" }
 
+/ содержимое вкладок
 .tab-content
-  #news.tab-pane.active.fade
-    / тут будет render 'community/xxx'
-    News
+  #news.tab-pane.active.in.fade
+    = render 'communities/news'
   #materials.tab-pane.fade
-    Materials for learning
+    = render 'communities/materials'
   #progress.tab-pane.fade
-    Student's progress
+    = render 'communities/students_progress'
   #forum.tab-pane.fade
-    Forum
-
-
-
+    = render 'communities/forum'
 
 /= link_to t('helpers.edit'), edit_community_path(@community)
 /= link_to t('helpers.back'), communities_path

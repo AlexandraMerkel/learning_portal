@@ -2,33 +2,41 @@
 
 
 %p
-  %b Last name:
+  %b
+    = User.human_attribute_name(:last_name) + ":"
   = @user.last_name
 %p
-  %b First name:
+  %b
+    = User.human_attribute_name(:first_name) + ":"
   = @user.first_name
 %p
-  %b Second name:
+  %b
+    = User.human_attribute_name(:second_name) + ":"
   = @user.second_name
 %p
-  %b Birthday:
+  %b
+    = User.human_attribute_name(:birthday) + ":"
   = @user.birthday
 %p
-  %b Sex:
+  %b
+    = User.human_attribute_name(:sex) + ":"
   = @user.sex
 %p
-  %b Description:
+  %b
+    = User.human_attribute_name(:user_description) + ":"
   = @user.user_description
-%p
-  %b Email:
-  = @user.email
-%p
-  %b Crypted password:
-  = @user.crypted_password
-%p
-  %b Salt:
-  = @user.salt
+/%p
+/  %b Email:
+/  = @user.email
+/%p
+/  %b Crypted password:
+/  = @user.crypted_password
+/%p
+/  %b Salt:
+/  = @user.salt
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+
+/ тут надо будет сделать доступность кнопки, если страница твоя!!!
+/= link_to t('helpers.edit'), edit_user_path(@user)
+/\|
+/= link_to t('helpers.back'), users_path

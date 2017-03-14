@@ -21,8 +21,12 @@ class Community < ApplicationRecord
 	validates :community_visibility, presence: true,  inclusion: { in: VISIBILITIES.keys }
 	validates :archive, presence: true,  inclusion: { in: ARCHIVES.keys }
 
-  def Community.search_communities_for_user
-    Community.includes(:community_users).where("community_users.user_id = ?", @current_user_object.id).references(:community_users)
+  def Community.search_communities_for_user(attributes)
+    Community.includes(:community_users).where("community_users.user_id = ?", attributes).references(:community_users)
+  end
+
+  def Community.check_access_to_community(attr1, attr2)
+    Community.includes(:community_users).where("community_users.user_id = ?", attr1).where("community_users.community_id = ?", attr2).references(:community_users).pluck("community_users.link_type").first
   end
 
 end

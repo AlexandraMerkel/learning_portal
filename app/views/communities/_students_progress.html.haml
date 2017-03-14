@@ -1,0 +1,16 @@
+%h5 Успеваемость
+
+- if @current_role_user.present?
+  - if @current_role_user.is_student?
+    %table.table
+      %thead
+        %tr
+          %th Название раздела
+          %th Тип раздела
+          %th Оценка
+
+      %tbody
+      /  - @communities.each do |community|
+      /    %tr
+      /      %td= community.community_name
+      /      %td

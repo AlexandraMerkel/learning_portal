@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
   # GET /communities.json
   def index
     if @current_role_user.is_student? or @current_role_user.is_teacher?
-      @communities = Community.includes(:community_users).where("community_users.user_id = ?", @current_user_object.id).references(:community_users)
+      @communities = Community.search_communities_for_user(@current_user_object.id)
     else
       @communities = Community.all
     end
@@ -14,7 +14,9 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
+    @check = Community.check_access_to_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
+
 
   # GET /communities/new
   def new

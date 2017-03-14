@@ -22,9 +22,9 @@ ru:
   activerecord:
     models:
       user:
-        one: Пользователь
-        few: Пользователи
-        many: Пользователи
+        one: пользователь
+        few: пользователи
+        many: пользователи
       community:
         one: Сообщество
         few: Сообществ
@@ -50,6 +50,8 @@ ru:
         user_description: О себе
         sex: Пол
         email: Электронная почта
+        password: Пароль
+        password_confirmation: Повторите пароль
 
   views:
     pagination:

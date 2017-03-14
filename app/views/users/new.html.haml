@@ -1,5 +1,13 @@
-%h1 New user
+=breadcrumb_tag do
+  %li.active
+    Новый пользователь
+  %li
+    Пользователи
+
+%h1
+  = t('helpers.new')
+  = User.model_name.human
 
 = render 'form'
 
-= link_to 'Back', users_path
+/= link_to 'Back', users_path

@@ -1,10 +1,11 @@
 =breadcrumb_tag do
-  %li.active
-    Редактирование
-  %li
-    =link_to(ellipsisize(@community.community_name.to_s), @community)
   %li
     Сообщества
+  %li
+    =link_to(ellipsisize(@community.community_name.to_s), @community)
+  %li.active
+    Редактирование
+
 
 %h1
   = t('helpers.editing')

@@ -2,25 +2,25 @@
   = error_messages_for @user
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :last_name
         = f.text_field :last_name, class: 'form-control'
         = f.error_messages_for(:last_name)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :first_name
         = f.text_field :first_name, class: 'form-control'
         = f.error_messages_for(:first_name)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :second_name
         = f.text_field :second_name, class: 'form-control'
         = f.error_messages_for(:second_name)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :birthday
         .input-group.date.datepicker
           = f.text_field :birthday, class: 'form-control date datepicker'
@@ -29,35 +29,35 @@
         = f.error_messages_for(:birthday)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :sex
         = f.select(:sex, sex_options(f.object.sex), {}, class: 'form-control')
         = f.error_messages_for(:sex)
   .row
     .col-md-6
-      .form-group 
-        = f.label :write_something_important_about_yourself
-        = f.text_area :user_description, class: 'form-control'
-        = f.error_messages_for(:user_description)
-  .row
-    .col-md-6
-      .form-group 
+      .form-group
         = f.label :email
         = f.text_field :email, class: 'form-control'
         = f.error_messages_for(:email)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :password
         = f.text_field :password, class: 'form-control'
         = f.error_messages_for(:password)
   .row
     .col-md-6
-      .form-group 
+      .form-group
         = f.label :password_confirmation
         = f.text_field :password_confirmation, class: 'form-control'
         = f.error_messages_for(:password_confirmation)
   .row
     .col-md-6
-      .form-group 
+      .form-group
+        = f.label :user_description
+        = f.text_area :user_description, class: 'form-control'
+        = f.error_messages_for(:user_description)
+  .row
+    .col-md-6
+      .form-group
         = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'
