@@ -24,7 +24,14 @@
         = f.check_box :archive, style: 'margin: 0px 0px 0px 15px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
-  /= f.fields_for :community_disciplines do |addy_form|
+  = f.fields_for :community_disciplines do |dis_form|
+    .row
+      .col-md-6
+        .form-group
+          = dis_form.label 'Дисциплина'
+          = dis_form.select(:discipline_id, discipline_options(dis_form.object.discipline_id), {include_blank: true}, class: 'form-control')
+          = dis_form.error_messages_for(:discipline_id)
+
 
   .community_users
     .row

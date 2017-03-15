@@ -1,5 +1,12 @@
-%h1 New discipline
+=breadcrumb_tag do
+  %li
+    Дисциплины
+  %li.active
+    Новая дисциплина
+
+
+%h1 Новая дисциплина
 
 = render 'form'
 
-= link_to 'Back', disciplines_path
+/= link_to 'Back', disciplines_path

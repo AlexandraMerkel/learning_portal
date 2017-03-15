@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129151323) do
+ActiveRecord::Schema.define(version: 20170314145218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 20161129151323) do
     t.index ["community_name"], name: "index_communities_on_community_name", unique: true, using: :btree
   end
 
-  create_table "communities_disciplines", id: false, force: :cascade do |t|
-    t.integer "community_id",  null: false
-    t.integer "discipline_id", null: false
-    t.index ["community_id", "discipline_id"], name: "index_communities_disciplines_on_community_id_and_discipline_id", unique: true, using: :btree
-  end
-
   create_table "community_contents", force: :cascade do |t|
     t.integer  "view_type",          null: false
     t.text     "content_body",       null: false
@@ -41,6 +35,16 @@ ActiveRecord::Schema.define(version: 20161129151323) do
     t.datetime "updated_at",         null: false
     t.index ["community_tab_id"], name: "index_community_contents_on_community_tab_id", using: :btree
     t.index ["creator_id"], name: "index_community_contents_on_creator_id", using: :btree
+  end
+
+  create_table "community_disciplines", force: :cascade do |t|
+    t.integer  "discipline_id", null: false
+    t.integer  "community_id",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["community_id"], name: "index_community_disciplines_on_community_id", using: :btree
+    t.index ["discipline_id", "community_id"], name: "index_community_disciplines_on_discipline_id_and_community_id", unique: true, using: :btree
+    t.index ["discipline_id"], name: "index_community_disciplines_on_discipline_id", using: :btree
   end
 
   create_table "community_sections", force: :cascade do |t|
@@ -294,6 +298,8 @@ ActiveRecord::Schema.define(version: 20161129151323) do
 
   add_foreign_key "community_contents", "community_tabs"
   add_foreign_key "community_contents", "users", column: "creator_id"
+  add_foreign_key "community_disciplines", "communities"
+  add_foreign_key "community_disciplines", "disciplines"
   add_foreign_key "community_sections", "communities"
   add_foreign_key "community_tabs", "community_sections"
   add_foreign_key "community_users", "communities"

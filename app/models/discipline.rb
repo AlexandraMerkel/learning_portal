@@ -1,14 +1,27 @@
 class Discipline < ApplicationRecord
-  
+
   belongs_to :term
   belongs_to :ranking_algorithm
   has_many :discipline_sections
-  has_and_belongs_to_many :communities
+  has_many :community_disciplines
   has_and_belongs_to_many :institutions
 
+  TYPES = {
+    0 => 'лекция',
+    1 => 'семинар',
+    2 => 'лабораторная работа',
+    3 => 'курсовая/практическая/научно-исследовательская работа'
+  }
+
+  DIS_END = {
+    0 => 'зачёт',
+    1 => 'экзамен',
+    2 => 'защита работы'
+  }
+
   validates :discipline_name, presence: true, uniqueness: {scope: [:discipline_type, :discipline_end]}
-  validates :discipline_type, presence: true, inclusion: { in: [0, 1, 2, 3] }
-  validates :discipline_end, presence: true, inclusion: { in: [0, 1] }
+  validates :discipline_type, presence: true, inclusion: { in: TYPES.keys }
+  validates :discipline_end, presence: true, inclusion: { in: DIS_END.keys }
   validates :term_id, presence: true
   validates :ranking_algorithm_id, presence: true
 

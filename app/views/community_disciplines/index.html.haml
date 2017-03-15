@@ -1,0 +1,23 @@
+%h1 Listing community_disciplines
+
+%table
+  %thead
+    %tr
+      %th Discipline
+      %th Community
+      %th
+      %th
+      %th
+
+  %tbody
+    - @community_disciplines.each do |community_discipline|
+      %tr
+        %td= community_discipline.discipline
+        %td= community_discipline.community
+        %td= link_to 'Show', community_discipline
+        %td= link_to 'Edit', edit_community_discipline_path(community_discipline)
+        %td= link_to 'Destroy', community_discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Community discipline', new_community_discipline_path

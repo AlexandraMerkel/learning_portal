@@ -1,16 +1,19 @@
 = form_for @ranking_algorithm do |f|
-  - if @ranking_algorithm.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@ranking_algorithm.errors.count, "error")} prohibited this ranking_algorithm from being saved:"
-      %ul
-        - @ranking_algorithm.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @ranking_algorithm
 
-  .field
-    = f.label :algorithm_name
-    = f.text_field :algorithm_name
-  .field
-    = f.label :template
-    = f.text_area :template
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :algorithm_name, class: 'test'
+        = f.text_field :algorithm_name, class: 'form-control'
+        = f.error_messages_for(:algorithm_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :template, class: 'test'
+        = f.text_area :template, class: 'form-control'
+        = f.error_messages_for(:template)
+  .row
+    .col-md-6
+      .form-group
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

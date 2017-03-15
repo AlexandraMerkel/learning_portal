@@ -33,15 +33,19 @@ ru:
         one: Пользователя в сообществе
         few: Пользователей в сообществе
         many: Пользователей в сообществе
+      discipline:
+        one: дисциплина
+        few: дисциплин
+        many: дисциплин
+      term:
+        one: семестр
+        few: семестров
+        many: семестров
+      ranking_algorithm:
+        one: рейтинговый алгоритм
+        few: рейтинговых алгоритмов
+        many: рейтинговых алгоритмов
     attributes:
-      community:
-        community_name: Название сообщества
-        community_visibility: Тип видимости сообщества
-        archive: Архив
-      community_user:
-        link_type: Роль
-        user_id: Пользователь
-        community_id: Сообщество
       user:
         first_name: Имя
         second_name: Отчество
@@ -52,7 +56,29 @@ ru:
         email: Электронная почта
         password: Пароль
         password_confirmation: Повторите пароль
-
+      community:
+        community_name: Название
+        community_visibility: Тип видимости сообщества
+        archive: Архив
+        discipline_id: Дисциплина
+      community_user:
+        link_type: Роль
+        user_id: Пользователь
+        community_id: Сообщество
+      discipline:
+        discipline_name: Название
+        discipline_type: Тип
+        discipline_end: Вид отчётности
+        term_id: Семестр
+        ranking_algorithm_id: Алгоритм для расчёта успеваемости
+      term:
+        term_name: Название
+        actual: Текущий
+        term_start: Дата начала
+        term_end: Дата окончания
+      ranking_algorithm:
+        algorithm_name: Название
+        template: Формула
   views:
     pagination:
       first: ⇤

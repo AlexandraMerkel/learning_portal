@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Discipline:
+  = @community_discipline.discipline
+%p
+  %b Community:
+  = @community_discipline.community
+
+= link_to 'Edit', edit_community_discipline_path(@community_discipline)
+\|
+= link_to 'Back', community_disciplines_path

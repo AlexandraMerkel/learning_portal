@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   has_many :role_users
   has_and_belongs_to_many :groups
   has_many :community_users
@@ -13,9 +13,15 @@ class User < ApplicationRecord
   has_many :notices
   has_many :study_files
 
+  SEX = {
+    0 => 'м',
+    1 => 'ж'
+  }
+
+
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :sex, presence: true, inclusion: { in: ['м', 'ж'] }
+  validates :sex, presence: true, inclusion: { in: SEX.values }
   validates :user_description, length: {maximum: 250}
 
   authenticates_with_sorcery!
@@ -34,7 +40,7 @@ class User < ApplicationRecord
           results << "Пользователь #{u.email} уже существует!"
         else
           passwd = User.get_passwd
-          user_hash['password'] = user_hash['password_confirmation'] = passwd        
+          user_hash['password'] = user_hash['password_confirmation'] = passwd
           begin
             u = User.new(user_hash)
             u.save
@@ -47,14 +53,14 @@ class User < ApplicationRecord
           rescue
             results << "Студент № #{i + 1} содержит ошибки!"
           end
-        end 
+        end
       end
     rescue
       results << 'JSON файл не корректен!'
     end
     results
   end
-  
+
   def User.get_passwd
     # Нужно в системе установить пакет expect
     mk = IO.popen('mkpasswd', 'r')

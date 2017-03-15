@@ -1,0 +1,1 @@
+json.array! @community_disciplines, partial: 'community_disciplines/community_discipline', as: :community_discipline

@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
   # GET /communities.json
   def index
     if @current_role_user.is_student? or @current_role_user.is_teacher?
-      @communities = Community.search_communities_for_user(@current_user_object.id)
+      @communities = Community.check_access_to_community(@current_user_object.id)
     else
       @communities = Community.all
     end
@@ -14,13 +14,14 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
-    @check = Community.check_access_to_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
+    @check = Community.check_access_to_edit_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
 
 
   # GET /communities/new
   def new
     @community = Community.new(community_visibility: 0)
+    @community.community_disciplines.build
   end
 
   # GET /communities/1/edit
@@ -80,7 +81,7 @@ class CommunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_params
-      params.require(:community).permit(:community_name, :community_visibility, :archive,
+      params.require(:community).permit(:community_name, :community_visibility, :archive, community_disciplines_attributes: [:discipline_id, :community_id, :id, :_destroy],
         community_users_attributes: [:link_type, :user_id, :community_id, :id, :_destroy])
     end
 end

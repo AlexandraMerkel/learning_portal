@@ -1,7 +1,18 @@
-%h1 Editing discipline
+=breadcrumb_tag do
+  %li
+    Дисциплины
+  %li
+    =link_to(ellipsisize(@community.community_name.to_s), @discipline)
+  %li.active
+    Редактирование
+
+
+%h1
+  = t('helpers.editing')
+  = Discipline.model_name.human
 
 = render 'form'
 
-= link_to 'Show', @discipline
-\|
-= link_to 'Back', disciplines_path
+/= link_to 'Show', @discipline
+/\|
+/= link_to 'Back', disciplines_path

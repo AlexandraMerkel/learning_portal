@@ -1,25 +1,39 @@
 = form_for @discipline do |f|
-  - if @discipline.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@discipline.errors.count, "error")} prohibited this discipline from being saved:"
-      %ul
-        - @discipline.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @discipline
 
-  .field
-    = f.label :discipline_name
-    = f.text_field :discipline_name
-  .field
-    = f.label :discipline_type
-    = f.select(:discipline_type, type_options(f.object.discipline_type))
-  .field
-    = f.label :discipline_end
-    = f.select(:discipline_end, end_options(f.object.discipline_end))
-  .field
-    = f.label :term_id
-    = f.select(:term_id, term_options(f.object.term_id))
-  .field
-    = f.label :ranking_algorithm_id
-    = f.select(:ranking_algorithm_id, ranking_algorithm_options(f.object.ranking_algorithm_id))
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :discipline_name, class: 'test'
+        = f.text_field :discipline_name, class: 'form-control'
+        = f.error_messages_for(:discipline_name)
+    .col-md-3
+      .form-group
+        = f.label :discipline_type
+        = f.select(:discipline_type, discipline_type_options(f.object.discipline_type), {}, class: 'form-control')
+        = f.error_messages_for(:discipline_type)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :discipline_end
+        - Discipline::DIS_END.each do |k, v|
+          %div
+            = f.radio_button(:discipline_end, k)
+            %span= v
+  .row
+    .col-md-6
+      .form-group
+        = f.label :term_id
+        = f.select(:term_id, term_options(f.object.term_id), {}, class: 'form-control')
+        = f.error_messages_for(:term_id)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :ranking_algorithm_id
+        = f.select(:ranking_algorithm_id, ranking_algorithm_options(f.object.term_id), {include_blank: true}, class: 'form-control')
+        = f.error_messages_for(:ranking_algorithm_id)
+
+  .row
+    .col-md-6
+      .form-group
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

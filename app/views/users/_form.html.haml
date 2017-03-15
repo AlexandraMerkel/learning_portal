@@ -31,8 +31,10 @@
     .col-md-6
       .form-group
         = f.label :sex
-        = f.select(:sex, sex_options(f.object.sex), {}, class: 'form-control')
-        = f.error_messages_for(:sex)
+        - User::SEX.each do |k, v|
+          = f.radio_button(:sex, v)
+          %span{style: 'margin: 0 5px 3px 0; display: inline-block; vertical-align: top;'}= v
+        /= f.error_messages_for(:sex)
   .row
     .col-md-6
       .form-group

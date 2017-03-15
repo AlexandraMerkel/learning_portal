@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :community_disciplines
   get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
   post 'students_api/load_from_json_file'
 

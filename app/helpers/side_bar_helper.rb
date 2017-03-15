@@ -43,6 +43,7 @@ module SideBarHelper
           controller: :communities,
           action: :index
         }
+
       end
     end
 
@@ -66,6 +67,14 @@ module SideBarHelper
             children: search_community_children
           }
         end
+
+        result << {
+          name: 'Дисциплины',
+          url: disciplines_path,
+          icon: 'book',
+          controller: :disciplines,
+          action: :index
+        }
         #result
 
         # элемент списка Поиск
