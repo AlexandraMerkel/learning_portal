@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  institution_name: MyString
-  short_instituton_name: MyString
-  address: MyString
-  phone_number: MyString
+  institution_name: НИЯУ МИФИ
+  short_institution_name: МИФИ
+  address: Москва, 1
+  phone_number: 88005553535
 
 two:
-  institution_name: MyString
-  short_instituton_name: MyString
-  address: MyString
-  phone_number: MyString
+  institution_name: МАИ
+  short_institution_name: МАИ
+  address: Москва, 2
+  phone_number: 88005555333

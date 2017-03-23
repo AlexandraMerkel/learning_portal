@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  algorithm_name: MyString
-  template: MyText
+  algorithm_name: Линейный
+  template: Формула
 
 two:
-  algorithm_name: MyString
-  template: MyText
+  algorithm_name: Нелинейный
+  template: Формула2

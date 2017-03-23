@@ -14,6 +14,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
+    @community
     @check = Community.check_access_to_edit_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
 
@@ -76,7 +77,8 @@ class CommunitiesController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_community
-      @community = Community.find(params[:id])
+      #community = Community.find(params[:id])
+      @community = Community.includes(community_disciplines: {discipline: {discipline_sections: :marks}}).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

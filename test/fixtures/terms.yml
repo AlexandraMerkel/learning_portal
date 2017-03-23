@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  term_name: MyString
+  term_name: осень 2016
   actual: false
-  term_start: 2016-11-27
-  term_end: 2016-11-27
+  term_start: 2016-09-01
+  term_end: 2016-12-31
 
 two:
-  term_name: MyString
-  actual: false
-  term_start: 2016-11-27
-  term_end: 2016-11-27
+  term_name: весна 2017
+  actual: true
+  term_start: 2017-02-06
+  term_end: 2017-06-30

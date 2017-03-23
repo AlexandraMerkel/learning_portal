@@ -2,14 +2,20 @@
 
 one:
   message_content: MyText
-  send: 2016-11-29 18:10:16
-  message: 
+  send_time: 2016-11-29 18:10:16
+  message_file_name:
+  message_content_type:
+  message_file_size:
+  message_updated_at:
   message_list: one
   sender: one
 
 two:
-  message_content: MyText
-  send: 2016-11-29 18:10:16
-  message: 
+  message_content: MyText2
+  send_time: 2016-11-30 11:15:24
+  message_file_name:
+  message_content_type:
+  message_file_size:
+  message_updated_at:
   message_list: two
   sender: two

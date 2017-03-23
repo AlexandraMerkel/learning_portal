@@ -6,6 +6,6 @@ one:
   community_section: one
 
 two:
-  notice_type: 1
+  notice_type: 0
   user: two
   community_section: two

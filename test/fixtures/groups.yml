@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  group_name: MyString
-  group_start: 2016-11-27
-  archive_time: 2016-11-27
+  group_name: Б13-509
+  group_start: 2013-09-01
+  archive_time: 2017-06-30
   term: one
 
 two:
-  group_name: MyString
-  group_start: 2016-11-27
-  archive_time: 2016-11-27
+  group_name: Б13-510
+  group_start: 2013-09-01
+  archive_time: 2017-06-30
   term: two

@@ -6,6 +6,6 @@ one:
   community: one
 
 two:
-  link_type: 1
+  link_type: 0
   user: two
   community: two

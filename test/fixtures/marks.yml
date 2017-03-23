@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  mark_value: 1
+  mark_value: 10
   report: 2016-11-27
   discipline_section: one
   student: one
   teacher: one
 
 two:
-  mark_value: 1
-  report: 2016-11-27
+  mark_value: 15
+  report: 2016-11-30
   discipline_section: two
   student: two
   teacher: two

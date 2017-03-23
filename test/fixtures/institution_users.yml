@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  rank: MyString
+  rank: студент
   user: one
   institution: one
 
 two:
-  rank: MyString
+  rank: преподаватель
   user: two
   institution: two

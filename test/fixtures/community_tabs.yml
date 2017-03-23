@@ -2,10 +2,10 @@
 
 one:
   community_section: one
-  tab_name: MyString
+  tab_name: Учебники
   tab_position: 1
 
 two:
   community_section: two
-  tab_name: MyString
+  tab_name: Схемы
   tab_position: 1

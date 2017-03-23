@@ -2,8 +2,14 @@
 
 one:
   user: one
-  study: 
+  study_file_name: test.pdf
+  study_content_type: pdf
+  study_file_size: 123
+  study_updated_at: 2017-03-20
 
 two:
   user: two
-  study: 
+  study_file_name: test2.txt
+  study_content_type: txt
+  study_file_size: 455
+  study_updated_at: 2017-02-11

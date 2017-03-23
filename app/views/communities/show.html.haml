@@ -33,8 +33,7 @@
 / содержимое вкладок
 .tab-content
   #news.tab-pane.active.in.fade
-    = render 'communities/news'
-  #materials.tab-pane.fade
+    = render partial: 'communities/news', object: @community
     = render 'communities/materials'
   #progress.tab-pane.fade
     = render 'communities/students_progress'

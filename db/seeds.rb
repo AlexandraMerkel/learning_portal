@@ -63,6 +63,30 @@ discipline31 = Discipline.create(discipline_name: 'Научно-исследов
 discipline41 = Discipline.create(discipline_name: 'Русский язык', discipline_type: '0', discipline_end: '0', term: term1, ranking_algorithm: rankalg1)
 
 # Разделы дисциплин
+dissection1 = DisciplineSection.create(section_name: 'Домашние задания по теме Механика', section_type: '1', weight: '10', min_score: '16', max_score: '25', require_type: '0', attenuation_constant: '0.5', optimal_time: Date.new(2017, 3, 30), limit_time: Date.new(2017, 4, 15), discipline: discipline11)
+dissection2 = DisciplineSection.create(section_name: 'Посещаемость семинаров', section_type: '0', weight: '5', min_score: '5', max_score: '10', require_type: '0', attenuation_constant: '0.8', optimal_time: Date.new(2017, 5, 20), limit_time: Date.new(2017, 5, 20), discipline: discipline11)
+dissection3 = DisciplineSection.create(section_name: 'Посещаемость лекций', section_type: '0', weight: '5', min_score: '5', max_score: '10', require_type: '1', attenuation_constant: '0.6', optimal_time: Date.new(2017, 1, 31), limit_time: Date.new(2017, 1, 31), discipline: discipline11)
+dissection4 = DisciplineSection.create(section_name: 'Контрольная работа по теме Механика', section_type: '3', weight: '15', min_score: '16', max_score: '25', require_type: '0', attenuation_constant: '0.3', optimal_time: Date.new(2017, 3, 20), limit_time: Date.new(2017, 4, 5), discipline: discipline11)
+dissection5 = DisciplineSection.create(section_name: 'БДЗ Создание базы данных по варианту', section_type: '1', weight: '8', min_score: '10', max_score: '15', require_type: '1', attenuation_constant: '0.6', optimal_time: Date.new(2017, 5, 10), limit_time: Date.new(2017, 5, 20), discipline: discipline21)
+dissection6 = DisciplineSection.create(section_name: 'Контрольная работа по написанию запросов к БД', section_type: '3', weight: '10', min_score: '16', max_score: '25', require_type: '0', attenuation_constant: '0.7', optimal_time: Date.new(2017, 4, 15), limit_time: Date.new(2017, 4, 30), discipline: discipline21)
+dissection7 = DisciplineSection.create(section_name: 'Проверочная работа по теории баз данных', section_type: '2', weight: '5', min_score: '10', max_score: '15', require_type: '0', attenuation_constant: '0.4', optimal_time: Date.new(2017, 3, 30), limit_time: Date.new(2017, 4, 15), discipline: discipline21)
+dissection8 = DisciplineSection.create(section_name: 'Представление промежуточных итогов по теме', section_type: '3', weight: '7', min_score: '30', max_score: '50', require_type: '', attenuation_constant: '0.5', optimal_time: Date.new(2017, 3, 20), limit_time: Date.new(2017, 3, 30), discipline: discipline31)
+dissection9 = DisciplineSection.create(section_name: 'Защита работы', section_type: '5', weight: '10', min_score: '30', max_score: '50', require_type: '0', attenuation_constant: '0.1', optimal_time: Date.new(2017, 5, 25), limit_time: Date.new(2017, 5, 25), discipline: discipline31)
+dissection10 = DisciplineSection.create(section_name: 'Посещаемость лекций', section_type: '0', weight: '5', min_score: '16', max_score: '25', require_type: '1', attenuation_constant: '0.7', optimal_time: Date.new(2017, 5, 20), limit_time: Date.new(2017, 5, 20), discipline: discipline41)
+dissection11 = DisciplineSection.create(section_name: 'Тест по темам лекций', section_type: '3', weight: '10', min_score: '20', max_score: '30', require_type: '0', attenuation_constant: '0.3', optimal_time: Date.new(2017, 4, 20), limit_time: Date.new(2017, 5, 15), discipline: discipline41)
+
+#Оценки
+mark1 = Mark.create(mark_value: '24', report: Date.new(2017, 4, 1), discipline_section: dissection1, student: u4, teacher: u2)
+mark2 = Mark.create(mark_value: '10', report: Date.new(2017, 5, 20), discipline_section: dissection2, student: u4, teacher: u2)
+mark3 = Mark.create(mark_value: '8', report: Date.new(2017, 5, 20), discipline_section: dissection3, student: u4, teacher: u2)
+mark4 = Mark.create(mark_value: '20', report: Date.new(2017, 3, 20), discipline_section: dissection4, student: u4, teacher: u2)
+mark5 = Mark.create(mark_value: '13', report: Date.new(2017, 3, 15), discipline_section: dissection5, student: u4, teacher: u2)
+mark6 = Mark.create(mark_value: '25', report: Date.new(2017, 5, 5), discipline_section: dissection6, student: u4, teacher: u2)
+mark7 = Mark.create(mark_value: '14', report: Date.new(2017, 3, 30), discipline_section: dissection7, student: u4, teacher: u2)
+mark8 = Mark.create(mark_value: '45', report: Date.new(2017, 3, 25), discipline_section: dissection8, student: u4, teacher: u2)
+mark9 = Mark.create(mark_value: '50', report: Date.new(2017, 5, 25), discipline_section: dissection9, student: u4, teacher: u2)
+mark10 = Mark.create(mark_value: '25', report: Date.new(2017, 5, 20), discipline_section: dissection10, student: u4, teacher: u2)
+mark11 = Mark.create(mark_value: '28', report: Date.new(2017, 4, 20), discipline_section: dissection11, student: u4, teacher: u2)
 
 # Сообщества
 community1 = Community.create(community_name: 'Физика (видно всем)', community_visibility: '0', archive: '0')
@@ -103,3 +127,4 @@ commdis4 = CommunityDiscipline.create(discipline: discipline21, community: commu
 commdis5 = CommunityDiscipline.create(discipline: discipline41, community: community5)
 commdis6 = CommunityDiscipline.create(discipline: discipline11, community: community6)
 commdis7 = CommunityDiscipline.create(discipline: discipline31, community: community7)
+

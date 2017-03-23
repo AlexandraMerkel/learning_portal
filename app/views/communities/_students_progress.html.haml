@@ -6,11 +6,9 @@
       %thead
         %tr
           %th Название раздела
-          %th Тип раздела
           %th Оценка
 
       %tbody
-      /  - @communities.each do |community|
-      /    %tr
-      /      %td= community.community_name
-      /      %td
+        %tr
+          %td= @community.community_disciplines.discipline.discipline_sections.section_name
+          %td= @community.community_disciplines.discipline.discipline_sections.marks.mark_value

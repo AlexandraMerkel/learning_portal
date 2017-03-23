@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  header: MyString
+  header: Header1
 
 two:
-  header: MyString
+  header: Header2

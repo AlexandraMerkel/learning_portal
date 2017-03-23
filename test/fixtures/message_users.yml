@@ -6,6 +6,6 @@ one:
   user: one
 
 two:
-  viewing: 1
+  viewing: 0
   message: two
   user: two

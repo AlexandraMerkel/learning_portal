@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  role_name: MyString
-  full_name: MyString
-  role_name_eng: MyString
+  role_name: Админ
+  full_name: Администратор
+  role_name_eng: Admin
 
 two:
-  role_name: MyString
-  full_name: MyString
-  role_name_eng: MyString
+  role_name: Студент
+  full_name: Студент ВУЗа
+  role_name_eng: Student
