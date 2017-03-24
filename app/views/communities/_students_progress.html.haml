@@ -9,6 +9,8 @@
           %th Оценка
 
       %tbody
-        %tr
-          %td= @community.community_disciplines.discipline.discipline_sections.section_name
-          %td= @community.community_disciplines.discipline.discipline_sections.marks.mark_value
+        - @community.community_disciplines.each do |d|
+          - d.discipline.discipline_sections.each do |ds|
+            %tr
+              %td= ds.section_name
+              %td= ds.marks.inject(0){ |s, m| s + m.mark_value }
