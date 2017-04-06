@@ -10,4 +10,6 @@
       .clearfix
 
 
-= link_to 'New User', new_user_path
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новый пользователь', new_user_path, class: "btn btn-success"

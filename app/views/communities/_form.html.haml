@@ -21,7 +21,7 @@
     .col-md-3
       .form-group
         = f.label :archive
-        = f.check_box :archive, style: 'margin: 0px 0px 0px 15px; vertical-align: middle;'
+        = f.check_box :archive, style: 'margin: 0px 0px 0px 10px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
   = f.fields_for :community_disciplines do |dis_form|

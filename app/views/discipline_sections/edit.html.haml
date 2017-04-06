@@ -1,7 +1,17 @@
-%h1 Editing discipline_section
+=breadcrumb_tag do
+  %li
+    Разделы дисциплин
+  %li
+    =link_to(ellipsisize(@discipline_section.section_name.to_s), @discipline_section)
+  %li.active
+    Редактирование
+
+
+%h1 Редактирование раздела дисциплины
 
 = render 'form'
 
-= link_to 'Show', @discipline_section
-\|
-= link_to 'Back', discipline_sections_path
+
+/= link_to 'Show', @discipline_section
+/\|
+/= link_to 'Back', discipline_sections_path

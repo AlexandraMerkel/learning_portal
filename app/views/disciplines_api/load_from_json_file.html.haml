@@ -2,8 +2,19 @@
   - @results.each do |line|
     %div
       = line
+.row
+  .col-md-6
+    .form-group
+      %span
+        Выберите файл для загрузки массива данных
 = form_tag(load_from_json_file_disciplines_api_path(), multipart: true) do
-  = file_field_tag :json_file
-  = button_tag class: 'btn btn-primary' do
-    = fa_icon :save
-    Загрузить
+  .row
+    .col-md-6
+      .form-group
+        = file_field_tag :json_file
+  .row
+    .col-md-6
+      .form-group
+        = button_tag class: 'btn btn-primary' do
+          = fa_icon :save
+          Загрузить

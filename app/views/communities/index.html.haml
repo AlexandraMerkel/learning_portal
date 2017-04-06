@@ -7,12 +7,12 @@
     - if @current_role_user.is_admin? || @current_role_user.is_moderator?
       .row
         .col-md-6
-          .form-group{style: 'margin: 10px 0px 0px 5px; font-size: 18px;'}
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
             В системе пока не создано ни одного сообщества!
     - else
       .row
         .col-md-6
-          .form-group{style: 'margin: 10px 0px 0px 5px; font-size: 18px;'}
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
             Вы не состоите ни в каком сообществе!
 
 - else
@@ -30,8 +30,6 @@
             = community_archive_types(community.archive)
 
         .clearfix
-
-%br
 
 - if @current_role_user.present?
   - if @current_role_user.is_admin? || @current_role_user.is_moderator?

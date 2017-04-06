@@ -37,6 +37,10 @@ ru:
         one: дисциплина
         few: дисциплин
         many: дисциплин
+      discipline_section:
+        one: раздел дисциплины
+        few: разделов дисциплин
+        many: разделов дисциплин
       term:
         one: семестр
         few: семестров
@@ -71,6 +75,17 @@ ru:
         discipline_end: Вид отчётности
         term_id: Семестр
         ranking_algorithm_id: Алгоритм для расчёта успеваемости
+      discipline_section:
+        section_name: Название раздела
+        section_type: Тип раздела
+        weight: Вес
+        min_score: Минимальный балл
+        max_score: Максимальный балл
+        require_type: Обязателен к сдаче
+        attenuation_constant: Коэффициент затухания
+        optimal_time: Оптимальный срок сдачи
+        limit_time: Крайний срок сдачи
+        discipline_id: Дисциплина
       term:
         term_name: Название
         actual: Текущий

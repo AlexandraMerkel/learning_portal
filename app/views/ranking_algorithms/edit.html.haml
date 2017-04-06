@@ -1,7 +1,15 @@
-%h1 Editing ranking_algorithm
+=breadcrumb_tag do
+  %li
+    Рейтинговые алгоритмы
+  %li
+    =link_to(ellipsisize(@ranking_algorithm.algorithm_name.to_s), @ranking_algorithm)
+  %li.active
+    Редактирование
+
+%h1 Редактирование алгоритма
 
 = render 'form'
 
-= link_to 'Show', @ranking_algorithm
-\|
-= link_to 'Back', ranking_algorithms_path
+/= link_to 'Show', @ranking_algorithm
+/\|
+/= link_to 'Back', ranking_algorithms_path

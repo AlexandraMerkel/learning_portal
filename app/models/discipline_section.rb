@@ -14,18 +14,17 @@ class DisciplineSection < ApplicationRecord
 	}
 
 	REQUIRE_TYPE = {
-		0=>'обязательно',
-		1=>'по желанию'
+		0=>'по желанию',
+		1=>'обязательно'
 	}
-
 
 	validates :section_name, presence: true, uniqueness: {scope: :discipline_id}
 	validates :section_type, presence: true, inclusion: { in: SECTION_TYPE.keys }
-	validates :weight, presence: true,  numericality: {only_integer: true, greater_than: 0 }
-	validates :min_score, presence: true,  numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 100}
-	validates :max_score, presence: true,  numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 100}
+	validates :weight, presence: true,  numericality: {only_integer: true, greater_than: 0, less_than: 11}
+	validates :min_score, presence: true,  numericality: {only_integer: true, greater_than: 0, less_than: 100}
+	validates :max_score, presence: true,  numericality: {only_integer: true, greater_than: 0, less_than: 100}
 	validates :require_type, presence: true, inclusion: { in: REQUIRE_TYPE.keys }
-	validates :attenuation_constant, presence: true, numericality: {greater_than: 0 }
+	validates :attenuation_constant, presence: true, numericality: {greater_than: 0, less_than: 1 }
 	validates :optimal_time, presence: true
 	validates :limit_time, presence: true
 	validates :discipline_id, presence: true

@@ -6,6 +6,13 @@ class Discipline < ApplicationRecord
   has_many :community_disciplines
   has_and_belongs_to_many :institutions
 
+  SHORT_TYPES = {
+    0 => 'Л',
+    1 => 'ПР',
+    2 => 'ЛАБ',
+    3 => 'НИР'
+  }
+
   TYPES = {
     0 => 'лекция',
     1 => 'семинар',

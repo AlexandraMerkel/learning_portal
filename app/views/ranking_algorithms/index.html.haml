@@ -1,23 +1,21 @@
-%h1 Listing ranking_algorithms
+%h2{style: 'margin: 0px 0px 20px 5px;'} Алгоритмы расчёта рейтинга успеваемости студентов
 
-%table
-  %thead
-    %tr
-      %th Algorithm name
-      %th Template
-      %th
-      %th
-      %th
 
-  %tbody
-    - @ranking_algorithms.each do |ranking_algorithm|
-      %tr
-        %td= ranking_algorithm.algorithm_name
-        %td= ranking_algorithm.template
-        %td= link_to 'Show', ranking_algorithm
-        %td= link_to 'Edit', edit_ranking_algorithm_path(ranking_algorithm)
-        %td= link_to 'Destroy', ranking_algorithm, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/- if @ranking_algorithm.blank?
+/  - if @current_role_user.present?
+/    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+/      .row
+/        .col-md-6
+/          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+/            В системе пока не создано ни одного алгоритма!
 
-%br
+/- else
+.list-group
+  - @ranking_algorithms.each do |ranking_algorithm|
+    = link_to(ranking_algorithm, class: 'list-group-item') do
+      = ranking_algorithm.algorithm_name
+      .clearfix
 
-= link_to 'New Ranking algorithm', new_ranking_algorithm_path
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новый алгоритм', new_ranking_algorithm_path, class: "btn btn-success"

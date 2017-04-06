@@ -1,20 +1,25 @@
 %p#notice= notice
 
 %p
-  %b Discipline name:
+  %b
+    = Discipline.human_attribute_name(:discipline_name) + ":"
   = @discipline.discipline_name
 %p
-  %b Discipline type:
-  = @discipline.discipline_type
+  %b
+    = Discipline.human_attribute_name(:discipline_type) + ":"
+  = discipline_types(@discipline.discipline_type)
 %p
-  %b Discipline end:
-  = @discipline.discipline_end
+  %b
+    = Discipline.human_attribute_name(:discipline_end) + ":"
+  = discipline_end_types(@discipline.discipline_end)
 %p
-  %b Term:
-  = @discipline.term
+  %b
+    = Discipline.human_attribute_name(:term_id) + ":"
+  = @discipline.term.term_name
 %p
-  %b Ranking algorithm:
-  = @discipline.ranking_algorithm
+  %b
+    = Discipline.human_attribute_name(:ranking_algorithm_id) + ":"
+  = @discipline.ranking_algorithm.algorithm_name
 
 = link_to 'Edit', edit_discipline_path(@discipline)
 \|

@@ -1,8 +1,8 @@
 class StudentsApiController < ApplicationController
-  
+
 
   def load_from_json_file
-    sleep(10)
+    #sleep(10)
     if params.has_key?(:json_file)
       json = File.read(params[:json_file].path)
       json = JSON.parse(json)
@@ -16,5 +16,5 @@ class StudentsApiController < ApplicationController
       return true if @current_role_user.is_admin?
       return (action_name.to_sym != :load_from_json_file or @current_role_user.is_moderator?)
     end
- 
+
 end

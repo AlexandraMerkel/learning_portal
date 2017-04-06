@@ -1,10 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Algorithm name:
+  %b
+    = RankingAlgorithm.human_attribute_name(:algorithm_name) + ":"
   = @ranking_algorithm.algorithm_name
 %p
-  %b Template:
+  %b
+    = RankingAlgorithm.human_attribute_name(:template) + ":"
   = @ranking_algorithm.template
 
 = link_to 'Edit', edit_ranking_algorithm_path(@ranking_algorithm)

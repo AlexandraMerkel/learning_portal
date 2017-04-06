@@ -1,4 +1,4 @@
-%h1 Listing discipline_sections
+%h1 Разделы дисциплин
 
 %table
   %thead
@@ -36,4 +36,6 @@
 
 %br
 
-= link_to 'New Discipline section', new_discipline_section_path
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новый раздел дисциплины', new_discipline_section_path, class: "btn btn-success"

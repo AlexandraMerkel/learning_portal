@@ -16,4 +16,16 @@ module DisciplinesHelper
 		options_for_select(RankingAlgorithm.all.map{ |ra| ["#{ra.algorithm_name} ", ra.id] }, selected)
   end
 
+  def discipline_types(chosen_type)
+    Discipline::TYPES[chosen_type]
+  end
+
+  def discipline_short_types(chosen_type)
+    Discipline::SHORT_TYPES[chosen_type]
+  end
+
+  def discipline_end_types(chosen_type)
+    Discipline::DIS_END[chosen_type]
+  end
+
 end

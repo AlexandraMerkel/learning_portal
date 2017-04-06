@@ -68,16 +68,24 @@ module SideBarHelper
           }
         end
 
-        result << {
-          name: 'Дисциплины',
-          url: disciplines_path,
-          icon: 'book',
-          controller: :disciplines,
-          action: :index
-        }
-        #result
+        search_discipline_children = [
+          { name: 'Дисциплины',
+            url: disciplines_path,
+            controller: :disciplines, action: :index,
+            icon: 'reply-all', class: 'long'},
+          { name: 'Алгоритмы',
+            url: ranking_algorithms_path,
+            controller: :ranking_algorithms, action: :index,
+            icon: 'reply-all', class: 'long'}
+        ]
+        unless search_discipline_children.empty?
+          result << {
+            name: 'Дисциплины', # как назвать раздел?
+            icon: 'book',
+            children: search_discipline_children
+          }
+        end
 
-        # элемент списка Поиск
         search_API_children = [
           { name: 'JSON:Студенты',
             url: load_from_json_file_students_api_path,

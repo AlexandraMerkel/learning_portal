@@ -1,29 +1,31 @@
-%h1 Listing disciplines
+%h1 Дисциплины
+/ видят ли эту страницы студенты/преподаватели?
 
-%table
-  %thead
-    %tr
-      %th Discipline name
-      %th Discipline type
-      %th Discipline end
-      %th Term
-      %th Ranking algorithm
-      %th
-      %th
-      %th
+- if @disciplines.blank?
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      .row
+        .col-md-6
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+            В системе пока не создано ни одной дисциплины!
 
-  %tbody
+- else
+  .list-group
     - @disciplines.each do |discipline|
-      %tr
-        %td= discipline.discipline_name
-        %td= discipline.discipline_type
-        %td= discipline.discipline_end
-        %td= discipline.term.term_name
-        %td= discipline.ranking_algorithm.algorithm_name
-        %td= link_to 'Show', discipline
-        %td= link_to 'Edit', edit_discipline_path(discipline)
-        %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = link_to(discipline, class: 'list-group-item') do
+        = discipline.discipline_name
+        .toright
+          %span.label.label-primary
+            = discipline_short_types(discipline.discipline_type)
+          %span.label.label-info
+            = discipline_end_types(discipline.discipline_end)
+          - if @current_role_user.present?
+            - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+              %span.label.label-success
+                = discipline.term.term_name
 
-%br
+        .clearfix
 
-= link_to 'New Discipline', new_discipline_path
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новая дисциплина', new_discipline_path, class: "btn btn-success"
