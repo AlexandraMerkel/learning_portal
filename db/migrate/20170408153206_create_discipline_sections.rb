@@ -1,6 +1,7 @@
 class CreateDisciplineSections < ActiveRecord::Migration[5.0]
   def change
     create_table :discipline_sections do |t|
+      t.integer :discipline_type, null: false
       t.string :section_name, null: false
       t.integer :section_type, null: false
       t.integer :weight, null: false

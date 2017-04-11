@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314145218) do
+ActiveRecord::Schema.define(version: 20170408153228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170314145218) do
   end
 
   create_table "discipline_sections", force: :cascade do |t|
+    t.integer  "discipline_type",      null: false
     t.string   "section_name",         null: false
     t.integer  "section_type",         null: false
     t.integer  "weight",               null: false
@@ -98,13 +99,13 @@ ActiveRecord::Schema.define(version: 20170314145218) do
   end
 
   create_table "disciplines", force: :cascade do |t|
-    t.string   "discipline_name",      null: false
-    t.integer  "discipline_type",      null: false
-    t.integer  "discipline_end",       null: false
-    t.integer  "term_id",              null: false
-    t.integer  "ranking_algorithm_id", null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "discipline_name",                   null: false
+    t.integer  "discipline_type",      default: [], null: false, array: true
+    t.integer  "discipline_end",                    null: false
+    t.integer  "term_id",                           null: false
+    t.integer  "ranking_algorithm_id",              null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["discipline_name", "discipline_type", "discipline_end"], name: "discipline_name_type_end", unique: true, using: :btree
     t.index ["ranking_algorithm_id"], name: "index_disciplines_on_ranking_algorithm_id", using: :btree
     t.index ["term_id"], name: "index_disciplines_on_term_id", using: :btree

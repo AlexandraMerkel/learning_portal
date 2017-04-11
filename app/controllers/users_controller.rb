@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:new, :create, :activate]
   skip_before_action :check_app_auth, only: [:new, :create, :activate]
-  
+
   # GET /users
   # GET /users.json
   def index
@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.institution_users.build
+    @user.role_users.build
   end
 
   # GET /users/1/edit

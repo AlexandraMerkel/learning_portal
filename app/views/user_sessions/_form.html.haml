@@ -19,3 +19,8 @@
       .col-md-6
         .form-group
           = submit_tag t('helpers.submit.login'), class: 'btn btn-primary'
+
+  .row
+    .col-md-6
+      .form-group
+        = link_to 'Зарегистрироваться', new_user_path, class: "btn btn-success"

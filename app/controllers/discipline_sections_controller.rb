@@ -69,6 +69,6 @@ class DisciplineSectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discipline_section_params
-      params.require(:discipline_section).permit(:section_name, :section_type, :weight, :min_score, :max_score, :require_type, :attenuation_constant, :optimal_time, :limit_time, :discipline_id)
+      params.require(:discipline_section).permit(:discipline_type, :section_name, :section_type, :weight, :min_score, :max_score, :require_type, :attenuation_constant, :optimal_time, :limit_time, :discipline_id)
     end
 end

@@ -1,0 +1,12 @@
+.add-fields
+  .row
+    .col-md-6
+      .form-group
+        = addy_form.label 'ВУЗ'
+        = addy_form.select(:institution_id, institution_select_options(addy_form.object.institution_id), {}, class: 'form-control')
+        = addy_form.error_messages_for(:institution_id)
+
+
+    .col-md-1
+      .form-group
+        = link_to_remove_iu(addy_form)

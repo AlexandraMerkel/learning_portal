@@ -1,5 +1,35 @@
 = form_for @user do |f|
   = error_messages_for @user
+
+  = f.fields_for :role_users do |role_form|
+    .row
+      .col-md-6
+        .form-group
+          = role_form.label 'Роль'
+          = role_form.select(:role_id, role_select_options(role_form.object.role_id), {}, class: 'form-control role')
+          = role_form.error_messages_for(:role_id)
+
+  = f.fields_for :institution_users do |inst_form|
+    .row
+      .col-md-6
+        .form-group
+          = inst_form.label 'ВУЗ'
+          = inst_form.select(:institution_id, institution_select_options(inst_form.object.institution_id), {}, class: 'form-control')
+          = inst_form.error_messages_for(:institution_id)
+
+  / возможность добавить дополнительные вузы
+  .institution_users
+    .row
+      .col-md-3
+        .form-group
+          .add-institutions
+            = link_to ?#, class: 'btn btn-primary', data: add_institution_data(f), id: 'add_iu_link' do
+              = fa_icon :plus
+              Добавить ВУЗ
+
+    /= f.fields_for :institution_users do |addy_form|
+    /  = render('institution_users/add_institution_user', addy_form: addy_form)
+
   .row
     .col-md-6
       .form-group
@@ -62,4 +92,4 @@
   .row
     .col-md-6
       .form-group
-        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'
+        = f.submit 'Зарегистрироваться', class: 'btn btn-primary'

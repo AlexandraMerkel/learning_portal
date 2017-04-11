@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :marks
+  resources :discipline_sections
   resources :community_disciplines
   get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
   post 'students_api/load_from_json_file'
@@ -24,12 +26,10 @@ Rails.application.routes.draw do
   resources :institutions
   resources :message_lists
   resources :community_contents
-  resources :marks
   resources :community_tabs
   resources :community_sections
   resources :community_users
   resources :communities
-  resources :discipline_sections
   resources :disciplines
   resources :ranking_algorithms
   resources :groups

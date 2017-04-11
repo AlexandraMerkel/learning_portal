@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :role_users
+  has_many :role_users, inverse_of: :user
   has_and_belongs_to_many :groups
   has_many :community_users
   has_many :community_contents, foreign_key: :creator_id
@@ -9,9 +9,13 @@ class User < ApplicationRecord
   has_and_belongs_to_many :message_lists
   has_many :messages, foreign_key: :sender_id
   has_many :message_users
-  has_many :institution_users
+  has_many :institution_users, inverse_of: :user
   has_many :notices
   has_many :study_files
+
+  accepts_nested_attributes_for :institution_users, reject_if: proc { |a| a['institution_id'].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :role_users, reject_if: proc { |a| a['role_id'].blank? }, allow_destroy: true
+
 
   SEX = {
     0 => 'м',

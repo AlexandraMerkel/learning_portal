@@ -14,12 +14,12 @@
     = f.date_select :report
   .field
     = f.label :discipline_section
-    = f.select(:discipline_section, discipline_section_options(f.object.discipline_section_id))
+    = f.text_field :discipline_section
   .field
     = f.label :student
-    = f.select(:student, student_options(f.object.student_id))
+    = f.text_field :student
   .field
     = f.label :teacher
-    = f.select(:teacher, teacher_options(f.object.teacher_id))
+    = f.text_field :teacher
   .actions
     = f.submit 'Save'

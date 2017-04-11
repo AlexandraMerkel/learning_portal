@@ -1,8 +1,9 @@
-%h1 Разделы дисциплин
+%h1 Listing discipline_sections
 
 %table
   %thead
     %tr
+      %th Discipline type
       %th Section name
       %th Section type
       %th Weight
@@ -20,6 +21,7 @@
   %tbody
     - @discipline_sections.each do |discipline_section|
       %tr
+        %td= discipline_section.discipline_type
         %td= discipline_section.section_name
         %td= discipline_section.section_type
         %td= discipline_section.weight
@@ -29,13 +31,12 @@
         %td= discipline_section.attenuation_constant
         %td= discipline_section.optimal_time
         %td= discipline_section.limit_time
-        %td= discipline_section.discipline.discipline_name
+        %td= discipline_section.discipline
         %td= link_to 'Show', discipline_section
         %td= link_to 'Edit', edit_discipline_section_path(discipline_section)
         %td= link_to 'Destroy', discipline_section, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
 - if @current_role_user.present?
   - if @current_role_user.is_admin? || @current_role_user.is_moderator?
     = link_to 'Новый раздел дисциплины', new_discipline_section_path, class: "btn btn-success"

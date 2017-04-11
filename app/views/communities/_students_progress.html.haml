@@ -14,3 +14,7 @@
             %tr
               %td= ds.section_name
               %td= ds.marks.inject(0){ |s, m| s + m.mark_value }
+
+        / - @community.community_users.each do |u|
+        /   - @community.community_disciplines.each do |d|
+        /     - d.discipline.discipline_sections.each do |ds|
