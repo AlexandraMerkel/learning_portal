@@ -26,8 +26,12 @@
               %span.label.label-success
                 = community_visibility_types(community.community_visibility)
                 / остается вопрос с доступностью надписей для различных ролей
-          %span.label.label-info
-            = community_archive_types(community.archive)
+          - if community.archive == 0
+            %span.label.label-info
+              = community_archive_types(community.archive)
+          - else
+            %span.label.label-danger
+              = community_archive_types(community.archive)
 
         .clearfix
 

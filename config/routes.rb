@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :role_users do
+    collection do
+      get :mass_activation
+      post :mass_activation_commit
+    end
+  end
+  resources :community_news
   resources :marks
   resources :discipline_sections
   resources :community_disciplines
@@ -33,7 +40,6 @@ Rails.application.routes.draw do
   resources :disciplines
   resources :ranking_algorithms
   resources :groups
-  resources :role_users
   resources :roles
   resources :terms
   root :to => 'welcome#index'

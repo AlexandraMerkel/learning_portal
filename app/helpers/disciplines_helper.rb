@@ -1,7 +1,7 @@
 module DisciplinesHelper
 
   def discipline_type_options(selected)
-		options_for_select(Discipline::TYPES.map { |k, v| [v, k]}, selected)
+		options_for_select(Discipline::DIS_TYPES.map { |k, v| [v, k]}, selected)
   end
 
   def discipline_end_options(selected)
@@ -16,8 +16,12 @@ module DisciplinesHelper
 		options_for_select(RankingAlgorithm.all.map{ |ra| ["#{ra.algorithm_name} ", ra.id] }, selected)
   end
 
-  def discipline_types(chosen_type)
-    Discipline::TYPES[chosen_type]
+  def discipline_types(chosen_types)
+    types = []
+    chosen_types.each do |t|
+      types << Discipline::DIS_TYPES[t]
+    end
+    types.join(", ")
   end
 
   def discipline_short_types(chosen_type)

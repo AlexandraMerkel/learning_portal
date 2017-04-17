@@ -3,6 +3,7 @@ class Community < ApplicationRecord
 	has_many :community_users, inverse_of: :community
 	has_many :community_disciplines, inverse_of: :community
 	has_many :community_sections
+  has_many :community_news
 
   VISIBILITIES = {
     0 => 'видно для всех пользователей',
@@ -34,10 +35,18 @@ class Community < ApplicationRecord
   end
 
   # Метод проверяет есть ли у пользователя доступ к просмотру сообщества
+  # (cообщества в архиве видят только админ, модераторы и локальные модераторы/владельцы)
   def Community.check_access_to_community(user_attr)
     list_communities = Community.search_communities_for_user(user_attr)
     list_communities.each do |cur_comm|
-      if cur_comm.community_visibility == 1
+      if cur_comm.community_visibility == 0
+        if cur_comm.archive == 1
+          usr = Community.check_access_to_edit_community(user_attr, cur_comm.id)
+          if usr == 0
+          list_communities = list_communities.reject { |item| item == cur_comm}
+          end
+        end
+      elsif cur_comm.community_visibility == 1
         usr = Community.check_access_to_edit_community(user_attr, cur_comm.id)
         if usr == 0
           list_communities = list_communities.reject { |item| item == cur_comm}

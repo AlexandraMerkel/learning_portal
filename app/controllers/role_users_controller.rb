@@ -1,6 +1,17 @@
 class RoleUsersController < ApplicationController
   before_action :set_role_user, only: [:show, :edit, :update, :destroy]
 
+  def mass_activation
+    @role_users = RoleUser.all
+  end
+
+  def mass_activation_commit
+    RoleUser.where(id: params['activation']).update_all(activation_role: true)
+    RoleUser.where.not(id: params['activation']).update_all(activation_role: false)
+    flash[:notice] = 'Статус активации пользователей изменен!'
+    redirect_to mass_activation_role_users_url # notice: 'Статус активации пользователей изменен!'
+  end
+
   # GET /role_users
   # GET /role_users.json
   def index
@@ -69,6 +80,6 @@ class RoleUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_user_params
-      params.require(:role_user).permit(:info, :user_id, :role_id)
+      params.require(:role_user).permit(:info, :user_id, :role_id, :activation_role)
     end
 end

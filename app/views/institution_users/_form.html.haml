@@ -14,6 +14,6 @@
     = f.select(:user_id, user_options(f.object.user_id))
   .field
     = f.label :institution_id
-    = f.select(:institution_id, institution_options(f.object.institution_id))
+    = f.select(:institution_id, institution_select_options(f.object.institution_id))
   .actions
     = f.submit 'Save'

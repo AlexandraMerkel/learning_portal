@@ -25,10 +25,18 @@ ru:
         one: пользователь
         few: пользователи
         many: пользователи
+      role_user:
+        one: роль пользователя
+        few: роли пользователей
+        many: роли пользователей
       community:
         one: Сообщество
         few: Сообществ
         many: Сообществ
+      community_news:
+        one: Новости сообщества
+        few: Новостей сообществ
+        many: Новостей сообществ
       community_user:
         one: Пользователя в сообществе
         few: Пользователей в сообществе
@@ -60,11 +68,20 @@ ru:
         email: Электронная почта
         password: Пароль
         password_confirmation: Повторите пароль
+      role_user:
+        user_id: Пользователь
+        role_id: Роль
+        info: Допольнительные возможности
+        activation_role: Активен
       community:
         community_name: Название
         community_visibility: Тип видимости сообщества
-        archive: Архив
+        archive: В архиве
         discipline_id: Дисциплина
+      community_news:
+        news_body: Текст новости
+        user_id: Пользователь
+        community_id: Сообщество
       community_user:
         link_type: Роль
         user_id: Пользователь

@@ -9,8 +9,8 @@ class CommunityUser < ApplicationRecord
   }
 
   validates :link_type, presence: true,  inclusion: { in: ROLES.keys }
-  validates :community, presence: true, uniqueness: {scope: :user_id}
-  validates :user_id, presence: true
+  validates :community, presence: true, uniqueness: {scope: :user}
+  validates :user, presence: true
 
 
 

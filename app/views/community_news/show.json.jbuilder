@@ -1,0 +1,1 @@
+json.partial! "community_news/community_news", community_news: @community_news

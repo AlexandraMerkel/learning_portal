@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b News body:
+  = @community_news.news_body
+%p
+  %b User:
+  = @community_news.user
+%p
+  %b Community:
+  = @community_news.community
+
+= link_to 'Edit', edit_community_news_path(@community_news)
+\|
+= link_to 'Back', community_news_index_path

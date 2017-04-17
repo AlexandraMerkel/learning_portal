@@ -15,6 +15,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1.json
   def show
     @community
+    @community_news = @community.community_news.build # для подключения community_news/form
     @check = Community.check_access_to_edit_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
 
@@ -33,7 +34,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     @community = Community.new(community_params)
-    #raise community_params.inspect
+    raise community_params.inspect
     respond_to do |format|
       if @community.save
         format.html { redirect_to @community, notice: 'Community was successfully created.' }
@@ -78,8 +79,8 @@ class CommunitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_community
       #community = Community.find(params[:id])
-      #@community = Community.includes(community_disciplines: {discipline: {discipline_sections: :marks}}).find(params[:id])
-      @community = Community.includes(community_disciplines: {discipline: {discipline_sections: {marks: :student}}}).find(params[:id])
+      @community = Community.includes(community_disciplines: {discipline: {discipline_sections: :marks}}, community_users: :user).find(params[:id])
+      #@community = Community.includes(community_disciplines: {discipline: {discipline_sections: {marks: :student}}}, ).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

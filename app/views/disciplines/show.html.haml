@@ -21,6 +21,6 @@
     = Discipline.human_attribute_name(:ranking_algorithm_id) + ":"
   = @discipline.ranking_algorithm.algorithm_name
 
-= link_to 'Edit', edit_discipline_path(@discipline)
-\|
-= link_to 'Back', disciplines_path
+= link_to t('helpers.edit'), edit_discipline_path(@discipline), class: 'btn btn-primary'
+/\|
+/= link_to 'Back', disciplines_path

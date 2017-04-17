@@ -5,9 +5,8 @@
     %tr
       %th Info
       %th User
-      %th
-      %th
       %th Role
+      %th Activation role
       %th
       %th
       %th
@@ -16,10 +15,9 @@
     - @role_users.each do |role_user|
       %tr
         %td= role_user.info
-        %td= role_user.user.last_name
-        %td= role_user.user.first_name
-        %td= role_user.user.second_name
-        %td= role_user.role.role_name
+        %td= role_user.user
+        %td= role_user.role
+        %td= role_user.activation_role
         %td= link_to 'Show', role_user
         %td= link_to 'Edit', edit_role_user_path(role_user)
         %td= link_to 'Destroy', role_user, :method => :delete, :data => { :confirm => 'Are you sure?' }

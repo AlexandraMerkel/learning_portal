@@ -17,13 +17,35 @@ module SideBarHelper
       action: :index
     }
 
-    result << {
-      name: 'Пользователи',
-      url: users_path,
-      icon: 'users',
-      controller: :users,
-      action: :index
-    }
+    if @current_role_user.present?
+      if @current_role_user.is_admin?
+        search_user_children = [
+          { name: 'Список',
+            url: users_path,
+            controller: :communities, action: :index,
+            icon: 'reply-all', class: 'long'},
+          { name: 'Активация',
+            url: mass_activation_role_users_path,
+            controller: :communities, action: :mass_activation,
+            icon: 'reply-all', class: 'long'}
+        ]
+        unless search_user_children.empty?
+          result << {
+            name: 'Пользователи',
+            icon: 'users',
+            children: search_user_children
+          }
+        end
+      else
+        result << {
+          name: 'Пользователи',
+          url: users_path,
+          icon: 'users',
+          controller: :users,
+          action: :index
+        }
+      end
+    end
 
     result << {
       name: 'Обновления', #ПРАВИТЬ

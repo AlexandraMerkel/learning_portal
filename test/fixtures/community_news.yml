@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  info: 
+  news_body: MyText
   user: one
-  role: one
-  activation_role: false
+  community: one
 
 two:
-  info: 
+  news_body: MyText
   user: two
-  role: two
-  activation_role: false
+  community: two

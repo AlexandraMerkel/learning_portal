@@ -1,0 +1,25 @@
+%h1 Listing community_news
+
+%table
+  %thead
+    %tr
+      %th News body
+      %th User
+      %th Community
+      %th
+      %th
+      %th
+
+  %tbody
+    - @community_news.each do |community_news|
+      %tr
+        %td= community_news.news_body
+        %td= community_news.user
+        %td= community_news.community
+        %td= link_to 'Show', community_news
+        %td= link_to 'Edit', edit_community_news_path(community_news)
+        %td= link_to 'Destroy', community_news, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Community news', new_community_news_path

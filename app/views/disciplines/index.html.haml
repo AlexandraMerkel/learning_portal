@@ -15,8 +15,9 @@
       = link_to(discipline, class: 'list-group-item') do
         = discipline.discipline_name
         .toright
-          %span.label.label-primary
-            = discipline_short_types(discipline.discipline_type)
+          - discipline.discipline_type.each do |dis_type|
+            %span.label.label-primary
+              = discipline_short_types(dis_type)
           %span.label.label-info
             = discipline_end_types(discipline.discipline_end)
           - if @current_role_user.present?

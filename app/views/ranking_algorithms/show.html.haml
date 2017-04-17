@@ -9,6 +9,6 @@
     = RankingAlgorithm.human_attribute_name(:template) + ":"
   = @ranking_algorithm.template
 
-= link_to 'Edit', edit_ranking_algorithm_path(@ranking_algorithm)
-\|
-= link_to 'Back', ranking_algorithms_path
+= link_to t('helpers.edit'), edit_ranking_algorithm_path(@ranking_algorithm), class: 'btn btn-primary'
+/\|
+/= link_to 'Back', ranking_algorithms_path

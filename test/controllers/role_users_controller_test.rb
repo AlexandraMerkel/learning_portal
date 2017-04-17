@@ -17,7 +17,7 @@ class RoleUsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create role_user" do
     assert_difference('RoleUser.count') do
-      post role_users_url, params: { role_user: { info: @role_user.info, role_id: @role_user.role_id, user_id: @role_user.user_id } }
+      post role_users_url, params: { role_user: { activation_role: @role_user.activation_role, info: @role_user.info, role_id: @role_user.role_id, user_id: @role_user.user_id } }
     end
 
     assert_redirected_to role_user_url(RoleUser.last)
@@ -34,7 +34,7 @@ class RoleUsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update role_user" do
-    patch role_user_url(@role_user), params: { role_user: { info: @role_user.info, role_id: @role_user.role_id, user_id: @role_user.user_id } }
+    patch role_user_url(@role_user), params: { role_user: { activation_role: @role_user.activation_role, info: @role_user.info, role_id: @role_user.role_id, user_id: @role_user.user_id } }
     assert_redirected_to role_user_url(@role_user)
   end
 

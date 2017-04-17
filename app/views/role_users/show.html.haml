@@ -9,6 +9,9 @@
 %p
   %b Role:
   = @role_user.role
+%p
+  %b Activation role:
+  = @role_user.activation_role
 
 = link_to 'Edit', edit_role_user_path(@role_user)
 \|

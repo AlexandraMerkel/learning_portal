@@ -1,20 +1,47 @@
-%h5
+.tocenter
+  %h5 Рейтинговая таблица успеваемости студентов
 
 - if @current_role_user.present?
-  - if @current_role_user.is_student?
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Раздел
-          %th Баллы
-
-      %tbody
+  / необходимо разделение по ролям (- if @current_role_user.is_student?)
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr
+        %th №
+        %th ФИО студента
+        / А что тут будет, если дисциплин в сообществе несколько?
         - @community.community_disciplines.each do |d|
           - d.discipline.discipline_sections.each do |ds|
-            %tr
-              %td= ds.section_name
-              %td= ds.marks.inject(0){ |s, m| s + m.mark_value }
+            %th= ds.section_name
 
-        / - @community.community_users.each do |u|
-        /   - @community.community_disciplines.each do |d|
-        /     - d.discipline.discipline_sections.each do |ds|
+    %tbody
+      - @community.community_users.each_with_index do |u, i|
+        / показывать только студентов
+        - if u.user.role_users.first.role.role_name_eng == "student"
+          / выделять цветом для студента строку с его оценками
+          - if u.user.id == @current_role_user.id
+            %tr{:bgcolor => "#e4edeb" }
+              %td
+                = succeed '.' do
+                  = i + 1
+              %td=u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              - @community.community_disciplines.each do |d|
+                - d.discipline.discipline_sections.each do |ds|
+                  %td
+                    - ds.marks.each do |m|
+                      / для каждой оценки проверяем текущий ли студент
+                      - if m.student.id == u.user.id
+                        = m.mark_value
+          - else
+            %tr
+              %td
+                = succeed '.' do
+                  = i + 1
+              %td=u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              - @community.community_disciplines.each do |d|
+                - d.discipline.discipline_sections.each do |ds|
+                  %td
+                    - ds.marks.each do |m|
+                      - if m.student.id == u.user.id
+                        = m.mark_value
+
+/= render 'discipline_sections/form'

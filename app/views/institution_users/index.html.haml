@@ -5,6 +5,8 @@
     %tr
       %th Rank
       %th User
+      %th
+      %th
       %th Institution
       %th
       %th
@@ -14,8 +16,10 @@
     - @institution_users.each do |institution_user|
       %tr
         %td= institution_user.rank
-        %td= institution_user.user
-        %td= institution_user.institution
+        %td= institution_user.user.last_name
+        %td= institution_user.user.first_name
+        %td= institution_user.user.second_name
+        %td= institution_user.institution.short_institution_name
         %td= link_to 'Show', institution_user
         %td= link_to 'Edit', edit_institution_user_path(institution_user)
         %td= link_to 'Destroy', institution_user, :method => :delete, :data => { :confirm => 'Are you sure?' }

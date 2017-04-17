@@ -12,8 +12,8 @@
   %tbody
     - @community_disciplines.each do |community_discipline|
       %tr
-        %td= community_discipline.discipline
-        %td= community_discipline.community
+        %td= community_discipline.discipline.discipline_name
+        %td= community_discipline.community.community_name
         %td= link_to 'Show', community_discipline
         %td= link_to 'Edit', edit_community_discipline_path(community_discipline)
         %td= link_to 'Destroy', community_discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }

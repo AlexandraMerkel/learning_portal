@@ -4,6 +4,7 @@ class CreateRoleUsers < ActiveRecord::Migration[5.0]
       t.json :info
       t.references :user, foreign_key: true, null: false
       t.references :role, foreign_key: true, null: false
+      t.boolean :activation_role, default: false
 
       t.index [:user_id, :role_id], unique: true
 

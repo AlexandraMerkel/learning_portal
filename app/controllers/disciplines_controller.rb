@@ -25,7 +25,7 @@ class DisciplinesController < ApplicationController
   # POST /disciplines.json
   def create
     @discipline = Discipline.new(discipline_params)
-
+    #raise discipline_params.inspect
     respond_to do |format|
       if @discipline.save
         format.html { redirect_to @discipline, notice: 'Discipline was successfully created.' }
