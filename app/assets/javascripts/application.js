@@ -19,7 +19,7 @@
 //= require jquery.bootstrap-growl
 //= require moment
 //= require bootstrap-datetimepicker
-//= require moment-ru
+//= require moment/ru
 //= require bootstrap-select/bootstrap-select
 //= require bootstrap-select/defaults-ru_RU
 //= require twitter/typeahead

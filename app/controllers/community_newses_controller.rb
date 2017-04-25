@@ -9,7 +9,7 @@ class CommunityNewsesController < ApplicationController
   # GET /community_news.json
 
   def index
-    raise 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
+    #raise 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
     @community_news = CommunityNews.all
   end
 
