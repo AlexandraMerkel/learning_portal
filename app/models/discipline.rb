@@ -27,12 +27,19 @@ class Discipline < ApplicationRecord
   }
 
   validates :discipline_name, presence: true, uniqueness: {scope: :discipline_end}
-  #validates :discipline_type, presence: true, inclusion: { in: DIS_TYPES.keys }
+  validates :discipline_type, presence: true #, inclusion: { in: DIS_TYPES.keys }
   validates :discipline_end, presence: true, inclusion: { in: DIS_END.keys }
   validates :term_id, presence: true
   validates :ranking_algorithm_id, presence: true
 
-end
+
+  def discipline_type=(val)
+    if val.kind_of?(Array)
+      self[:discipline_type]=val.map(&:to_i)
+    else
+      self[:discipline_type]=val
+    end
+  end
 
   def Discipline.create_by_json(json)
     results = []
@@ -55,3 +62,5 @@ end
     end
     results
   end
+
+end

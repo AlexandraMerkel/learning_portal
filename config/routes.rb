@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post :mass_activation_commit
     end
   end
-  resources :community_news
+  resources :community_newses
   resources :marks
   resources :discipline_sections
   resources :community_disciplines

@@ -1,9 +1,15 @@
-class CommunityNewsController < ApplicationController
+class CommunityNewsesController < ApplicationController
   before_action :set_community_news, only: [:show, :edit, :update, :destroy]
 
+  # зависит от роли пользователя в сообществе
+  def check_ctr_auth()
+    return true if (@current_role_user.is_admin? or @current_role_user.is_teacher? or @current_role_user.is_moderator? or @current_role_user.is_student?)
+  end
   # GET /community_news
   # GET /community_news.json
+
   def index
+    raise 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
     @community_news = CommunityNews.all
   end
 
@@ -25,14 +31,17 @@ class CommunityNewsController < ApplicationController
   # POST /community_news.json
   def create
     @community_news = CommunityNews.new(community_news_params)
-
+    # raise 'tttttttttttttttttttttt'
     respond_to do |format|
+      #raise format.inspect
       if @community_news.save
-        format.html { redirect_to @community_news, notice: 'Community news was successfully created.' }
-        format.json { render :show, status: :created, location: @community_news }
+        #format.html { notice: 'Community news was successfully created.' }
+        #format.json { render :show, status: :created, location: @community_news }
+        format.js {}
       else
-        format.html { render :new }
-        format.json { render json: @community_news.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+        #format.json { render json: @community_news.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end

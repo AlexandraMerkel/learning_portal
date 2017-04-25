@@ -3,7 +3,9 @@ class Community < ApplicationRecord
 	has_many :community_users, inverse_of: :community
 	has_many :community_disciplines, inverse_of: :community
 	has_many :community_sections
-  has_many :community_news
+  has_many :community_newses
+
+  #after_save :test
 
   VISIBILITIES = {
     0 => 'видно для всех пользователей',
@@ -61,4 +63,7 @@ class Community < ApplicationRecord
     list_communities
   end
 
+  def test()
+    self.update_columns(:community_name => self.community_name + 'qqqqq')
+  end
 end

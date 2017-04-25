@@ -17,6 +17,10 @@ module CommunitiesHelper
 		Community::VISIBILITIES[chosen_type]
   end
 
+  def check_access_to_edit_community(user_attr, comm_attr)
+    Community.includes(:community_users).where("community_users.user_id = ?", user_attr).where("community_users.community_id = ?", comm_attr).references(:community_users).pluck("community_users.link_type").first
+  end
+
   def add_user_data(form)
     new_object = CommunityUser.new
     fields = form.fields_for(:community_users, new_object,

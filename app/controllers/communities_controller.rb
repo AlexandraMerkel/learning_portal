@@ -15,7 +15,10 @@ class CommunitiesController < ApplicationController
   # GET /communities/1.json
   def show
     @community
-    @community_news = @community.community_news.build # для подключения community_news/form
+    @community_news = @community.community_newses.build(community: @community, user: @current_user_object) # для подключения community_news/form
+    @community_news_index = @community.community_newses
+   # Rails.logger.info @community_news_index[0]
+   # Rails.logger.info '*'*100
     @check = Community.check_access_to_edit_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
 
@@ -34,7 +37,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     @community = Community.new(community_params)
-    raise community_params.inspect
+    #raise community_params.inspect
     respond_to do |format|
       if @community.save
         format.html { redirect_to @community, notice: 'Community was successfully created.' }

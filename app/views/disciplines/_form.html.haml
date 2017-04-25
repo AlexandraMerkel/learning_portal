@@ -10,16 +10,11 @@
   .row
     .col-md-6
       .form-group
-        /= f.collection_check_boxes :discipline_type, Discipline::DIS_TYPES, :first, :last
         = f.label :discipline_type
         - Discipline::DIS_TYPES.each do |k, v|
           %div
-            = f.check_box :discipline_type, :value => k
+            = check_box_tag "discipline[discipline_type][]", k
             %span= v
-
-        /= f.select(:discipline_type, discipline_type_options(f.object.discipline_type), {}, class: 'form-control')
-        /= f.error_messages_for(:discipline_type)
-
     .col-md-6
       .form-group
         = f.label :discipline_end

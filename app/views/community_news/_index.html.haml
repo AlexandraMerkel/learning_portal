@@ -1,0 +1,22 @@
+/%h1 Listing community_news
+
+
+.row
+  .col-md-4
+    .form-group
+      - @community_news_index = @community_news_index.reverse
+      - @community_news_index.each do |community_news|
+        %span
+          /= formatdate(community_news.created_at)
+          = lnil(community_news.created_at)
+          = community_news.news_body
+        %br
+        /%td= community_news.user
+        /%td= community_news.community
+        /%td= link_to 'Show', community_news
+        /%td= link_to 'Edit', edit_community_newses_path(community_news)
+        /%td= link_to 'Destroy', community_news, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+/%br
+
+/= link_to 'New Community news', new_community_news_path

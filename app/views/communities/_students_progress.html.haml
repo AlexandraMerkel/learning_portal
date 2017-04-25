@@ -1,9 +1,12 @@
+/%link{:href => "https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css", :rel => "stylesheet", :type => "text/css"}/
+/%script{:src => "https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js", :type => "text/javascript"}
+
 .tocenter
   %h5 Рейтинговая таблица успеваемости студентов
 
 - if @current_role_user.present?
   / необходимо разделение по ролям (- if @current_role_user.is_student?)
-  %table.table.table-bordered.table-hover
+  %table.table.table-bordered.table-hover#rankTable
     %thead
       %tr
         %th №
@@ -12,6 +15,7 @@
         - @community.community_disciplines.each do |d|
           - d.discipline.discipline_sections.each do |ds|
             %th= ds.section_name
+        %th Сумма
 
     %tbody
       - @community.community_users.each_with_index do |u, i|
@@ -23,25 +27,36 @@
               %td
                 = succeed '.' do
                   = i + 1
-              %td=u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              %td
+                =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              - final_grade = 0
               - @community.community_disciplines.each do |d|
                 - d.discipline.discipline_sections.each do |ds|
-                  %td
+                  %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
                     - ds.marks.each do |m|
                       / для каждой оценки проверяем текущий ли студент
                       - if m.student.id == u.user.id
                         = m.mark_value
+                        - final_grade += m.mark_value
+              %td=final_grade
+
           - else
             %tr
               %td
                 = succeed '.' do
                   = i + 1
-              %td=u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              %td
+                =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+              - final_grade = 0
               - @community.community_disciplines.each do |d|
                 - d.discipline.discipline_sections.each do |ds|
-                  %td
+                  %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
                     - ds.marks.each do |m|
                       - if m.student.id == u.user.id
                         = m.mark_value
+                        - final_grade += m.mark_value
+              %td=final_grade
+
+
 
 /= render 'discipline_sections/form'
