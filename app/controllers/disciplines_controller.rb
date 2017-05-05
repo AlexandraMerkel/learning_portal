@@ -28,7 +28,7 @@ class DisciplinesController < ApplicationController
     #raise discipline_params.inspect
     respond_to do |format|
       if @discipline.save
-        format.html { redirect_to @discipline, notice: 'Discipline was successfully created.' }
+        format.html { redirect_to @discipline, notice: 'Дисциплина успешно создана' }
         format.json { render :show, status: :created, location: @discipline }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DisciplinesController < ApplicationController
   def update
     respond_to do |format|
       if @discipline.update(discipline_params)
-        format.html { redirect_to @discipline, notice: 'Discipline was successfully updated.' }
+        format.html { redirect_to @discipline, notice: 'Дисциплина успешно обновлена' }
         format.json { render :show, status: :ok, location: @discipline }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class DisciplinesController < ApplicationController
   def destroy
     @discipline.destroy
     respond_to do |format|
-      format.html { redirect_to disciplines_url, notice: 'Discipline was successfully destroyed.' }
+      format.html { redirect_to disciplines_url, notice: 'Дисциплина успешно удалена' }
       format.json { head :no_content }
     end
   end

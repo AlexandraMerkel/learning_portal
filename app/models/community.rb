@@ -1,9 +1,9 @@
 class Community < ApplicationRecord
 
-	has_many :community_users, inverse_of: :community
-	has_many :community_disciplines, inverse_of: :community
+	has_many :community_users, inverse_of: :community, dependent: :destroy
+	has_many :community_disciplines, inverse_of: :community, dependent: :destroy
 	has_many :community_sections
-  has_many :community_newses
+  has_many :community_newses, dependent: :destroy
 
   #after_save :test
 

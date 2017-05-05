@@ -9,7 +9,7 @@ class RoleUsersController < ApplicationController
     RoleUser.where(id: params['activation']).update_all(activation_role: true)
     RoleUser.where.not(id: params['activation']).update_all(activation_role: false)
     flash[:notice] = 'Статус активации пользователей изменен!'
-    redirect_to mass_activation_role_users_url # notice: 'Статус активации пользователей изменен!'
+    redirect_to mass_activation_role_users_url
   end
 
   # GET /role_users

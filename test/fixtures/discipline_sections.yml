@@ -9,9 +9,10 @@ one:
   max_score: 1
   require_type: 1
   attenuation_constant: 1.5
-  optimal_time: 2017-04-08
-  limit_time: 2017-04-08
+  optimal_time: 2017-05-05
+  limit_time: 2017-05-05
   discipline: one
+  community: one
 
 two:
   discipline_type: 1
@@ -22,6 +23,7 @@ two:
   max_score: 1
   require_type: 1
   attenuation_constant: 1.5
-  optimal_time: 2017-04-08
-  limit_time: 2017-04-08
+  optimal_time: 2017-05-05
+  limit_time: 2017-05-05
   discipline: two
+  community: two

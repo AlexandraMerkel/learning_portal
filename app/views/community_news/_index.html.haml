@@ -1,21 +1,33 @@
 /%h1 Listing community_news
 
 
-.row
-  .col-md-4
-    .form-group
-      - @community_news_index = @community_news_index.reverse
-      - @community_news_index.each do |community_news|
-        %span
-          /= formatdate(community_news.created_at)
-          = lnil(community_news.created_at)
-          = community_news.news_body
-        %br
-        /%td= community_news.user
-        /%td= community_news.community
-        /%td= link_to 'Show', community_news
-        /%td= link_to 'Edit', edit_community_newses_path(community_news)
-        /%td= link_to 'Destroy', community_news, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.list-of-news
+  .row
+    .col-md-10
+      .form-group
+        /- @community_news_index = @community_news_index.compact
+        /- @community_news_index = @community_news_index.reverse
+        - @community_news_index.each do |community_news|
+          - next if community_news.new_record? # не учитываем объекты, не сохраненные в БД
+          .panel.panel-success
+            .panel-heading
+              /= formatdate(community_news.created_at)
+              = community_news.user.last_name + " " + community_news.user.first_name
+              .toright
+                = lnil(community_news.created_at)
+                - if @current_role_user.present?
+                  - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
+                    - if check_time(community_news.created_at) == 0
+                      %span
+                        = link_to (fa_icon 'times'), community_news, :method => :delete, :data => { :confirm => t('helpers.sure') }, :remote => true
+            .panel-body
+              = community_news.news_body
+          %br
+          /%td= community_news.user
+          /%td= community_news.community
+          /%td= link_to 'Show', community_news
+          /%td= link_to 'Edit', edit_community_newses_path(community_news)
+          /%td= link_to 'Destroy', community_news, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 /%br
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :marks
+  resources :discipline_sections
   resources :role_users do
     collection do
       get :mass_activation
@@ -6,8 +8,6 @@ Rails.application.routes.draw do
     end
   end
   resources :community_newses
-  resources :marks
-  resources :discipline_sections
   resources :community_disciplines
   get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
   post 'students_api/load_from_json_file'
@@ -36,7 +36,11 @@ Rails.application.routes.draw do
   resources :community_tabs
   resources :community_sections
   resources :community_users
-  resources :communities
+  resources :communities do
+    member do
+      get :archiving
+    end
+  end
   resources :disciplines
   resources :ranking_algorithms
   resources :groups

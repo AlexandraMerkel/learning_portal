@@ -12,8 +12,9 @@ class CreateDisciplineSections < ActiveRecord::Migration[5.0]
       t.date :optimal_time, null: false
       t.date :limit_time, null: false
       t.references :discipline, index: true, foreign_key: true, null: false
+      t.references :community,  index: true, foreign_key: true, null: false
 
-      t.index [:section_name, :discipline_id], unique: true
+      t.index [:section_name, :discipline_id, :community_id], unique: true, name: "discipline_section_in_community"
 
       t.timestamps null: false
     end

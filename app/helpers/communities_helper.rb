@@ -21,6 +21,27 @@ module CommunitiesHelper
     Community.includes(:community_users).where("community_users.user_id = ?", user_attr).where("community_users.community_id = ?", comm_attr).references(:community_users).pluck("community_users.link_type").first
   end
 
+  def selection_of_section(all_section, curr_community)
+    answer_section = Array.new
+    all_section.each do |dis|
+      dis.discipline.discipline_sections.each do |section|
+        if section.community_id == curr_community.id
+          answer_section << section
+        end
+      end
+    end
+    answer_section
+  end
+
+  def check_time(created_time)
+    # если с момента создания прошло меньше часа, то вернуть 0, иначе 1
+    if (Time.zone.now - created_time).to_i < 3600
+      return 0
+    else
+      return 1
+    end
+  end
+
   def add_user_data(form)
     new_object = CommunityUser.new
     fields = form.fields_for(:community_users, new_object,

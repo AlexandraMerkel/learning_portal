@@ -13,5 +13,4 @@
  *= require theme
  *= require_self
  *= require datatables.min
- *= require dataTables.bootstrap.min
  */

@@ -1,4 +1,4 @@
-%p#notice= notice
+/%p#notice= notice
 
 .row
   .col-md-6
@@ -15,8 +15,9 @@
           = link_to edit_community_path(@community), class: 'btn btn-warning' do
             = fa_icon :pencil, title: 'Редактировать сообщество'
         %span
-          = link_to @community, :method => :delete, :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
+          = link_to archiving_community_path(@community),  :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
             = fa_icon :trash, title: 'Отправить сообщество в архив'
+            / @community, :method => :archiving,
 
 / вкладки
 #tabs

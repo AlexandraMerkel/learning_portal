@@ -35,8 +35,8 @@
 /  %b Salt:
 /  = @user.salt
 
-
-= link_to t('helpers.edit'), edit_user_path(@user), class: 'btn btn-primary'
+- if @user.id == @current_role_user.id
+  = link_to t('helpers.edit'), edit_user_path(@user), class: 'btn btn-primary'
 / тут надо будет сделать доступность кнопки, если страница твоя!!!
 /= link_to t('helpers.edit'), edit_user_path(@user)
 /\|

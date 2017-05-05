@@ -14,6 +14,7 @@
       %th Optimal time
       %th Limit time
       %th Discipline
+      %th Community
       %th
       %th
       %th
@@ -32,11 +33,11 @@
         %td= discipline_section.optimal_time
         %td= discipline_section.limit_time
         %td= discipline_section.discipline
+        %td= discipline_section.community
         %td= link_to 'Show', discipline_section
         %td= link_to 'Edit', edit_discipline_section_path(discipline_section)
         %td= link_to 'Destroy', discipline_section, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-- if @current_role_user.present?
-  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-    = link_to 'Новый раздел дисциплины', new_discipline_section_path, class: "btn btn-success"
+
+= link_to 'New Discipline section', new_discipline_section_path

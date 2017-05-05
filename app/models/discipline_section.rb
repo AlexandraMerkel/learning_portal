@@ -2,6 +2,7 @@ class DisciplineSection < ApplicationRecord
 
   has_many :marks
   belongs_to :discipline
+  belongs_to :community
 
   SECTION_TYPE = {
     0=>'посещаемость',
@@ -29,6 +30,7 @@ class DisciplineSection < ApplicationRecord
   validates :optimal_time, presence: true
   validates :limit_time, presence: true
   validates :discipline_id, presence: true
+  validates :community_id, presence: true
 
   validate :score_validator
   validate :time_validator

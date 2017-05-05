@@ -37,7 +37,7 @@ class CommunityNewsesController < ApplicationController
       if @community_news.save
         #format.html { notice: 'Community news was successfully created.' }
         #format.json { render :show, status: :created, location: @community_news }
-        format.js {}
+        format.js { render('community_news/create')}
       else
         #format.html { render :new }
         #format.json { render json: @community_news.errors, status: :unprocessable_entity }
@@ -65,8 +65,9 @@ class CommunityNewsesController < ApplicationController
   def destroy
     @community_news.destroy
     respond_to do |format|
-      format.html { redirect_to community_news_index_url, notice: 'Community news was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.html { redirect_to community_news_index_url, notice: 'Community news was successfully destroyed.' }
+      #format.json { head :no_content }
+      format.js { render('community_news/destroy')}
     end
   end
 

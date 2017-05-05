@@ -1,12 +1,14 @@
-.tocenter
-  %h5 Последние новости
+/.tocenter
+/  %h5 Последние новости
+%br
 
 .col-md-8
-  .newses_index
+  #newses_index
     = render 'community_news/index', community_news: @community_news_index
 
 
-.col-md-3
+.col-md-4
   - if @current_role_user.present?
     - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
-      = render 'community_news/form'
+      #news_form
+        = render 'community_news/form'

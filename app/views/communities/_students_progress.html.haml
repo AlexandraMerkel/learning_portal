@@ -5,57 +5,57 @@
   %h5 Рейтинговая таблица успеваемости студентов
 
 - if @current_role_user.present?
-  / необходимо разделение по ролям (- if @current_role_user.is_student?)
-  %table.table.table-bordered.table-hover#rankTable
-    %thead
-      %tr
-        %th №
-        %th ФИО студента
-        / А что тут будет, если дисциплин в сообществе несколько?
-        - @community.community_disciplines.each do |d|
-          - d.discipline.discipline_sections.each do |ds|
+  / выделяем секции дисциплины, связанные именно с текущим сообществом
+  - dis_sections = selection_of_section(@community.community_disciplines, @community)
+  / если массив пуст, значит в сообществе пока нет дисциплин, т.е. таблицу не отрисовываем
+  - if !dis_sections.empty?
+    / в будущем необходимо разделение по ролям (- if @current_role_user.is_student?)
+    %table.table.table-bordered.table-hover#rankTable
+      %thead
+        %tr
+          %th №
+          %th ФИО студента
+          - dis_sections.each do |ds|
             %th= ds.section_name
-        %th Сумма
+          %th Сумма
 
-    %tbody
-      - @community.community_users.each_with_index do |u, i|
-        / показывать только студентов
-        - if u.user.role_users.first.role.role_name_eng == "student"
-          / выделять цветом для студента строку с его оценками
-          - if u.user.id == @current_role_user.id
-            %tr{:bgcolor => "#e4edeb" }
-              %td
-                = succeed '.' do
-                  = i + 1
-              %td
-                =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
-              - final_grade = 0
-              - @community.community_disciplines.each do |d|
-                - d.discipline.discipline_sections.each do |ds|
+      %tbody
+        - @community.community_users.each_with_index do |u, i|
+          / показывать только студентов
+          - if u.user.role_users.first.role.role_name_eng == "student"
+            / выделять цветом для студента строку с его оценками
+            - if u.user.id == @current_role_user.id
+              %tr{:bgcolor => "#e4edeb" }
+                %td
+                  = succeed '.' do
+                    = i + 1
+                %td
+                  =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+                - final_grade = 0
+                - dis_sections.each do |ds|
                   %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
                     - ds.marks.each do |m|
                       / для каждой оценки проверяем текущий ли студент
                       - if m.student.id == u.user.id
                         = m.mark_value
                         - final_grade += m.mark_value
-              %td=final_grade
+                %td=final_grade
 
-          - else
-            %tr
-              %td
-                = succeed '.' do
-                  = i + 1
-              %td
-                =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
-              - final_grade = 0
-              - @community.community_disciplines.each do |d|
-                - d.discipline.discipline_sections.each do |ds|
+            - else
+              %tr
+                %td
+                  = succeed '.' do
+                    = i + 1
+                %td
+                  =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+                - final_grade = 0
+                - dis_sections.each do |ds|
                   %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
                     - ds.marks.each do |m|
                       - if m.student.id == u.user.id
                         = m.mark_value
                         - final_grade += m.mark_value
-              %td=final_grade
+                %td=final_grade
 
 
 

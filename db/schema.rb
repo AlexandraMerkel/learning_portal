@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414082501) do
+ActiveRecord::Schema.define(version: 20170505141205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(version: 20170414082501) do
     t.datetime "updated_at",   null: false
     t.index ["community_id"], name: "index_community_news_on_community_id", using: :btree
     t.index ["user_id"], name: "index_community_news_on_user_id", using: :btree
+  end
+
+  create_table "community_newses_users", id: false, force: :cascade do |t|
+    t.integer "community_news_id", null: false
+    t.integer "user_id",           null: false
   end
 
   create_table "community_sections", force: :cascade do |t|
@@ -102,10 +107,12 @@ ActiveRecord::Schema.define(version: 20170414082501) do
     t.date     "optimal_time",         null: false
     t.date     "limit_time",           null: false
     t.integer  "discipline_id",        null: false
+    t.integer  "community_id",         null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.index ["community_id"], name: "index_discipline_sections_on_community_id", using: :btree
     t.index ["discipline_id"], name: "index_discipline_sections_on_discipline_id", using: :btree
-    t.index ["section_name", "discipline_id"], name: "index_discipline_sections_on_section_name_and_discipline_id", unique: true, using: :btree
+    t.index ["section_name", "discipline_id", "community_id"], name: "discipline_section_in_community", unique: true, using: :btree
   end
 
   create_table "disciplines", force: :cascade do |t|
@@ -318,6 +325,7 @@ ActiveRecord::Schema.define(version: 20170414082501) do
   add_foreign_key "community_tabs", "community_sections"
   add_foreign_key "community_users", "communities"
   add_foreign_key "community_users", "users"
+  add_foreign_key "discipline_sections", "communities"
   add_foreign_key "discipline_sections", "disciplines"
   add_foreign_key "disciplines", "ranking_algorithms"
   add_foreign_key "disciplines", "terms"
