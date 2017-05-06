@@ -5,10 +5,12 @@
   .row
     .col-md-10
       .form-group
-        /- @community_news_index = @community_news_index.compact
-        /- @community_news_index = @community_news_index.reverse
+        - @community_news_index = @community_news_index.reverse
         - @community_news_index.each do |community_news|
           - next if community_news.new_record? # не учитываем объекты, не сохраненные в БД
+          / если еще сообщение еще не помечено, как прочитанное, то пометить
+          /- if community_news.users.nil?
+          /  community_news.users << @current_user_object
           .panel.panel-success
             .panel-heading
               /= formatdate(community_news.created_at)

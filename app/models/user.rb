@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   has_many :role_users, inverse_of: :user
   has_and_belongs_to_many :groups
+  has_and_belongs_to_many :community_newses
   has_many :community_users
   has_many :community_contents, foreign_key: :creator_id
   has_many :marks, foreign_key: :student_id

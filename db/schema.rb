@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170505141205) do
   create_table "community_newses_users", id: false, force: :cascade do |t|
     t.integer "community_news_id", null: false
     t.integer "user_id",           null: false
+    t.index ["community_news_id", "user_id"], name: "index_community_newses_users_on_community_news_id_and_user_id", unique: true, using: :btree
   end
 
   create_table "community_sections", force: :cascade do |t|
