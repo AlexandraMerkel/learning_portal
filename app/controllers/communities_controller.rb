@@ -1,8 +1,8 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:show, :edit, :update, :destroy]
+  before_action :set_community, only: [:archiving, :show, :edit, :update, :destroy]
 
-  def archiving(community)
-    community.update_columns(archive: '1')
+  def archiving()
+    @community.update_columns(archive: '1')
     flash[:notice] = 'Сообщество отправлено в архив!'
   end
 
