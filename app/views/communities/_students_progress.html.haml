@@ -51,10 +51,16 @@
                 - final_grade = 0
                 - dis_sections.each do |ds|
                   %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
+                    - has_mark = false
                     - ds.marks.each do |m|
                       - if m.student.id == u.user.id
-                        = m.mark_value
+                        %span.mark_editable{data: {id: m.id, ds_id: ds.id, student_id: u.user.id, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                          = m.mark_value
                         - final_grade += m.mark_value
+                        - has_mark = true
+                    - unless has_mark
+                      %span.mark_editable{data: {id: nil, ds_id: ds.id, student_id: u.user.id, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                        \-
                 %td=final_grade
 
 

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :marks
+  resources :marks do
+    collection do
+      get :update_mark
+    end
+  end
   resources :discipline_sections
   resources :role_users do
     collection do

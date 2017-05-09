@@ -7,6 +7,19 @@ class MarksController < ApplicationController
     @marks = Mark.all
   end
 
+  def update_mark
+    respond_to do |format|
+      format.js do
+        @mark = Mark.where(id: params[:id]).first
+        if @mark.present?
+          @mark.update_attribute(:mark_value, params[:mark_value])
+        else
+          # Надо создать оценку...
+        end
+      end
+    end
+  end
+  
   # GET /marks/1
   # GET /marks/1.json
   def show
