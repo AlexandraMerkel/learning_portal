@@ -39,21 +39,21 @@ end
 # Студенты
 if (u41 = User.find_by_email('student1@localhost')).nil?
   u41 = User.create!(password: 'qwerty', password_confirmation: 'qwerty',
-    last_name: 'Тестовый', first_name: 'Cтудент1',
+    last_name: 'Тестовый', first_name: 'Студент1',
     second_name: 'Без отчества', email: 'student1@localhost',
     sex: 'м', birthday: Date.new(1995, 4, 29))
   u41.activate!
 end
 if (u42 = User.find_by_email('student2@localhost')).nil?
   u42 = User.create!(password: 'qwerty', password_confirmation: 'qwerty',
-    last_name: 'Тестовый', first_name: 'Cтудент2',
+    last_name: 'Тестовый', first_name: 'Студент2',
     second_name: 'Без отчества', email: 'student2@localhost',
     sex: 'ж', birthday: Date.new(1995, 2, 3))
   u42.activate!
 end
 if (u43 = User.find_by_email('student3@localhost')).nil?
   u43 = User.create!(password: 'qwerty', password_confirmation: 'qwerty',
-    last_name: 'Тестовый', first_name: 'Cтудент3',
+    last_name: 'Тестовый', first_name: 'Студент3',
     second_name: 'Без отчества', email: 'student3@localhost',
     sex: 'м', birthday: Date.new(1994, 11, 30))
   u43.activate!

@@ -23,11 +23,11 @@ module SideBarHelper
           { name: 'Список',
             url: users_path,
             controller: :communities, action: :index,
-            icon: 'reply-all', class: 'long'},
+            icon: 'chevron-right', class: 'long'},
           { name: 'Активация',
             url: mass_activation_role_users_path,
             controller: :communities, action: :mass_activation,
-            icon: 'reply-all', class: 'long'}
+            icon: 'chevron-right', class: 'long'}
         ]
         unless search_user_children.empty?
           result << {
@@ -76,11 +76,11 @@ module SideBarHelper
           { name: 'Контроль',
             url: communities_path,
             controller: :communities, action: :index,
-            icon: 'reply-all', class: 'long'},
+            icon: 'chevron-right', class: 'long'},
           { name: 'Создание',
             url: new_community_path,
             controller: :communities, action: :new,
-            icon: 'reply-all', class: 'long'}
+            icon: 'chevron-right', class: 'long'}
         ]
         unless search_community_children.empty?
           result << {
@@ -94,11 +94,11 @@ module SideBarHelper
           { name: 'Дисциплины',
             url: disciplines_path,
             controller: :disciplines, action: :index,
-            icon: 'reply-all', class: 'long'},
+            icon: 'chevron-right', class: 'long'},
           { name: 'Алгоритмы',
             url: ranking_algorithms_path,
             controller: :ranking_algorithms, action: :index,
-            icon: 'reply-all', class: 'long'}
+            icon: 'chevron-right', class: 'long'}
         ]
         unless search_discipline_children.empty?
           result << {
@@ -109,22 +109,26 @@ module SideBarHelper
         end
 
         search_API_children = [
-          { name: 'JSON:Студенты',
+          { name: 'Импорт:Студенты',
             url: load_from_json_file_students_api_path,
             controller: :students_api, action: :load_from_json_file,
-            icon: 'reply-all', class: 'long'},
-          { name: 'JSON:Учебные группы',
+            icon: 'reply', class: 'long'},
+          { name: 'Импорт:Учебные группы',
             url: load_from_json_file_groups_api_path,
             controller: :groups_api, action: :load_from_json_file,
-            icon: 'reply-all', class: 'long'},
-          { name: 'JSON:Дисциплины',
+            icon: 'reply', class: 'long'},
+          { name: 'Импорт:Дисциплины',
             url: load_from_json_file_disciplines_api_path,
             controller: :disciplines_api, action: :load_from_json_file,
-            icon: 'reply-all', class: 'long'}
+            icon: 'reply', class: 'long'},
+          { name: 'Экспорт:Студенты',
+            url: load_to_json_file_students_api_path,
+            controller: :students_api, action: :load_to_json_file,
+            icon: 'share', class: 'long'},
         ]
         unless search_API_children.empty?
           result << {
-            name: 'API',
+            name: 'API-JSON',
             icon: 'wrench',
             children: search_API_children
           }

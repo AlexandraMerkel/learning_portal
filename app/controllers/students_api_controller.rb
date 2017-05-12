@@ -10,6 +10,11 @@ class StudentsApiController < ApplicationController
     end
   end
 
+  def load_to_json_file
+    data = User.all.to_json
+    send_data data, :type => 'application/json; header=present', :disposition => "attachment; filename=users.json"
+  end
+
   # Нужен ли модератору доступ к API? (тут сделан)
   private
     def check_ctr_auth()

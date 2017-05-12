@@ -12,14 +12,23 @@ class MarksController < ApplicationController
       format.js do
         @mark = Mark.where(id: params[:id]).first
         if @mark.present?
-          @mark.update_attribute(:mark_value, params[:mark_value])
+          Rails.logger.info @mark.updated_at
+          @mark.touch
+          @mark.update_attribute(:mark_value, params[:mark_value]) #, :report => Date.parse(params[:report]))
+          Rails.logger.info @mark.updated_at
+          Rails.logger.info params[:report]
+          Rails.logger.info params[:teacher_id]
+          Rails.logger.info '*'*100
+          #@mark.update_attribute(:report, params[:report])
+          #@mark.update_attribute(:teacher, params[:teacher_id])
         else
-          # Надо создать оценку...
+          #raise params.inspect
+          #@mark = Mark.create(mark_value: params[:mark_value], report: params[:report], discipline_section: params[:discipline_section_id], student: params[:student_id], teacher: params[:teacher_id])
         end
       end
     end
   end
-  
+
   # GET /marks/1
   # GET /marks/1.json
   def show

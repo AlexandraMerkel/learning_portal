@@ -1,17 +1,30 @@
 %h1 Пользователи
 
 
-.list-group
-  - @users.each do |user|
-    = link_to(user, class: 'list-group-item') do
-      = user.last_name
-      = user.first_name
-      = user.second_name
-      .toright
-        - if !user.role_users.first.nil?
-          %span.label.label-info
-            = user.role_users.first.role.role_name
-      .clearfix
+= form_tag(users_path, method: :get) do
+  .row
+    .col-md-8
+      .form-group
+        =text_field_tag('name_of_user', '', :placeholder => "Поиск пользователей по ФИО", class: 'form-control')
+        /=submit_tag('Искать', class: 'btn btn-primary')
+        %button{:type => "submit", class: 'btn btn-primary'}
+          #{fa_icon "search"}
+
+  .list-group
+    - if @users.empty?
+      Пользователей по запросу не найдено!
+    - else
+      - @users.each do |user|
+        = link_to(user, class: 'list-group-item') do
+          = user.last_name
+          = user.first_name
+          = user.second_name
+          .toright
+            - if !user.role_users.first.nil?
+              %span.label.label-info
+                = user.role_users.first.role.role_name
+          .clearfix
+      = paginate @users
 
 
 - if @current_role_user.present?

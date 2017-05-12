@@ -1,7 +1,7 @@
 class CreateInstitutionUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :institution_users do |t|
-      t.string :rank, null: false
+      t.string :rank
       t.references :user,  index: true, foreign_key: true,  null: false
       t.references :institution,  index: true, foreign_key: true, null: false
 

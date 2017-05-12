@@ -1,13 +1,16 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:archiving, :show, :edit, :update, :destroy]
+  before_action :set_community, only: [:archiving, :dearchiving, :show, :edit, :update, :destroy]
 
   def archiving()
     @community.update_columns(archive: '1')
     flash[:notice] = 'Сообщество отправлено в архив!'
+    redirect_to @community
   end
 
-  def dearchiving
-    # тут будет метод
+  def dearchiving()
+    @community.update_columns(archive: '0')
+    flash[:notice] = 'Сообщество восстановлено из архива!'
+    redirect_to @community
   end
 
   # GET /communities
@@ -24,7 +27,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1.json
   def show
     @community
-    @community_news = @community.community_newses.build(community: @community, user: @current_user_object) # для подключения community_news/form
+    @community_news = @community.community_newses.build(community: @community, creator: @current_user_object) # для подключения community_news/form
     @community_news_index = @community.community_newses
    # Rails.logger.info @community_news_index[0]
    # Rails.logger.info '*'*100

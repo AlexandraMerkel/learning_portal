@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
   post 'students_api/load_from_json_file'
 
+  get 'students_api/load_to_json_file', as: :load_to_json_file_students_api
+  #post 'students_api/load_to_json_file'
+
   get 'disciplines_api/load_from_json_file', as: :load_from_json_file_disciplines_api
   post 'disciplines_api/load_from_json_file'
 
@@ -43,6 +46,7 @@ Rails.application.routes.draw do
   resources :communities do
     member do
       get :archiving
+      get :dearchiving
     end
   end
   resources :disciplines

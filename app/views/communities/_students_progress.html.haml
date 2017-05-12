@@ -33,7 +33,7 @@
                   =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
                 - final_grade = 0
                 - dis_sections.each do |ds|
-                  %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
+                  %td
                     - ds.marks.each do |m|
                       / для каждой оценки проверяем текущий ли студент
                       - if m.student.id == u.user.id
@@ -50,18 +50,19 @@
                   =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
                 - final_grade = 0
                 - dis_sections.each do |ds|
-                  %td{title: User.where('id = ?', ds.marks.first.teacher_id).first.last_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.first_name + " " + User.where('id = ?', ds.marks.first.teacher_id).first.second_name + ", " + ds.marks.first.report.to_s}
+                  %td
                     - has_mark = false
                     - ds.marks.each do |m|
                       - if m.student.id == u.user.id
-                        %span.mark_editable{data: {id: m.id, ds_id: ds.id, student_id: u.user.id, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                        %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: m.id, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, report: Time.zone.now.to_date, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
                           = m.mark_value
                         - final_grade += m.mark_value
                         - has_mark = true
                     - unless has_mark
-                      %span.mark_editable{data: {id: nil, ds_id: ds.id, student_id: u.user.id, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                      %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: nil, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, report: Time.zone.now.to_date, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
                         \-
-                %td=final_grade
+                %td
+                  =final_grade
 
 
 

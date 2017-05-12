@@ -14,7 +14,7 @@
           .panel.panel-success
             .panel-heading
               /= formatdate(community_news.created_at)
-              = community_news.user.last_name + " " + community_news.user.first_name
+              = community_news.creator.last_name + " " + community_news.creator.first_name
               .toright
                 = lnil(community_news.created_at)
                 - if @current_role_user.present?

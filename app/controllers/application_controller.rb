@@ -31,13 +31,24 @@ class ApplicationController < ActionController::Base
           :bad_controller_name => controller_name,
           :bad_user_role => @current_role_user.id))
       end
+      unless check_activation()
+        redirect_to(ip_path(
+          :bad_action_name => action_name,
+          :bad_controller_name => controller_name,
+          :bad_user_role => @current_role_user.id))
+      end
     end
   end
 
   private
-  ## Проверка прав доступа выбранной роли для данного метода
+  # Проверка прав доступа выбранной роли для данного метода
   def check_ctr_auth()
     return @current_role_user.is_admin? || @current_role_user.is_moderator?
+  end
+
+  # Проверка активации пользователя
+  def check_activation()
+    return @current_user_object.role_users.first.activation_role
   end
 
   def not_authenticated

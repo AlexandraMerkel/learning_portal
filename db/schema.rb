@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 20170505141205) do
   end
 
   create_table "institution_users", force: :cascade do |t|
-    t.string   "rank",           null: false
+    t.string   "rank"
     t.integer  "user_id",        null: false
     t.integer  "institution_id", null: false
     t.datetime "created_at",     null: false
