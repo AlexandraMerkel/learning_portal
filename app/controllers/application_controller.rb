@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
       redirect_to(login_path())
     else
       @current_user_object = current_user
+      
       @current_user_login = @current_user_object.email
+      unless $online[@current_user_login]
+        MessageBus.publish "/presence", {enter: @current_user_login}
+      end
+      $online[@current_user_login] = Time.now
+      
 
       @current_role_user = params[:lp_role_id]
       @current_role_user = session[:lp_role_id] if @current_role_user.nil?

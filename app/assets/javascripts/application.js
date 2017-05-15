@@ -23,4 +23,5 @@
 //= require bootstrap-select/bootstrap-select
 //= require bootstrap-select/defaults-ru_RU
 //= require twitter/typeahead
+//= require message-bus
 //= require_tree .

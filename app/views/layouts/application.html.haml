@@ -12,7 +12,7 @@
     =favicon_link_tag 'favicon-32x32.png', sizes: '32x32'
     =favicon_link_tag 'apple-icon.png', rel: 'apple-touch-icon'
 
-  %body
+  %body{data: {username: @current_user_object.try(:email)}}
     =render 'application/navbar_top'
     #wrapper
       / добавлен if

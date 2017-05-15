@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy, :show_file]
 
+  use MessageBus::Rack::Middleware
 
   def show_file
     send_file(@message.message.path(:original), 
@@ -37,6 +38,10 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        @message.message_users.each do |mu|
+          MessageBus.publish '/message', {username: mu.user.email, data: {message: @message.message_content}}
+        end
+        MessageBus.publish '/message', {username: @current_user_object.email, data: {message: @message.message_content}}
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
