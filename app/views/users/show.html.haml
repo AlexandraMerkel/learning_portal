@@ -1,5 +1,10 @@
-%p#notice= notice
-
+- if @current_user_object.id != @user.id
+  =breadcrumb_tag do
+    %li
+      Пользователи
+    %li.active
+      =link_to(ellipsisize(@user.last_name.to_s + ' ' + @user.first_name.to_s + ' ' + @user.second_name.to_s), @user)
+%br
 
 %p
   %b
@@ -16,7 +21,7 @@
 %p
   %b
     = User.human_attribute_name(:birthday) + ":"
-  = @user.birthday
+  = @user.birthday.strftime('%m/%d/%Y')
 %p
   %b
     = User.human_attribute_name(:sex) + ":"

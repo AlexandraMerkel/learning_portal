@@ -1,18 +1,26 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Учебные группы
+  %li.active
+    =link_to(ellipsisize(@group.group_name.to_s), @group)
+%br
 
 %p
-  %b Group name:
+  %b
+    = Group.human_attribute_name(:group_name) + ":"
   = @group.group_name
 %p
-  %b Group start:
-  = @group.group_start
+  %b
+    = Group.human_attribute_name(:group_start) + ":"
+  = @group.group_start.strftime('%m/%d/%Y')
 %p
-  %b Archive time:
-  = @group.archive_time
+  %b
+    = Group.human_attribute_name(:archive_time) + ":"
+  = @group.archive_time.strftime('%m/%d/%Y')
 %p
-  %b Term:
-  = @group.term
+  %b
+    = Group.human_attribute_name(:term_id) + ":"
+  = @group.term.term_name
 
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+= link_to t('helpers.edit'), edit_group_path(@group), class: 'btn btn-warning'
+= link_to t('helpers.destroy'), @group, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

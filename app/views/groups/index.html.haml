@@ -1,36 +1,25 @@
-%h1 Список групп
-
-%table.table
-  %thead
-    %tr
-      %th Название группы
-      %th Дата образования
-      %th Дата архивации
-      %th Семестр обучения
-      %th
-      %th
-      %th
-
-  %tbody
-    - @groups.each do |group|
-      %tr
-        %td= group.group_name
-        %td= group.group_start
-        %td= group.archive_time
-        %td= group.term.term_name
-        %td
-          .toright
-            = link_to group, class: 'label blue' do
-              Показать
-        %td
-          .toright
-            = link_to edit_group_path(group), class: 'label yellow' do
-              Редактировать
-        %td 
-          .toright
-            = link_to group, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'label red' do
-              Удалить
-
+%h1 Учебные группы
 %br
 
-= link_to 'Новая группа', new_group_path, class: "btn btn-success"
+- if @groups.blank?
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      .row
+        .col-md-6
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+            В системе пока не создано ни одной учебной группы!
+
+- else
+  .list-group
+    - @groups.each do |group|
+      = link_to(group, class: 'list-group-item') do
+        = group.group_name
+        .toright
+          %span.label.label-info
+            = group.term.term_name
+        .clearfix
+    = paginate @groups
+
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новая группа', new_group_path, class: "btn btn-success"

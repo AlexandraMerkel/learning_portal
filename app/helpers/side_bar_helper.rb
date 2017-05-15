@@ -4,7 +4,7 @@ module SideBarHelper
     result << {
       name: 'Личная страница',
       url: @current_user_object,
-      icon: 'user',
+      icon: 'user-circle',
       controller: :users,
       action: :show
     }
@@ -47,13 +47,13 @@ module SideBarHelper
       end
     end
 
-    result << {
-      name: 'Обновления', #ПРАВИТЬ
-      url: users_path,
-      icon: 'bell',
-      controller: :users,
-      action: :index
-    }
+    #result << {
+    #  name: 'Обновления',
+    #  url: users_path,
+    #  icon: 'bell',
+    #  controller: :users,
+    #  action: :index
+    #}
 
     # Видно студентам и преподавателям
     if @current_role_user.present?
@@ -90,21 +90,43 @@ module SideBarHelper
           }
         end
 
-        search_discipline_children = [
+        search_institutions_children = [
+          { name: 'Вузы',
+            url: institutions_path,
+            controller: :institutions, action: :index,
+            icon: 'chevron-right', class: 'long'},
+          { name: 'Учебные группы',
+            url: groups_path,
+            controller: :groups, action: :index,
+            icon: 'chevron-right', class: 'long'}
+        ]
+        unless search_institutions_children.empty?
+          result << {
+            name: 'Вузы', # Надо придумать название
+            icon: 'institution',
+            children: search_institutions_children
+          }
+        end
+
+        search_process_children = [
           { name: 'Дисциплины',
             url: disciplines_path,
             controller: :disciplines, action: :index,
+            icon: 'chevron-right', class: 'long'},
+          { name: 'Cеместры',
+            url: terms_path,
+            controller: :terms, action: :index,
             icon: 'chevron-right', class: 'long'},
           { name: 'Алгоритмы',
             url: ranking_algorithms_path,
             controller: :ranking_algorithms, action: :index,
             icon: 'chevron-right', class: 'long'}
         ]
-        unless search_discipline_children.empty?
+        unless search_process_children.empty?
           result << {
-            name: 'Дисциплины', # как назвать раздел?
+            name: 'Учебный процесс',
             icon: 'book',
-            children: search_discipline_children
+            children: search_process_children
           }
         end
 
@@ -125,6 +147,14 @@ module SideBarHelper
             url: load_to_json_file_students_api_path,
             controller: :students_api, action: :load_to_json_file,
             icon: 'share', class: 'long'},
+          { name: 'Экспорт:Учебные группы',
+            url: load_to_json_file_groups_api_path,
+            controller: :groups_api, action: :load_to_json_file,
+            icon: 'share', class: 'long'},
+          { name: 'Экспорт:Дисциплины',
+            url: load_to_json_file_disciplines_api_path,
+            controller: :disciplines_api, action: :load_to_json_file,
+            icon: 'share', class: 'long'}
         ]
         unless search_API_children.empty?
           result << {

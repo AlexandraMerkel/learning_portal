@@ -1,22 +1,30 @@
 = form_for @institution do |f|
-  - if @institution.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@institution.errors.count, "error")} prohibited this institution from being saved:"
-      %ul
-        - @institution.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @institution
 
-  .field
-    = f.label :institution_name
-    = f.text_field :institution_name
-  .field
-    = f.label :short_institution_name
-    = f.text_field :short_institution_name
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :institution_name, class: 'test'
+        = f.text_field :institution_name, class: 'form-control'
+        = f.error_messages_for(:institution_name)
+    .col-md-3
+      .form-group
+        = f.label :short_institution_name, class: 'test'
+        = f.text_field :short_institution_name, class: 'form-control'
+        = f.error_messages_for(:short_institution_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :address, class: 'test'
+        = f.text_field :address, class: 'form-control'
+        = f.error_messages_for(:address)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :phone_number, class: 'test'
+        = f.text_field :phone_number, class: 'form-control'
+        = f.error_messages_for(:phone_number)
+  .row
+    .col-md-6
+      .form-group
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

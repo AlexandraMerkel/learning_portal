@@ -1,18 +1,26 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Учебные семестры
+  %li.active
+    =link_to(ellipsisize(@term.term_name.to_s), @term)
+%br
 
 %p
-  %b Term name:
+  %b
+    = Term.human_attribute_name(:term_name) + ":"
   = @term.term_name
 %p
-  %b Actual:
-  = @term.actual
+  %b
+    = Term.human_attribute_name(:actual) + ":"
+  = actual_term(@term.actual)
 %p
-  %b Term start:
-  = @term.term_start
+  %b
+    = Term.human_attribute_name(:term_start) + ":"
+  = @term.term_start.strftime('%m/%d/%Y')
 %p
-  %b Term end:
-  = @term.term_end
+  %b
+    = Term.human_attribute_name(:term_end) + ":"
+  = @term.term_end.strftime('%m/%d/%Y')
 
-= link_to 'Edit', edit_term_path(@term)
-\|
-= link_to 'Back', terms_path
+= link_to t('helpers.edit'), edit_term_path(@term), class: 'btn btn-warning'
+= link_to t('helpers.destroy'), @term, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

@@ -4,7 +4,7 @@ class RankingAlgorithmsController < ApplicationController
   # GET /ranking_algorithms
   # GET /ranking_algorithms.json
   def index
-    @ranking_algorithms = RankingAlgorithm.all
+    @ranking_algorithms = RankingAlgorithm.all.page(params[:page]).per(10)
   end
 
   # GET /ranking_algorithms/1
@@ -28,7 +28,7 @@ class RankingAlgorithmsController < ApplicationController
 
     respond_to do |format|
       if @ranking_algorithm.save
-        format.html { redirect_to @ranking_algorithm, notice: 'Ranking algorithm was successfully created.' }
+        format.html { redirect_to @ranking_algorithm, notice: 'Алгоритм успешно создан' }
         format.json { render :show, status: :created, location: @ranking_algorithm }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RankingAlgorithmsController < ApplicationController
   def update
     respond_to do |format|
       if @ranking_algorithm.update(ranking_algorithm_params)
-        format.html { redirect_to @ranking_algorithm, notice: 'Ranking algorithm was successfully updated.' }
+        format.html { redirect_to @ranking_algorithm, notice: 'Алгоритм успешно обновлен' }
         format.json { render :show, status: :ok, location: @ranking_algorithm }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RankingAlgorithmsController < ApplicationController
   def destroy
     @ranking_algorithm.destroy
     respond_to do |format|
-      format.html { redirect_to ranking_algorithms_url, notice: 'Ranking algorithm was successfully destroyed.' }
+      format.html { redirect_to ranking_algorithms_url, notice: 'Алгоритм успешно удален' }
       format.json { head :no_content }
     end
   end

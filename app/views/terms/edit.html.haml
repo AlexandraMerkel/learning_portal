@@ -1,7 +1,11 @@
-%h1 Editing term
+=breadcrumb_tag do
+  %li
+    Учебные семестры
+  %li
+    =link_to(ellipsisize(@term.term_name.to_s), @term)
+  %li.active
+    Редактирование
+
+%h1 Редактирование семестра
 
 = render 'form'
-
-= link_to 'Show', @term
-\|
-= link_to 'Back', terms_path

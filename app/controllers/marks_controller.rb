@@ -1,6 +1,10 @@
 class MarksController < ApplicationController
   before_action :set_mark, only: [:show, :edit, :update, :destroy]
 
+  def check_ctr_auth()
+    return true if (@current_role_user.is_admin? or @current_role_user.is_teacher? or @current_role_user.is_moderator? or @current_role_user.is_student?)
+  end
+
   # GET /marks
   # GET /marks.json
   def index
@@ -12,18 +16,13 @@ class MarksController < ApplicationController
       format.js do
         @mark = Mark.where(id: params[:id]).first
         if @mark.present?
-          Rails.logger.info @mark.updated_at
-          @mark.touch
-          @mark.update_attribute(:mark_value, params[:mark_value]) #, :report => Date.parse(params[:report]))
-          Rails.logger.info @mark.updated_at
-          Rails.logger.info params[:report]
-          Rails.logger.info params[:teacher_id]
-          Rails.logger.info '*'*100
-          #@mark.update_attribute(:report, params[:report])
-          #@mark.update_attribute(:teacher, params[:teacher_id])
+          if params[:mark_value].empty?
+            @mark.destroy
+          else
+            @mark.update_attribute(:mark_value, params[:mark_value])
+          end
         else
-          #raise params.inspect
-          #@mark = Mark.create(mark_value: params[:mark_value], report: params[:report], discipline_section: params[:discipline_section_id], student: params[:student_id], teacher: params[:teacher_id])
+          @mark = Mark.create(mark_value: params[:mark_value], discipline_section_id: params[:discipline_section_id], student_id: params[:student_id], teacher_id: params[:teacher_id])
         end
       end
     end

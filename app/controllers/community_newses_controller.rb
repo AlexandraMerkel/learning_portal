@@ -9,8 +9,7 @@ class CommunityNewsesController < ApplicationController
   # GET /community_news.json
 
   def index
-    #raise 'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'
-    @community_news = CommunityNews.all
+    @community_news = CommunityNews.all.page(params[:page]).per(10)
   end
 
   # GET /community_news/1

@@ -1,21 +1,23 @@
+%br
 %h2{style: 'margin: 0px 0px 20px 5px;'} Алгоритмы расчёта рейтинга успеваемости студентов
+%br
 
+- if @ranking_algorithms.blank?
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      .row
+        .col-md-6
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+            В системе пока не создано ни одного алгоритма!
 
-/- if @ranking_algorithm.blank?
-/  - if @current_role_user.present?
-/    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-/      .row
-/        .col-md-6
-/          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
-/            В системе пока не создано ни одного алгоритма!
+- else
+  .list-group
+    - @ranking_algorithms.each do |ranking_algorithm|
+      = link_to(ranking_algorithm, class: 'list-group-item') do
+        = ranking_algorithm.algorithm_name
+        .clearfix
+      = paginate @ranking_algorithms
 
-/- else
-.list-group
-  - @ranking_algorithms.each do |ranking_algorithm|
-    = link_to(ranking_algorithm, class: 'list-group-item') do
-      = ranking_algorithm.algorithm_name
-      .clearfix
-
-- if @current_role_user.present?
-  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-    = link_to 'Новый алгоритм', new_ranking_algorithm_path, class: "btn btn-success"
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      = link_to 'Новый алгоритм', new_ranking_algorithm_path, class: "btn btn-success"

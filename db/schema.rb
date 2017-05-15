@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20170505141205) do
 
   create_table "marks", force: :cascade do |t|
     t.integer  "mark_value",            null: false
-    t.date     "report",                null: false
+    t.date     "report"
     t.integer  "discipline_section_id", null: false
     t.integer  "student_id",            null: false
     t.integer  "teacher_id",            null: false

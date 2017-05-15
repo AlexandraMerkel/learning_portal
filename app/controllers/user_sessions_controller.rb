@@ -10,15 +10,15 @@ class UserSessionsController < ApplicationController
   def create
     #raise params.inspect
     if @user = login(params[:email], params[:password], params[:remember])
-      redirect_back_or_to(root_path(), notice: 'Login successful')
+      redirect_back_or_to(root_path(), notice: 'Вы вошли в систему')
     else
-      flash.now[:alert] = 'Login failed'
+      flash.now[:alert] = 'При входе произошла ошибка!'
       render action: 'new'
     end
   end
 
   def destroy
     logout
-    redirect_to(login_path(), notice: 'Logged out!')
+    redirect_to(login_path(), notice: 'Вы вышли из системы')
   end
 end

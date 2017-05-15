@@ -1,27 +1,25 @@
-%h1 Listing institutions
-
-%table
-  %thead
-    %tr
-      %th Institution name
-      %th Short institution name
-      %th Address
-      %th Phone number
-      %th
-      %th
-      %th
-
-  %tbody
-    - @institutions.each do |institution|
-      %tr
-        %td= institution.institution_name
-        %td= institution.short_institution_name
-        %td= institution.address
-        %td= institution.phone_number
-        %td= link_to 'Show', institution
-        %td= link_to 'Edit', edit_institution_path(institution)
-        %td= link_to 'Destroy', institution, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+%h1 Высшие учебные заведения
 %br
 
-= link_to 'New Institution', new_institution_path
+- if @institutions.blank?
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      .row
+        .col-md-6
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+            В системе пока не создано ни одного вуза!
+
+- else
+  .list-group
+    - @institutions.each do |institution|
+      = link_to(institution, class: 'list-group-item') do
+        = institution.institution_name
+        .toright
+          %span.label.label-info
+            = institution.short_institution_name
+        .clearfix
+    = paginate @institutions
+
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новый вуз', new_institution_path, class: "btn btn-success"

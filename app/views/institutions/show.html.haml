@@ -1,18 +1,26 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Высшие учебные заведения
+  %li.active
+    =link_to(ellipsisize(@institution.short_institution_name.to_s), @institution)
+%br
 
 %p
-  %b Institution name:
+  %b
+    = Institution.human_attribute_name(:institution_name) + ":"
   = @institution.institution_name
 %p
-  %b Short institution name:
+  %b
+    = Institution.human_attribute_name(:short_institution_name) + ":"
   = @institution.short_institution_name
 %p
-  %b Address:
+  %b
+    = Institution.human_attribute_name(:address) + ":"
   = @institution.address
 %p
-  %b Phone number:
+  %b
+    = Institution.human_attribute_name(:phone_number) + ":"
   = @institution.phone_number
 
-= link_to 'Edit', edit_institution_path(@institution)
-\|
-= link_to 'Back', institutions_path
+= link_to t('helpers.edit'), edit_institution_path(@institution), class: 'btn btn-warning'
+= link_to t('helpers.destroy'), @institution, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

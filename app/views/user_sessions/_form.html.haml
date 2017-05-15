@@ -2,32 +2,23 @@
   .row
     .col-md-6
       .form-group
-        /%label Адрес электронной почты
-        /%input.form-control{:placeholder => "email", :type => "email"}
-        = label_tag :email
-        = text_field_tag :email
+        = label_tag 'Адрес электронной почты'
+        = text_field_tag :email, "", class: 'form-control'
   .row
     .col-md-6
       .form-group
-        /%label Пароль
-        /%input.form-control{:placeholder => "password", :type => "password"}
-        = label_tag :password
-        = password_field_tag :password
+        = label_tag 'Пароль'
+        = password_field_tag :password, "", class: 'form-control'
   .row
     .col-md-6
       .form-group
-        /.checkbox
-        /  %label
-        /    %input{:type => "checkbox"}
-        /      Запомнить
-        = check_box_tag :remember, params[:remember], true
-        = label_tag :remember
+        = check_box_tag :remember, params[:remember], true, style: 'margin: 0px 0px 0px 0px; vertical-align: middle;'
+        = label_tag 'Запомнить'
   .actions
     .row
       .col-md-6
         .form-group
           = submit_tag t('helpers.submit.login'), class: 'btn btn-primary'
-
 
   .row
     .col-md-6

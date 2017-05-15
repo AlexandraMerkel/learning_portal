@@ -4,7 +4,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @terms = Term.all.page(params[:page]).per(10)
   end
 
   # GET /terms/1
@@ -28,7 +28,7 @@ class TermsController < ApplicationController
 
     respond_to do |format|
       if @term.save
-        format.html { redirect_to @term, notice: 'Term was successfully created.' }
+        format.html { redirect_to @term, notice: 'Семестр успешно создан' }
         format.json { render :show, status: :created, location: @term }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TermsController < ApplicationController
   def update
     respond_to do |format|
       if @term.update(term_params)
-        format.html { redirect_to @term, notice: 'Term was successfully updated.' }
+        format.html { redirect_to @term, notice: 'Семестр успешно обновлен' }
         format.json { render :show, status: :ok, location: @term }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TermsController < ApplicationController
   def destroy
     @term.destroy
     respond_to do |format|
-      format.html { redirect_to terms_url, notice: 'Term was successfully destroyed.' }
+      format.html { redirect_to terms_url, notice: 'Семестр успешно удален' }
       format.json { head :no_content }
     end
   end

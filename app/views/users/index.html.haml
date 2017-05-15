@@ -4,15 +4,14 @@
 = form_tag(users_path, method: :get) do
   .row
     .col-md-8
-      .form-group
-        =text_field_tag('name_of_user', '', :placeholder => "Поиск пользователей по ФИО", class: 'form-control')
-        /=submit_tag('Искать', class: 'btn btn-primary')
-        %button{:type => "submit", class: 'btn btn-primary'}
-          #{fa_icon "search"}
-
-  .list-group
+      .input-group
+        %input.form-control{"aria-describedby" => "basic-addon", :name => "name_of_user", :placeholder => "Поиск пользователей по ФИО", :type => "text", style: 'border-radius: 4px 0 0 4px;'}
+        %span#basic-addon.input-group-addon{ style: 'border-radius:  0 4px 4px 0;'}
+          = fa_icon('search')
+%br
+  .list-group#listUsers
     - if @users.empty?
-      Пользователей по запросу не найдено!
+      Пользователей по запросу не найдено. Попробуйте изменить запрос.
     - else
       - @users.each do |user|
         = link_to(user, class: 'list-group-item') do
@@ -26,7 +25,6 @@
           .clearfix
       = paginate @users
 
-
-- if @current_role_user.present?
-  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
-    = link_to 'Новый пользователь', new_user_path, class: "btn btn-success"
+/ - if @current_role_user.present?
+/   - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+/     = link_to 'Новый пользователь', new_user_path, class: "btn btn-success"

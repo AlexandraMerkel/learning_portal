@@ -1,4 +1,9 @@
-/%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Дисциплины
+  %li.active
+    =link_to(ellipsisize(@discipline.discipline_name.to_s), @discipline)
+%br
 
 %p
   %b
@@ -21,6 +26,5 @@
     = Discipline.human_attribute_name(:ranking_algorithm_id) + ":"
   = @discipline.ranking_algorithm.algorithm_name
 
-= link_to t('helpers.edit'), edit_discipline_path(@discipline), class: 'btn btn-primary'
-/\|
-/= link_to 'Back', disciplines_path
+= link_to t('helpers.edit'), edit_discipline_path(@discipline), class: 'btn btn-warning'
+= link_to t('helpers.destroy'), @discipline, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

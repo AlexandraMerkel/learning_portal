@@ -18,8 +18,9 @@ class CommunitiesController < ApplicationController
   def index
     if @current_role_user.is_student? or @current_role_user.is_teacher?
       @communities = Community.check_access_to_community(@current_user_object.id)
+      @communities = Kaminari.paginate_array(@communities).page(params[:page]).per(10)
     else
-      @communities = Community.all
+      @communities = Community.all.page(params[:page]).per(10)
     end
   end
 

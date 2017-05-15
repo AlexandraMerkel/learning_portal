@@ -74,4 +74,22 @@ class User < ApplicationRecord
     mk.close
     passwd
   end
+
+  def User.search_users(params)
+    params = params.to_s.gsub(/\s+/, '')
+    @users = User.all
+    @users.where("last_name ILIKE ? OR
+      first_name ILIKE ? OR
+      second_name ILIKE ? OR
+      last_name || first_name ILIKE ? OR
+      first_name || last_name ILIKE ? OR
+      last_name || first_name || second_name ILIKE ? OR
+      last_name || second_name || first_name ILIKE ? OR
+      first_name || last_name || second_name ILIKE ? OR
+      first_name || second_name || last_name ILIKE ? OR
+      second_name || first_name || last_name ILIKE ? OR
+      second_name || last_name || first_name ILIKE ?",
+      *['%' + params + '%']*11)
+  end
+
 end

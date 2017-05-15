@@ -1,4 +1,9 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Рейтинговые алгоритмы
+  %li.active
+    =link_to(ellipsisize(@ranking_algorithm.algorithm_name.to_s), @ranking_algorithm)
+%br
 
 %p
   %b
@@ -9,6 +14,5 @@
     = RankingAlgorithm.human_attribute_name(:template) + ":"
   = @ranking_algorithm.template
 
-= link_to t('helpers.edit'), edit_ranking_algorithm_path(@ranking_algorithm), class: 'btn btn-primary'
-/\|
-/= link_to 'Back', ranking_algorithms_path
+= link_to t('helpers.edit'), edit_ranking_algorithm_path(@ranking_algorithm), class: 'btn btn-warning'
+= link_to t('helpers.destroy'), @ranking_algorithm, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'

@@ -1,27 +1,32 @@
-%h1 Listing terms
-
-%table
-  %thead
-    %tr
-      %th Term name
-      %th Actual
-      %th Term start
-      %th Term end
-      %th
-      %th
-      %th
-
-  %tbody
-    - @terms.each do |term|
-      %tr
-        %td= term.term_name
-        %td= term.actual
-        %td= term.term_start
-        %td= term.term_end
-        %td= link_to 'Show', term
-        %td= link_to 'Edit', edit_term_path(term)
-        %td= link_to 'Destroy', term, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+%h1 Учебные семестры
 %br
 
-= link_to 'New Term', new_term_path
+- if @terms.blank?
+  - if @current_role_user.present?
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      .row
+        .col-md-6
+          .form-group{style: 'margin: 10px 0px 10px 5px; font-size: 18px;'}
+            В системе пока не создано ни одного учебного семестра!
+
+- else
+  .list-group
+    - @terms.each do |term|
+      = link_to(term, class: 'list-group-item') do
+        = term.term_name
+        \(
+        = term.term_start.strftime('%m/%d/%Y')
+        \-
+        = term.term_end.strftime('%m/%d/%Y')
+        \)
+        - if term.actual
+          .toright
+            %span.label.label-info
+              Текущий
+
+        .clearfix
+    = paginate @terms
+
+- if @current_role_user.present?
+  - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+    = link_to 'Новый семестр', new_term_path, class: "btn btn-success"

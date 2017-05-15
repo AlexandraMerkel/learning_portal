@@ -6,21 +6,16 @@
       = submit_tag('Сохранить', class: 'btn btn-primary')
     %thead
       %tr
-        /%th Info
         %th
           = RoleUser.human_attribute_name(:user_id)
         %th
           = RoleUser.human_attribute_name(:role_id)
         %th
           = RoleUser.human_attribute_name(:activation_role)
-        /%th
-        /%th
-        /%th
 
     %tbody
       - @role_users.each do |role_user|
         %tr
-          /%td= role_user.info
           %td
             = role_user.user.last_name
             = role_user.user.first_name
@@ -32,10 +27,3 @@
               =check_box_tag("activation[]", role_user.id, true)
             - else
               =check_box_tag("activation[]", role_user.id, false)
-          /%td= role_user.activation_role
-          /%td= link_to 'Show', role_user
-          /%td= link_to 'Edit', edit_role_user_path(role_user)
-          /%td= link_to 'Destroy', role_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-
-/= link_to 'New Role user', new_role_user_path

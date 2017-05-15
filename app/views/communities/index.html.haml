@@ -34,6 +34,7 @@
               = community_archive_types(community.archive)
 
         .clearfix
+    = paginate @communities
 
 - if @current_role_user.present?
   - if @current_role_user.is_admin? || @current_role_user.is_moderator?

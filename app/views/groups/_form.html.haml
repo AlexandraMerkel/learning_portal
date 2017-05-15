@@ -1,22 +1,36 @@
 = form_for @group do |f|
-  - if @group.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@group.errors.count, "error")} prohibited this group from being saved:"
-      %ul
-        - @group.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @group
 
-  .field
-    = f.label :group_name
-    = f.text_field :group_name
-  .field
-    = f.label :group_start
-    = f.date_select :group_start
-  .field
-    = f.label :archive_time
-    = f.date_select :archive_time
-  .field
-    = f.label :term_id
-    = f.select(:term_id, term_options(f.object.term_id))
-  .actions
-    = f.submit 'Сохранить'
+  .row
+    .col-md-6
+      .form-group
+        = f.label :group_name, class: 'test'
+        = f.text_field :group_name, class: 'form-control'
+        = f.error_messages_for(:group_name)
+    .col-md-5
+      .form-group
+        = f.label :term_id
+        = f.select(:term_id, term_options(f.object.term_id), {}, class: 'form-control')
+        = f.error_messages_for(:term_id)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :group_start
+        .input-group.date.datepicker
+          = f.text_field :group_start, class: 'form-control date datepicker'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:group_start)
+    .col-md-3
+      .form-group
+        = f.label :archive_time
+        .input-group.date.datepicker
+          = f.text_field :archive_time, class: 'form-control date datepicker'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:archive_time)
+
+  .row
+    .col-md-6
+      .form-group
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

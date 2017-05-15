@@ -1,7 +1,12 @@
-%h1 Editing institution
+=breadcrumb_tag do
+  %li
+    Высшие учебные заведения
+  %li
+    =link_to(ellipsisize(@institution.short_institution_name.to_s), @institution)
+  %li.active
+    Редактирование
+
+
+%h1 Редактирование вуза
 
 = render 'form'
-
-= link_to 'Show', @institution
-\|
-= link_to 'Back', institutions_path

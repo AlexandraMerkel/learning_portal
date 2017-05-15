@@ -4,7 +4,7 @@ class DisciplinesController < ApplicationController
   # GET /disciplines
   # GET /disciplines.json
   def index
-    @disciplines = Discipline.all
+    @disciplines = Discipline.all.page(params[:page]).per(10)
   end
 
   # GET /disciplines/1

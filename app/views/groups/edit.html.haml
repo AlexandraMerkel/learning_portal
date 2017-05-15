@@ -1,7 +1,11 @@
-%h1 Editing group
+=breadcrumb_tag do
+  %li
+    Учебные группы
+  %li
+    =link_to(ellipsisize(@group.group_name.to_s), @group)
+  %li.active
+    Редактирование
+
+%h1 Редактирование группы
 
 = render 'form'
-
-= link_to 'Show', @group
-\|
-= link_to 'Back', groups_path

@@ -7,8 +7,13 @@
         = f.label :term_name, class: 'test'
         = f.text_field :term_name, class: 'form-control'
         = f.error_messages_for(:term_name)
+    .col-md-1
+      .form-group{style: 'display: inline-block;'}
+        = f.label :actual
+        = f.check_box :actual, style: 'margin: 0px 0px 0px 10px; vertical-align: middle;'
+        = f.error_messages_for(:actual)
   .row
-    .col-md-6
+    .col-md-3
       .form-group
         = f.label :term_start
         .input-group.date.datepicker
@@ -16,8 +21,7 @@
           %span.input-group-addon
             %span.glyphicon.glyphicon-calendar
         = f.error_messages_for(:term_start)
-  .row
-    .col-md-6
+    .col-md-3
       .form-group
         = f.label :term_end
         .input-group.date.datepicker
@@ -25,12 +29,6 @@
           %span.input-group-addon
             %span.glyphicon.glyphicon-calendar
         = f.error_messages_for(:term_end)
-  .row
-    .col-md-6
-      .form-group{style: 'display: inline-block;'}
-        = f.label :actual
-        = f.check_box :actual, style: 'margin: 0px 0px 0px 10px; vertical-align: middle;'
-        = f.error_messages_for(:actual)
 
   .row
     .col-md-6

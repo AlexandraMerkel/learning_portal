@@ -7,9 +7,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all.page(params[:page]).per(5)
-   # @users = User.all
-   # @users = @users.where("last_name ILIKE ? OR first_name ILIKE ? OR second_name ILIKE ?", *['%' + params['name_of_user'].to_s + '%']*3) if params['name_of_user'].present?
-    # Вопрос - как улучшить поиск?
+    @users = @users.search_users(params['name_of_user']).page(params[:page]).per(5) if params['name_of_user'].present?
   end
 
   # GET /users/1

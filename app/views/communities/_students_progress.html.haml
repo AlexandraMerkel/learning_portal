@@ -54,16 +54,21 @@
                     - has_mark = false
                     - ds.marks.each do |m|
                       - if m.student.id == u.user.id
-                        %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: m.id, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, report: Time.zone.now.to_date, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                        %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: m.id, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
                           = m.mark_value
                         - final_grade += m.mark_value
                         - has_mark = true
                     - unless has_mark
-                      %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: nil, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, report: Time.zone.now.to_date, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                      %span.mark_editable{data: {id: nil, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
                         \-
                 %td
                   =final_grade
 
+  - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
+    /= link_to (fa_icon 'times'), discipline_section, :method => :create, :remote => true
+    = link_to ?#, class: 'btn btn-primary', id: 'add_dis_section' do
+      = fa_icon :pencil
+      Создать новый раздел дисциплины
 
 
 /= render 'discipline_sections/form'

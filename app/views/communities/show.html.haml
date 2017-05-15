@@ -1,5 +1,3 @@
-/%p#notice= notice
-
 .row
   .col-md-6
     .form-group{style: 'margin: 5px 0px 10px 3px; font-size: 20px;'}
@@ -18,14 +16,11 @@
           %span
             = link_to archiving_community_path,  :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do
               = fa_icon :trash, title: 'Отправить сообщество в архив'
-            / @community, :method => :archiving,
         - else
           %span
             = link_to dearchiving_community_path,  :data => { :confirm => t('helpers.sure') }, class: 'btn btn-info' do
               = fa_icon 'arrow-up', title: 'Восстановить сообщество из архива'
-            / @community, :method => :archiving,
 
-/ вкладки
 #tabs
   %ul.nav.nav-tabs
     %li.active

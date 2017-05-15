@@ -28,6 +28,10 @@ ru:
         one: пользователь
         few: пользователи
         many: пользователи
+      group:
+        one: учебная группа
+        few: учебные группы
+        many: учебные группы
       role_user:
         one: роль пользователя
         few: роли пользователей
@@ -60,6 +64,10 @@ ru:
         one: рейтинговый алгоритм
         few: рейтинговых алгоритмов
         many: рейтинговых алгоритмов
+      institution:
+        one: вуз
+        few: вузов
+        many: вузы
     attributes:
       user:
         first_name: Имя
@@ -71,6 +79,11 @@ ru:
         email: Электронная почта
         password: Пароль
         password_confirmation: Повторите пароль
+      group:
+        group_name: Название
+        group_start: Основание
+        archive_time: Архивация
+        term_id: Семестр
       role_user:
         user_id: Пользователь
         role_id: Роль
@@ -109,11 +122,16 @@ ru:
       term:
         term_name: Название
         actual: Текущий
-        term_start: Дата начала
-        term_end: Дата окончания
+        term_start: Начало
+        term_end: Окончание
       ranking_algorithm:
         algorithm_name: Название
         template: Формула
+      institution:
+        institution_name: Название
+        short_institution_name: Сокращенное название
+        address: Адрес
+        phone_number: Номер телефона
   views:
     pagination:
       first: ⇤

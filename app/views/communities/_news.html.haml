@@ -10,5 +10,4 @@
 .col-md-4
   - if @current_role_user.present?
     - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
-      #news_form
-        = render 'community_news/form'
+      = render 'community_news/form'

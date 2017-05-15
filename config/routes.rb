@@ -15,15 +15,16 @@ Rails.application.routes.draw do
   resources :community_disciplines
   get 'students_api/load_from_json_file', as: :load_from_json_file_students_api
   post 'students_api/load_from_json_file'
-
   get 'students_api/load_to_json_file', as: :load_to_json_file_students_api
   #post 'students_api/load_to_json_file'
 
   get 'disciplines_api/load_from_json_file', as: :load_from_json_file_disciplines_api
   post 'disciplines_api/load_from_json_file'
+  get 'disciplines_api/load_to_json_file', as: :load_to_json_file_disciplines_api
 
   get 'groups_api/load_from_json_file', as: :load_from_json_file_groups_api
   post 'groups_api/load_from_json_file'
+  get 'groups_api/load_to_json_file', as: :load_to_json_file_groups_api
 
   get 'welcome/index', as: :index
   get 'welcome/insufficient_privileges', as: :ip
