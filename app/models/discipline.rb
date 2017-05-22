@@ -4,7 +4,7 @@ class Discipline < ApplicationRecord
   belongs_to :ranking_algorithm
   has_many :discipline_sections
   has_many :community_disciplines
-  has_and_belongs_to_many :institutions
+  has_and_belongs_to_many :institutions, dependent: :destroy
 
   SHORT_TYPES = {
     0 => 'Л',

@@ -29,9 +29,9 @@ class CommunitiesController < ApplicationController
   def show
     @community
     @community_news = @community.community_newses.build(community: @community, creator: @current_user_object) # для подключения community_news/form
-    @community_news_index = @community.community_newses
-   # Rails.logger.info @community_news_index[0]
-   # Rails.logger.info '*'*100
+    @discipline_section = @community.community_disciplines.first.discipline.discipline_sections.build(community: @community, discipline: @community.community_disciplines.first.discipline)
+    @community_news_index = @community.community_newses.reverse
+    @community_news_index = Kaminari.paginate_array(@community_news_index).page(params[:page]).per(5)
     @check = Community.check_access_to_edit_community(@current_user_object.id, @community.id) # проверяем доступ к редактированию сообщества
   end
 
@@ -39,7 +39,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/new
   def new
     @community = Community.new(community_visibility: 0)
-    @community.community_disciplines.build
+    #@community.community_disciplines.build
   end
 
   # GET /communities/1/edit

@@ -1,0 +1,10 @@
+.add-dis-fields
+  .row
+    .col-md-6
+      .form-group
+        = addy_form.label 'Дисциплина'
+        = addy_form.select(:discipline_id, discipline_select_options(addy_form.object.discipline_id), {include_blank: true}, class: 'form-control')
+        = addy_form.error_messages_for(:discipline_id)
+    .col-md-1
+      .form-group
+        = link_to_remove_dis(addy_form)

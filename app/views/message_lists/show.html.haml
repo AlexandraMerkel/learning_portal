@@ -1,9 +1,31 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li
+    Сообщения
+  %li.active
+    =link_to(ellipsisize(@message_list.header.to_s), @message_list)
 
-%p
-  %b Header:
-  = @message_list.header
-
-= link_to 'Edit', edit_message_list_path(@message_list)
-\|
-= link_to 'Back', message_lists_path
+.col-md-8
+  %h1
+    = @message_list.header
+  %div{style: 'border: solid 1px ; border-color: #c5d9d5; padding: 0 5px 0 5px; margin: 0 0 10px 0;'}
+    #messages_index
+      = render 'messages/index', messages: @messages
+  = render 'messages/form'
+.col-md-4
+  %h3
+    Участники (
+    = @message_list.users.count
+    \)
+  .list-group
+  - @message_list.users.each do |u|
+    = link_to(u, class: 'list-group-item') do
+      - if $online.include?(u.email)
+        .circle-green{ id: 'user' + u.id.to_s }
+        = u.last_name
+        = u.first_name
+        = u.second_name
+      - else
+        .circle-red{ id: 'user' + u.id.to_s }
+        = u.last_name
+        = u.first_name
+        = u.second_name

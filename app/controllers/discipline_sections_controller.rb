@@ -1,6 +1,9 @@
 class DisciplineSectionsController < ApplicationController
   before_action :set_discipline_section, only: [:show, :edit, :update, :destroy]
 
+  def check_ctr_auth()
+    return true if (@current_role_user.is_admin? or @current_role_user.is_teacher? or @current_role_user.is_moderator?)
+  end
   # GET /discipline_sections
   # GET /discipline_sections.json
   def index
@@ -25,14 +28,16 @@ class DisciplineSectionsController < ApplicationController
   # POST /discipline_sections.json
   def create
     @discipline_section = DisciplineSection.new(discipline_section_params)
-
     respond_to do |format|
       if @discipline_section.save
-        format.html { redirect_to @discipline_section, notice: 'Discipline section was successfully created.' }
-        format.json { render :show, status: :created, location: @discipline_section }
+        #format.html { redirect_to @discipline_section, notice: 'Discipline section was successfully created.' }
+        #format.json { render :show, status: :created, location: @discipline_section }
+        format.js { render('discipline_sections/create')}
       else
-        format.html { render :new }
-        format.json { render json: @discipline_section.errors, status: :unprocessable_entity }
+        #raise @discipline_section.errors.inspect
+        #format.html { render :new }
+        #format.json { render json: @discipline_section.errors, status: :unprocessable_entity }
+        format.js { render ('discipline_sections/error')}
       end
     end
   end
@@ -42,7 +47,7 @@ class DisciplineSectionsController < ApplicationController
   def update
     respond_to do |format|
       if @discipline_section.update(discipline_section_params)
-        format.html { redirect_to @discipline_section, notice: 'Discipline section was successfully updated.' }
+        format.html { redirect_to @discipline_section, notice: 'Раздел дисциплины был успешно обновлен' }
         format.json { render :show, status: :ok, location: @discipline_section }
       else
         format.html { render :edit }
@@ -56,8 +61,9 @@ class DisciplineSectionsController < ApplicationController
   def destroy
     @discipline_section.destroy
     respond_to do |format|
-      format.html { redirect_to discipline_sections_url, notice: 'Discipline section was successfully destroyed.' }
-      format.json { head :no_content }
+      #format.html { redirect_to discipline_sections_url, notice: 'Раздел дисциплины был успешно удален' }
+      #format.json { head :no_content }
+      format.js { render ('discipline_sections/delete')}
     end
   end
 

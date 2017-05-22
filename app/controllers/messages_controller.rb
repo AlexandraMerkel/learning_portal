@@ -3,8 +3,13 @@ class MessagesController < ApplicationController
 
   use MessageBus::Rack::Middleware
 
+  # Переопределенная проверка прав доступа
+  def check_ctr_auth()
+    return true if (@current_role_user.is_admin? or @current_role_user.is_teacher? or @current_role_user.is_moderator? or @current_role_user.is_student?)
+  end
+
   def show_file
-    send_file(@message.message.path(:original), 
+    send_file(@message.message.path(:original),
     filename: @message.message_file_name,
     type: @message.message_content_type, disposition: 'inline')
   end
@@ -37,16 +42,19 @@ class MessagesController < ApplicationController
     @message.attributes=message_params
 
     respond_to do |format|
+      #raise format.inspect
       if @message.save
         @message.message_users.each do |mu|
-          MessageBus.publish '/message', {username: mu.user.email, data: {message: @message.message_content}}
+          MessageBus.publish '/message', {username: mu.user.email, id: mu.user.id, data: {message: @message.message_content}}
         end
         MessageBus.publish '/message', {username: @current_user_object.email, data: {message: @message.message_content}}
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        #format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        #format.json { render :show, status: :created, location: @message }
+        format.js { render('messages/create')}
       else
-        format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+        #format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.js { render('messages/errors') }
       end
     end
   end

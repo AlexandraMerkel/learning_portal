@@ -1,46 +1,77 @@
-= form_for @discipline_section do |f|
-  - if @discipline_section.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@discipline_section.errors.count, "error")} prohibited this discipline_section from being saved:"
-      %ul
-        - @discipline_section.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @discipline_section, remote: true do |f|
+  = error_messages_for @discipline_section
 
-  .field
-    = f.label :discipline_type
-    = f.number_field :discipline_type
-  .field
-    = f.label :section_name
-    = f.text_field :section_name
-  .field
-    = f.label :section_type
-    = f.number_field :section_type
-  .field
-    = f.label :weight
-    = f.number_field :weight
-  .field
-    = f.label :min_score
-    = f.number_field :min_score
-  .field
-    = f.label :max_score
-    = f.number_field :max_score
-  .field
-    = f.label :require_type
-    = f.number_field :require_type
-  .field
-    = f.label :attenuation_constant
-    = f.text_field :attenuation_constant
-  .field
-    = f.label :optimal_time
-    = f.date_select :optimal_time
-  .field
-    = f.label :limit_time
-    = f.date_select :limit_time
-  .field
-    = f.label :discipline
-    = f.text_field :discipline
-  .field
-    = f.label :community
-    = f.text_field :community
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-9
+      .form-group
+        = f.label :section_name
+        = f.text_field :section_name, class: 'form-control'
+        = f.error_messages_for(:section_name)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :section_type
+        = f.select(:section_type, section_type_options(f.object.section_type), {}, class: 'form-control')
+        = f.error_messages_for(:section_type)
+    .col-md-3
+      .form-group
+        = f.label :discipline_type
+        = f.select(:discipline_type, discipline_type_options(f.object.discipline_type), {}, class: 'form-control')
+        = f.error_messages_for(:discipline_type)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :optimal_time
+        .input-group.date.datepicker
+          = f.text_field :optimal_time, class: 'form-control date datepicker'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:optimal_time)
+    .col-md-3
+      .form-group
+        = f.label :limit_time
+        .input-group.date.datepicker
+          = f.text_field :limit_time, class: 'form-control date datepicker'
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:limit_time)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :require_type
+        = f.select(:require_type, require_type_options(f.object.require_type), {}, class: 'form-control')
+        = f.error_messages_for(:require_type)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :min_score
+        = f.number_field :min_score, class: 'form-control', title: 'Целое число от 0 до 100', min: 1, max: 100
+        = f.error_messages_for(:min_score)
+    .col-md-3
+      .form-group
+        = f.label :max_score
+        = f.number_field :max_score, class: 'form-control', title: 'Целое число от 0 до 100', min: 1, max: 100
+        = f.error_messages_for(:max_score)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :weight
+        = f.number_field :weight, class: 'form-control', title: 'Целое число от 0 до 10', min: 1, max: 100
+        = f.error_messages_for(:weight)
+    .col-md-3
+      .form-group
+        = f.label :attenuation_constant
+        = f.text_field :attenuation_constant, class: 'form-control', title: 'Вещественное число от 0 до 1'
+        = f.error_messages_for(:attenuation_constant)
+  /.col-md-6
+  /.form-group
+  /= f.label :discipline
+  = f.hidden_field :discipline_id
+  /.col-md-6
+  /.form-group
+  /= f.label :community_id
+  = f.hidden_field :community_id
+  .row
+    .col-md-6
+      .form-group#submitDisSection
+        = f.submit t('helpers.submit.submit'), class: 'btn btn-primary'

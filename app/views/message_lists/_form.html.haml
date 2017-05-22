@@ -1,13 +1,17 @@
 = form_for @message_list do |f|
-  - if @message_list.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@message_list.errors.count, "error")} prohibited this message_list from being saved:"
-      %ul
-        - @message_list.errors.full_messages.each do |msg|
-          %li= msg
+  = error_messages_for @message_list
 
-  .field
-    = f.label :header
-    = f.text_field :header
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-8
+      .form-group
+        = f.label 'Тема'
+        = f.text_field :header, :border => '1px solid #c5d9d5', class: 'form-control'
+  .row
+    .col-md-8
+      .form-group
+        #testing
+          /= f.text_field :users, 'data-role'=>'tagsinput'
+          %input{:class=>'users_message', :type=>"text", 'data-role'=>'tagsinput' }
+
+      .toright
+        = f.submit 'Создать', class: 'btn btn-primary'

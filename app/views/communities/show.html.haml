@@ -11,7 +11,7 @@
         / 1 - модератор сообщества, 2 - владелец сообщества
         %span
           = link_to edit_community_path(@community), class: 'btn btn-warning' do
-            = fa_icon :pencil, title: 'Редактировать сообщество'
+            = fa_icon :wrench, title: 'Редактировать сообщество'
         - if @community.archive == 0
           %span
             = link_to archiving_community_path,  :data => { :confirm => t('helpers.sure') }, class: 'btn btn-danger' do

@@ -32,4 +32,20 @@ module DisciplinesHelper
     Discipline::DIS_END[chosen_type]
   end
 
+  def add_discipline_data(form)
+    new_object = CommunityDiscipline.new
+    fields = form.fields_for(:community_disciplines, new_object,
+      :child_index => 'new_community_discipline') do |builder|
+      render('community_disciplines/add_community_discipline', addy_form: builder)
+    end
+    {content: "#{fields}"}
+  end
+
+  def link_to_remove_dis(form)
+    form.hidden_field(:_destroy, class: 'remove_fields') +
+        link_to(?#, class: 'remove_fields remove_dis') do
+      fa_icon('times', title: 'Удалить дисциплину')
+    end
+  end
+
 end

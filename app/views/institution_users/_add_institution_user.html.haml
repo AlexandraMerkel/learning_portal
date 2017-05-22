@@ -3,7 +3,7 @@
     .col-md-6
       .form-group
         = addy_form.label 'ВУЗ'
-        = addy_form.select(:institution_id, institution_select_options(addy_form.object.institution_id), {}, class: 'form-control')
+        = addy_form.select(:institution_id, institution_select_options(addy_form.object.institution_id), {}, class: 'form-control', id: 'selector_institution')
         = addy_form.error_messages_for(:institution_id)
 
 

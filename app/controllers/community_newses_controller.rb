@@ -40,7 +40,7 @@ class CommunityNewsesController < ApplicationController
       else
         #format.html { render :new }
         #format.json { render json: @community_news.errors, status: :unprocessable_entity }
-        format.js {}
+        format.js { render('community_news/error') }
       end
     end
   end

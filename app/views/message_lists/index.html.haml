@@ -1,21 +1,35 @@
-%h1 Listing message_lists
+%h1
+  Сообщения
+  = link_to new_message_list_path do
+    = fa_icon('plus', title: 'Создать новую беседу', style: 'color: #4E5A68;')
 
-%table
-  %thead
-    %tr
-      %th Header
-      %th
-      %th
-      %th
-
-  %tbody
-    - @message_lists.each do |message_list|
-      %tr
-        %td= message_list.header
-        %td= link_to 'Show', message_list
-        %td= link_to 'Edit', edit_message_list_path(message_list)
-        %td= link_to 'Destroy', message_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= paginate @message_lists
 
 %br
-
-= link_to 'New Message list', new_message_list_path
+  .list-group
+    - if @message_lists.empty?
+      Вы ещё не написали ни одного сообщения.
+    - else
+      - @message_lists.each do |ml|
+        = link_to(ml, class: 'list-group-item') do
+          %h3
+            = ml.header
+          = fa_icon('envelope')
+          = ml.messages.count
+          = "&nbsp".html_safe
+          = fa_icon('clock-o')
+          = lnil(ml.updated_at)
+          = "&nbsp".html_safe
+          = fa_icon('user')
+          = ml.users.count
+          /- if ml.users.count < 4
+          .toright
+            - ml.users.each_with_index do |u, i|
+              = u.last_name
+              = u.first_name
+              - if i >= 1
+                = "и др."
+                - break
+              - else
+                = ','
+          .clearfix

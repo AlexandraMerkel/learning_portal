@@ -1,22 +1,22 @@
 = form_for @community_news, remote: true do |f|
   = error_messages_for @community_news
 
-  .toright
-    .row
-      .col-md-4
-        .form-group
-          = f.label 'Есть новости?'
-          = f.text_area :news_body, cols: 34, rows:6, :resize => 'vertical', :border => '1px solid #c5d9d5'
-    /  .col-md-6
-    /    .form-group
-    /      = f.label :user_id
-    = f.hidden_field :user_id
-    /.row
-    /  .col-md-6
-    /    .form-group
-    /      = f.label :community_id
-    = f.hidden_field :community_id
-    .row
-      .col-md-4
-        .form-group
-          = f.submit 'Опубликовать', class: 'btn btn-primary',  title: 'Новость можно будет удалить в течение 1 часа с момента публикации'
+  /.toright
+  .row
+    .col-md-12
+      .form-group
+        = f.label 'Есть новости?'
+        = f.text_area :news_body, rows:6, :border => '1px solid #c5d9d5', class: 'form-control'
+  /  .col-md-6
+  /    .form-group
+  /      = f.label :user_id
+  = f.hidden_field :user_id
+  /.row
+  /  .col-md-6
+  /    .form-group
+  /      = f.label :community_id
+  = f.hidden_field :community_id
+  .row
+    .col-md-12
+      .form-group
+        = f.submit 'Опубликовать', class: 'btn btn-primary',  title: 'Новость можно будет удалить в течение 1 часа с момента публикации'

@@ -54,10 +54,18 @@ class DisciplinesController < ApplicationController
   # DELETE /disciplines/1
   # DELETE /disciplines/1.json
   def destroy
-    @discipline.destroy
-    respond_to do |format|
-      format.html { redirect_to disciplines_url, notice: 'Дисциплина успешно удалена' }
-      format.json { head :no_content }
+    if (@discipline.discipline_sections.blank? && @discipline.community_disciplines.blank?)
+      @discipline.destroy
+      message = "Дисциплина успешно удалена"
+      respond_to do |format|
+        format.html { redirect_to disciplines_url, notice: message }
+        format.json { head :no_content }
+      end
+    else
+      message = "Произошла ошибка при удалении дисциплины: на данную дисциплину ссылаются другие объекты системы"
+      respond_to do |format|
+        format.html { redirect_to @discipline, notice: message }
+      end
     end
   end
 

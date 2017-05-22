@@ -1,29 +1,27 @@
-= form_for @message do |f|
-  - if @message.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
-      %ul
-        - @message.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @message, remote: true, multipart: true, authenticity_token: true do |f|
+  = error_messages_for @message
 
-  .field
-    = f.label :message_content
-    = f.text_area :message_content
-  .field
-    = f.label :send_time
-    = f.datetime_select :send_time
-  .field
-    = f.label :message
-    -if f.object.message.present?
-      =link_to(f.object.message_file_name, show_file_message_path(f.object))
-    -else 
-      Еще не сохранен
-    = f.file_field :message 
-  .field
-    = f.label :message_list_id
-    = f.select(:message_list_id, message_list_options(f.object.message_list_id))
-  .field
-    = f.label :sender_id
-    = f.select(:sender_id, sender_options(f.object.sender_id))
-  .actions
-    = f.submit 'Save'
+  .row
+    .col-md-8
+      .form-group
+        /= f.label 'Есть новости?'
+        = f.text_area :message_content, :border => '1px solid #c5d9d5', class: 'form-control'
+  /  .col-md-6
+  /    .form-group
+  /      = f.label :user_id
+  = f.hidden_field :sender_id
+  /  .col-md-6
+  /    .form-group
+  /      = f.label :user_id
+  = f.hidden_field :message_list_id
+  .row
+    .col-md-8
+      .form-group
+        /= f.label 'Файлы не выбраны'
+        - if f.object.message.present?
+          =link_to(f.object.message_file_name, show_file_message_path(f.object))
+        -else
+        /Файлы не выбраны
+        = f.file_field :message
+      .form-group
+        = f.submit 'Отправить', class: 'btn btn-primary'

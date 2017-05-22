@@ -118,7 +118,7 @@ ru:
         attenuation_constant: Коэффициент затухания
         optimal_time: Оптимальный срок сдачи
         limit_time: Крайний срок сдачи
-        discipline_id: Дисциплина
+        discipline_type: Тип дисциплины
       term:
         term_name: Название
         actual: Текущий

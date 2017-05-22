@@ -5,70 +5,85 @@
   %h5 Рейтинговая таблица успеваемости студентов
 
 - if @current_role_user.present?
-  / выделяем секции дисциплины, связанные именно с текущим сообществом
-  - dis_sections = selection_of_section(@community.community_disciplines, @community)
-  / если массив пуст, значит в сообществе пока нет дисциплин, т.е. таблицу не отрисовываем
-  - if !dis_sections.empty?
-    / в будущем необходимо разделение по ролям (- if @current_role_user.is_student?)
-    %table.table.table-bordered.table-hover#rankTable
-      %thead
-        %tr
-          %th №
-          %th ФИО студента
-          - dis_sections.each do |ds|
-            %th= ds.section_name
-          %th Сумма
+  #table_with_marks
+    / выделяем секции дисциплины, связанные именно с текущим сообществом
+    - dis_sections = selection_of_section(@community.community_disciplines, @community)
+    / если массив пуст, значит в сообществе пока нет дисциплин, т.е. таблицу не отрисовываем
+    - if !dis_sections.empty?
+      / в будущем необходимо разделение по ролям (- if @current_role_user.is_student?)
+      %table.table.table-bordered.table-hover#rankTable
+        %thead
+          %tr
+            %th №
+            %th ФИО студента
+            - dis_sections.each do |ds|
+              - next if ds.new_record? # не учитываем объекты, не сохраненные в БД
+              %th= ds.section_name
+            %th Сумма
 
-      %tbody
-        - @community.community_users.each_with_index do |u, i|
-          / показывать только студентов
-          - if u.user.role_users.first.role.role_name_eng == "student"
-            / выделять цветом для студента строку с его оценками
-            - if u.user.id == @current_role_user.id
-              %tr{:bgcolor => "#e4edeb" }
+        %tbody
+          - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
+            %tr
+              %td
+              %td
+              - dis_sections.each do |ds|
+                - next if ds.new_record? # не учитываем объекты, не сохраненные в БД
                 %td
-                  = succeed '.' do
-                    = i + 1
-                %td
-                  =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
-                - final_grade = 0
-                - dis_sections.each do |ds|
+                  = link_to edit_discipline_section_path(ds) do
+                    = fa_icon('pencil', title: 'Редактировать раздел дисциплины', style: 'color: #4E5A68;')
+                  = link_to ds, :method => :delete, :data => { :confirm => 'Вы уверены, что хотите удалить раздел и ВСЕ оценки, связанные с ним?' }, :remote => true do
+                    = fa_icon :times, title: 'Удалить раздел дисциплины', style: 'color: #4E5A68;'
+              %td
+          - @community.community_users.each_with_index do |u, i|
+            / показывать только студентов
+            - if u.user.role_users.first.role.role_name_eng == "student"
+              / выделять цветом для студента строку с его оценками
+              - if u.user.id == @current_role_user.id
+                %tr{:bgcolor => "#e4edeb" }
                   %td
-                    - ds.marks.each do |m|
-                      / для каждой оценки проверяем текущий ли студент
-                      - if m.student.id == u.user.id
-                        = m.mark_value
-                        - final_grade += m.mark_value
-                %td=final_grade
-
-            - else
-              %tr
-                %td
-                  = succeed '.' do
-                    = i + 1
-                %td
-                  =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
-                - final_grade = 0
-                - dis_sections.each do |ds|
+                    = succeed '.' do
+                      = i + 1
                   %td
-                    - has_mark = false
-                    - ds.marks.each do |m|
-                      - if m.student.id == u.user.id
-                        %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: m.id, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                    =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+                  - final_grade = 0
+                  - dis_sections.each do |ds|
+                    - next if ds.new_record? # не учитываем объекты, не сохраненные в БД
+                    %td
+                      - ds.marks.each do |m|
+                        / для каждой оценки проверяем текущий ли студент
+                        - if m.student.id == u.user.id
                           = m.mark_value
-                        - final_grade += m.mark_value
-                        - has_mark = true
-                    - unless has_mark
-                      %span.mark_editable{data: {id: nil, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
-                        \-
-                %td
-                  =final_grade
+                          - final_grade += m.mark_value
+                  %td=final_grade
+
+              - else
+                %tr
+                  %td
+                    = succeed '.' do
+                      = i + 1
+                  %td
+                    =u.user.last_name + " " + u.user.first_name + " " + u.user.second_name
+                  - final_grade = 0
+                  - dis_sections.each do |ds|
+                    - next if ds.new_record? # не учитываем объекты, не сохраненные в БД
+                    %td
+                      - has_mark = false
+                      - ds.marks.each do |m|
+                        - if m.student.id == u.user.id
+                          %span.mark_editable{title: User.where('id = ?', m.teacher_id).first.last_name + " " + User.where('id = ?', m.teacher_id).first.first_name + " " + User.where('id = ?', m.teacher_id).first.second_name + " " + lnil(m.updated_at), data: {id: m.id, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: m.mark_value, url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                            = m.mark_value
+                          - final_grade += m.mark_value
+                          - has_mark = true
+                      - unless has_mark
+                        %span.mark_editable{data: {id: nil, ds_id: ds.id, student_id: u.user.id, teacher_id: @current_user_object.id, old_value: '', url: update_mark_marks_path}, contenteditable: true, style: 'display: inline-block; min-height: 20px; min-width: 20px;'}
+                          \-
+                  %td
+                    =final_grade
 
   - if check_access_to_edit_community(@current_user_object, @community) == 1 || check_access_to_edit_community(@current_user_object, @community) == 2
-    /= link_to (fa_icon 'times'), discipline_section, :method => :create, :remote => true
-    = link_to ?#, class: 'btn btn-primary', id: 'add_dis_section' do
-      = fa_icon :pencil
-      Создать новый раздел дисциплины
-
-
-/= render 'discipline_sections/form'
+    %button{ class: 'btn btn-primary', id: 'new_ds'}
+      Добавить раздел дисциплины #{fa_icon('plus', title: 'Создать новый раздел дисциплины')}
+    #new_ds_form
+      %br
+      %br
+      = render 'discipline_sections/form'

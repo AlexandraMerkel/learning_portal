@@ -57,4 +57,5 @@ module CommunitiesHelper
       fa_icon('times', title: 'Удалить пользователя')
     end
   end
+
 end

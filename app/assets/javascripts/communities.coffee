@@ -30,5 +30,3 @@ $(document).on 'turbolinks:load', ->
 
 
 
-
-

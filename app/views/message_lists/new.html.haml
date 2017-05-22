@@ -1,5 +1,10 @@
-%h1 New message_list
+%h1 Новая беседа
+=breadcrumb_tag do
+  %li
+    Сообщения
+  %li.active
+    Новая беседа
 
 = render 'form'
 
-= link_to 'Back', message_lists_path
+/= link_to 'Back', message_lists_path

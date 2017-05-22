@@ -13,8 +13,10 @@ class Mark < ApplicationRecord
 
   # метод пока не работает
   def mark_validator()
+    Rails.logger.info '*'*100
+    Rails.logger.info discipline_section_id
     if mark_value.present?
-      if mark_value < DisiplineSection.where("id = ?", discipline_section_id).min_score || mark_value > DisiplineSection.where("id = ?", discipline_section_id).max_score
+      if mark_value < DisciplineSection.where('id = ?', discipline_section_id).first.min_score || mark_value > DisciplineSection.where('id = ?', discipline_section_id).first.max_score
         errors[:mark_value] << 'Оценка выходит за возможные границы баллов за данный раздел'
       end
     end

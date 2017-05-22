@@ -1,11 +1,15 @@
 /%h1 Listing community_news
 
+= paginate @community_news_index
+- if @community_news_index.count <= 5
+  %br
+  %br
 
 .list-of-news
   .row
     .col-md-10
       .form-group
-        - @community_news_index = @community_news_index.reverse
+        /- @community_news_index = @community_news_index.reverse
         - @community_news_index.each do |community_news|
           - next if community_news.new_record? # не учитываем объекты, не сохраненные в БД
           / если сообщение не прочитано
@@ -24,7 +28,8 @@
                           = link_to (fa_icon 'times'), community_news, :method => :delete, :data => { :confirm => t('helpers.sure') }, :remote => true
               .panel-body
                 = community_news.news_body
-            %br
+            - if !(community_news == @community_news_index.last)
+              .clearfix
             / если прочитано
           - else
             .panel.panel-success
@@ -42,5 +47,7 @@
                           = link_to (fa_icon 'times'), community_news, :method => :delete, :data => { :confirm => t('helpers.sure') }, :remote => true
               .panel-body
                 = community_news.news_body
-            %br
-        /= paginate @community_news
+            - if !(community_news == @community_news_index.last)
+              .clearfix
+
+/= paginate @community_news_index

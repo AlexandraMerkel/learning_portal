@@ -3,17 +3,24 @@
     Учебные группы
   %li.active
     =link_to(ellipsisize(@group.group_name.to_s), @group)
-%br
 
-%p
-  %b
-    = Group.human_attribute_name(:group_name) + ":"
-  = @group.group_name
+.row
+  .col-md-6
+    /.form-group{style: 'margin: 5px 0px 10px 3px; font-size: 20px;'}
+    %h1
+      = @group.group_name
+  .toright
+    - if @current_role_user.is_admin? || @current_role_user.is_moderator?
+      = link_to edit_group_path(@group), class: 'btn btn-warning' do
+        = fa_icon :wrench, title: 'Редактировать группу'
+      = link_to @group, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger' do
+        = fa_icon :trash, title: 'Отправить группу в архив'
+
 %p
   %b
     = Group.human_attribute_name(:group_start) + ":"
   = @group.group_start.strftime('%m/%d/%Y')
-%p
+
   %b
     = Group.human_attribute_name(:archive_time) + ":"
   = @group.archive_time.strftime('%m/%d/%Y')
@@ -21,6 +28,26 @@
   %b
     = Group.human_attribute_name(:term_id) + ":"
   = @group.term.term_name
+%br
+%h3 Студенты:
 
-= link_to t('helpers.edit'), edit_group_path(@group), class: 'btn btn-warning'
-= link_to t('helpers.destroy'), @group, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-danger'
+.list-group
+  - @group.users.each_with_index do |u, i|
+    = link_to(u, class: 'list-group-item') do
+      = i + 1
+      ="."
+      = u.last_name
+      = u.first_name
+      = u.second_name
+      .clearfix
+/    = paginate @groups
+
+%br
+%h3 Изучаемые дисциплины:
+
+.list-group
+  / поиск уникальных связанных дисциплин
+  - disciplines = search_disciplines(@group)
+  - disciplines.each do |dis|
+    = link_to(dis, class: 'list-group-item') do
+      = dis.discipline_name

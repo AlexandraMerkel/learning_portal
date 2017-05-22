@@ -1,15 +1,21 @@
 class MessageListsController < ApplicationController
   before_action :set_message_list, only: [:show, :edit, :update, :destroy]
 
+  # Переопределенная проверка прав доступа
+  def check_ctr_auth()
+    return true if (@current_role_user.is_admin? or @current_role_user.is_teacher? or @current_role_user.is_moderator? or @current_role_user.is_student?)
+  end
   # GET /message_lists
   # GET /message_lists.json
   def index
-    @message_lists = MessageList.all
+    @message_lists = MessageList.all.page(params[:page]).per(2)
   end
 
   # GET /message_lists/1
   # GET /message_lists/1.json
   def show
+    @messages = @message_list.messages
+    @message = @message_list.messages.build(sender: @current_user_object, message_list: @message_list)
   end
 
   # GET /message_lists/new

@@ -25,14 +25,23 @@
         = f.check_box :archive, style: 'margin: 0px 0px 0px 5px; vertical-align: middle;'
         = f.error_messages_for(:archive)
 
-  = f.fields_for :community_disciplines do |dis_form|
+  / = f.fields_for :community_disciplines do |dis_form|
+  /   .row
+  /     .col-md-6
+  /       .form-group
+  /         = dis_form.label 'Дисциплина'
+  /         = dis_form.select(:discipline_id, discipline_select_options(dis_form.object.discipline_id), {include_blank: true}, class: 'form-control')
+  /         = dis_form.error_messages_for(:discipline_id)
+  .community_disciplines
     .row
       .col-md-6
         .form-group
-          = dis_form.label 'Дисциплина'
-          = dis_form.select(:discipline_id, discipline_select_options(dis_form.object.discipline_id), {include_blank: true}, class: 'form-control')
-          = dis_form.error_messages_for(:discipline_id)
-
+          .add-disciplines
+            = link_to ?#, class: 'btn btn-primary', data: add_discipline_data(f), id: 'add_dis_link' do
+              = fa_icon :plus
+              Добавить связанную дисциплину
+    = f.fields_for :community_disciplines do |dis_form| # Показывает community_users, если они есть (перебирает), сохраняет данные при ошибке
+      = render('community_disciplines/add_community_discipline', addy_form: dis_form)
 
   .community_users
     .row

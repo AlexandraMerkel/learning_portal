@@ -1,0 +1,1 @@
+$.bootstrapGrowl("Сообщение не может быть пустым", {type: 'danger'})

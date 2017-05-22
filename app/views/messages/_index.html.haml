@@ -1,0 +1,60 @@
+%br
+
+.row
+  /- @messages = @messages.reverse
+  /.toright
+  - @messages.each do |message|
+    - next if message.new_record? # не учитываем объекты, не сохраненные в БД
+    - if message.sender.id == @current_user_object.id
+      /- if message.message_users.where('user_id = ?', @current_user_object.id).empty?
+      / пометить cообщение как прочитанное
+      /- create_mess_user(message, @current_user_object)
+      .col-md-10.toright
+        - if message.message_users.where('user_id = ?', @current_user_object.id).empty?
+          - create_mess_user(message, @current_user_object)
+          .panel.panel-info{style: 'width: 100%;'}
+            .panel-heading
+              = message.sender.last_name + " " + message.sender.first_name
+              = fa_icon('envelope')
+              .toright
+                = lnil(message.created_at)
+            .panel-body
+              = message.message_content
+              / получить файл
+              /= message.message
+          .clearfix
+        - else
+          .panel.panel-success{style: 'width: 100%;'}
+            .panel-heading
+              = message.sender.last_name + " " + message.sender.first_name
+              = fa_icon('envelope-open-o')
+              .toright
+                = lnil(message.created_at)
+            .panel-body
+              = message.message_content
+          .clearfix
+    - else
+      .col-md-10.toleft
+        - if message.message_users.where('user_id = ?', @current_user_object.id).empty?
+          - create_mess_user(message, @current_user_object)
+          .panel.panel-info{style: 'width: 100%;'}
+            .panel-heading
+              = message.sender.last_name + " " + message.sender.first_name
+              = fa_icon('envelope')
+              .toright
+                = lnil(message.created_at)
+            .panel-body
+              = message.message_content
+              / получить файл
+              /= message.message
+          .clearfix
+        - else
+          .panel.panel-success{style: 'width: 100%;'}
+            .panel-heading
+              = message.sender.last_name + " " + message.sender.first_name
+              = fa_icon('envelope-open-o')
+              .toright
+                = lnil(message.created_at)
+            .panel-body
+              = message.message_content
+          .clearfix

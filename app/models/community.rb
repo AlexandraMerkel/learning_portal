@@ -5,7 +5,6 @@ class Community < ApplicationRecord
 	has_many :community_sections
   has_many :community_newses, dependent: :destroy
 
-  #after_save :test
 
   VISIBILITIES = {
     0 => 'видно для всех пользователей',
@@ -66,4 +65,5 @@ class Community < ApplicationRecord
   def test()
     self.update_columns(:community_name => self.community_name + 'qqqqq')
   end
+
 end

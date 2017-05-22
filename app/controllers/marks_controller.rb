@@ -19,7 +19,7 @@ class MarksController < ApplicationController
           if params[:mark_value].empty?
             @mark.destroy
           else
-            @mark.update_attribute(:mark_value, params[:mark_value])
+            @mark.update_attributes(:mark_value => params[:mark_value], :teacher_id => params[:teacher_id])
           end
         else
           @mark = Mark.create(mark_value: params[:mark_value], discipline_section_id: params[:discipline_section_id], student_id: params[:student_id], teacher_id: params[:teacher_id])
