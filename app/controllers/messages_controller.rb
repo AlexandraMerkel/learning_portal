@@ -37,7 +37,6 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-#    raise Message.new.inspect
     @message = Message.new()
     @message.attributes=message_params
 

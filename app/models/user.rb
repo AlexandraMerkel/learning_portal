@@ -75,6 +75,11 @@ class User < ApplicationRecord
     passwd
   end
 
+  def full_name
+    [self.last_name, self.first_name, self.second_name].select{ |x|
+      x.present? }.join(' ')
+  end
+  
   def User.search_users(params)
     params = params.to_s.gsub(/\s+/, '')
     @users = User.all

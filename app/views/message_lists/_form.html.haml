@@ -9,9 +9,7 @@
   .row
     .col-md-8
       .form-group
-        #testing
-          /= f.text_field :users, 'data-role'=>'tagsinput'
-          %input{:class=>'users_message', :type=>"text", 'data-role'=>'tagsinput' }
-
+        = f.text_field :users,
+        value: f.object.users.map{ |u| u.email }, class: 'tagsInput'
       .toright
         = f.submit 'Создать', class: 'btn btn-primary'

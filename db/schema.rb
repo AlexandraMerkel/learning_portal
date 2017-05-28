@@ -187,14 +187,6 @@ ActiveRecord::Schema.define(version: 20170505141205) do
     t.index ["teacher_id"], name: "index_marks_on_teacher_id", using: :btree
   end
 
-  create_table "message_bus", id: :bigserial, force: :cascade do |t|
-    t.text     "channel",                           null: false
-    t.text     "value",                             null: false
-    t.datetime "added_at", default: -> { "now()" }, null: false
-    t.index ["added_at"], name: "table_added_at_index", using: :btree
-    t.index ["channel", "id"], name: "table_channel_id_index", using: :btree
-  end
-
   create_table "message_lists", force: :cascade do |t|
     t.string   "header"
     t.datetime "created_at", null: false

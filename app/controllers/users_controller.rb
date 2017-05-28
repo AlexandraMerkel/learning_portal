@@ -5,9 +5,19 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  def index
-    @users = User.all.page(params[:page]).per(5)
-    @users = @users.search_users(params['name_of_user']).page(params[:page]).per(5) if params['name_of_user'].present?
+  def index    
+    respond_to do |format|
+      format.html do
+        @users = User.all.page(params[:page]).per(5)
+        @users = @users.search_users(params['name_of_user']).page(params[:page]).per(5) if params['name_of_user'].present?
+      end
+      format.json do
+        @users = User.order("last_name, first_name, second_name, email").all
+        render json: (@users.map do |u|
+            {text: u.full_name, id: u.id}
+        end)
+      end
+    end
   end
 
   # GET /users/1
