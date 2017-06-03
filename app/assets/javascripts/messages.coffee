@@ -15,6 +15,7 @@ get_user_enterance_f = ->
   MessageBus.subscribe "/presence", (msg)->
     if msg.enter
       #alert(msg.enter)
+      console.log(msg.id)
       $('#user' + msg.id).css('background', '#B2DC56')
     else
       #alert(msg.leave)

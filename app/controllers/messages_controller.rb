@@ -9,9 +9,9 @@ class MessagesController < ApplicationController
   end
 
   def show_file
-    send_file(@message.message.path(:original),
+    send_file(@message.message.path,
     filename: @message.message_file_name,
-    type: @message.message_content_type, disposition: 'inline')
+    type: @message.message_content_type)
   end
 
   # GET /messages

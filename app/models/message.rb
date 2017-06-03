@@ -11,10 +11,11 @@ class Message < ApplicationRecord
   has_attached_file :message, path: ":rails_root/storage/:class/:attachment/:id_partition/:style/:filename"
   validates_attachment :message, file_name: {matches: /\.(pdf|docx|doc|tiff)\z/i} # проверка на тип файла
 
-  #after_commit :create_message_sender_link
+  after_commit :create_message_sender_link
 
   def create_message_sender_link
-    MessageUser.create(message: self.id, user: self.sender)
+    mu = MessageUser.new(message_id: self.id, user_id: self.sender_id, viewing: 1)
+    mu.save
   end
 
 end

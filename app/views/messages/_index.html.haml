@@ -20,8 +20,9 @@
                 = lnil(message.created_at)
             .panel-body
               = message.message_content
-              / получить файл
-              /= message.message
+            - if message.message_file_name.present?
+              .panel-footer
+                = link_to(message.message_file_name, show_file_message_path(message), target:"_self")
           .clearfix
         - else
           .panel.panel-success{style: 'width: 100%;'}
@@ -32,6 +33,9 @@
                 = lnil(message.created_at)
             .panel-body
               = message.message_content
+            - if message.message_file_name.present?
+              .panel-footer
+                = link_to(message.message_file_name, show_file_message_path(message), target:"_self")
           .clearfix
     - else
       .col-md-10.toleft
@@ -45,8 +49,9 @@
                 = lnil(message.created_at)
             .panel-body
               = message.message_content
-              / получить файл
-              /= message.message
+            - if message.message_file_name.present?
+              .panel-footer
+                = link_to(message.message_file_name, show_file_message_path(message), target: "_self")
           .clearfix
         - else
           .panel.panel-success{style: 'width: 100%;'}
@@ -57,4 +62,7 @@
                 = lnil(message.created_at)
             .panel-body
               = message.message_content
+            - if message.message_file_name.present?
+              .panel-footer
+                = link_to(message.message_file_name, show_file_message_path(message), target: "_self")
           .clearfix

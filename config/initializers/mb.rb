@@ -16,7 +16,6 @@ $online = Hash.new
 
 
 MessageBus.subscribe "/presence" do |msg|
-
     if user = msg.data["enter"]
         $online[user] = Time.now
     end
