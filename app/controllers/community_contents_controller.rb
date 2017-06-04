@@ -5,6 +5,17 @@ class CommunityContentsController < ApplicationController
   # GET /community_contents.json
   def index
     @community_contents = CommunityContent.all
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    example = '
+  *This is example*
+  
+  1. qq
+  1. qq  
+  1. qq
+
+  ***dada***  
+    '
+    @example = markdown.render(example)
   end
 
   # GET /community_contents/1

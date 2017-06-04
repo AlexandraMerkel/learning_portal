@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+cc_editor = ->
+  $('#community_content_content_body').summernote();
+
+cc_ready = ->
+  cc_editor()
+  false
+
+$(document).on 'turbolinks:load', cc_ready

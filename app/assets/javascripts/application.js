@@ -27,4 +27,5 @@
 //= require bootstrap3-typeahead
 //= require bootstrap-tagsinput
 //= require message-bus
+//= require summernote
 //= require_tree .
